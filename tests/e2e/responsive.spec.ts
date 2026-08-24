@@ -34,6 +34,33 @@ test('homepage and journey carousel remain contained at every required width', a
   }
 });
 
+test('footer developer credit remains readable and contained at every required width', async ({ page }) => {
+  for (const width of widths) {
+    await page.setViewportSize({ width, height: width < 768 ? 844 : 950 });
+    await page.goto('/about');
+
+    const credit = page.getByRole('link', { name: 'Contact MNB Mohnish on WhatsApp' });
+    await credit.scrollIntoViewIfNeeded();
+    await expect(credit).toBeVisible();
+    await expect(credit).toHaveText('Designed & Developed by MNB (MOHNISH)');
+
+    const geometry = await credit.evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+      return {
+        documentOverflow: document.documentElement.scrollWidth - window.innerWidth,
+        left: rect.left,
+        right: rect.right,
+        width: rect.width,
+      };
+    });
+
+    expect(geometry.documentOverflow, `${width}px document overflow`).toBeLessThanOrEqual(0);
+    expect(geometry.left, `${width}px credit left edge`).toBeGreaterThanOrEqual(0);
+    expect(geometry.right, `${width}px credit right edge`).toBeLessThanOrEqual(width);
+    expect(geometry.width, `${width}px readable credit width`).toBeGreaterThan(0);
+  }
+});
+
 for (const width of [375, 768, 1440]) {
   for (const route of ['/jaisalmer', '/jaisalmer/explore', '/gallery', '/plan-journey']) {
     test(`${route} has no horizontal overflow at ${width}px`, async ({ page }) => {

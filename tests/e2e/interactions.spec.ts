@@ -59,3 +59,29 @@ test('Plan Journey validates safely and generates the expected WhatsApp payload'
   expect(decoded).toContain('9876543210');
   expect(decoded).toContain('Jaisalmer (The Golden City)');
 });
+
+test('footer MNB credit exposes the isolated developer WhatsApp link', async ({ page }) => {
+  await page.goto('/jaisalmer');
+  await waitForApp(page);
+
+  const credit = page.getByRole('link', { name: 'Contact MNB Mohnish on WhatsApp' });
+  await expect(credit).toBeVisible();
+  await expect(credit).toHaveText('Designed & Developed by MNB (MOHNISH)');
+  await expect(credit).toHaveAttribute(
+    'href',
+    'https://wa.me/917849931611?text=Hi%20Mohnish%2C%20I%20visited%20the%20Shri%20Radha%20Vallabh%20website%20and%20would%20like%20to%20connect%20with%20you.',
+  );
+  await expect(credit).toHaveAttribute('target', '_blank');
+  await expect(credit).toHaveAttribute('rel', 'noopener noreferrer');
+
+  const href = await credit.getAttribute('href');
+  const developerWhatsApp = new URL(href || '');
+  expect(developerWhatsApp.pathname).toBe('/917849931611');
+  expect(developerWhatsApp.searchParams.get('text')).toBe(
+    'Hi Mohnish, I visited the Shri Radha Vallabh website and would like to connect with you.',
+  );
+
+  await credit.focus();
+  await expect(credit).toBeFocused();
+  await expect(page.locator('a[href^="https://wa.me/918209290716"]')).not.toHaveCount(0);
+});

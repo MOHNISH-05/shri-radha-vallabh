@@ -4,6 +4,8 @@ import { SITE_CONFIG, getWhatsAppLink } from '../data/siteConfig';
 import { MessageCircle, MapPin, ArrowUpRight } from 'lucide-react';
 import { InstagramIcon } from './InstagramIcon';
 
+const MNB_WHATSAPP_URL = 'https://wa.me/917849931611?text=Hi%20Mohnish%2C%20I%20visited%20the%20Shri%20Radha%20Vallabh%20website%20and%20would%20like%20to%20connect%20with%20you.';
+
 export const Footer: React.FC = () => {
   const whatsappUrl = getWhatsAppLink();
 
@@ -175,9 +177,21 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#F5EFE6]/50">
-          <p>
-            © {SITE_CONFIG.copyrightYear} {SITE_CONFIG.brandName}. All Rights Reserved.
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:justify-start">
+            <p>
+              © {SITE_CONFIG.copyrightYear} {SITE_CONFIG.brandName}. All Rights Reserved.
+            </p>
+            <span className="hidden text-[#D4AF37]/50 lg:inline" aria-hidden="true">•</span>
+            <a
+              href={MNB_WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contact MNB Mohnish on WhatsApp"
+              className="inline-flex min-h-8 items-center rounded-sm text-[11px] text-[#F5EFE6]/60 transition-colors hover:text-[#D4AF37] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D4AF37]"
+            >
+              Designed &amp; Developed by MNB (MOHNISH)
+            </a>
+          </div>
           <div className="flex items-center gap-4 text-[11px]">
             <Link to="/about" className="hover:text-[#D4AF37] transition-colors">About Us</Link>
             <span>•</span>
