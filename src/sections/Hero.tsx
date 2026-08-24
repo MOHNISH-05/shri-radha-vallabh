@@ -1,4 +1,5 @@
 import React from 'react';
+import { preload } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
@@ -12,6 +13,12 @@ const MOTES = Array.from({ length: 8 }, (_, i) => ({
   dur: Math.random() * 10 + 9,
   delay: Math.random() * 7,
 }));
+
+preload('/assets/optimized/laxminath-hero.webp', {
+  as: 'image',
+  fetchPriority: 'high',
+  type: 'image/webp',
+});
 
 export const Hero: React.FC = () => {
   const reduced = useReducedMotion();
@@ -36,8 +43,10 @@ export const Hero: React.FC = () => {
         aria-hidden="true"
       >
         <img
-          src="/assets/laxminath-hero.jpg"
+          src="/assets/optimized/laxminath-hero.webp"
           alt="Shri Radha Vallabh spiritual heritage journey featuring Laxminath Ji and Jaisalmer heritage landscape"
+          width={1024}
+          height={682}
           className="w-full h-full object-cover object-[20%_15%] sm:object-center"
           fetchPriority="high"
           decoding="async"

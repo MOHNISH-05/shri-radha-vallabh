@@ -366,7 +366,7 @@ export const JaisalmerRiyasatPage: React.FC = () => {
 
       {/* 08. Jaisalmer Riyasat Context */}
       <CinematicSection
-        src="/images/jaisalmer/Jaisalmer Photos/Jaisalmer fort -17.jpg"
+        src="/assets/optimized/jaisalmer-fort-palace-1920.webp"
         imagePosition="center 38%"
         overlayClassName="bg-gradient-to-b from-[#050709]/90 via-[#050709]/62 to-[#050709]/92"
       >

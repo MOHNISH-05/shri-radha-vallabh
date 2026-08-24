@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X, MapPin } from 'lucide-react';
 import { SITE_CONFIG } from '../data/siteConfig';
 
@@ -8,14 +8,22 @@ interface GalleryLightboxProps {
 }
 
 export const GalleryLightbox: React.FC<GalleryLightboxProps> = ({ item, onClose }) => {
+  const returnFocusRef = useRef<HTMLElement | null>(
+    typeof document !== 'undefined' && document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null,
+  );
+
   // Close on ESC key
   useEffect(() => {
+    const returnFocus = returnFocusRef.current;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
+      returnFocus?.focus();
     };
   }, [onClose]);
 

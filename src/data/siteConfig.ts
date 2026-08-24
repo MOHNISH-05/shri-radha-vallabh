@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   positioning: "HERITAGE · SPIRITUALITY · CULTURE · JOURNEY",
   tagline: "Journeys rooted in tradition. Designed for today.",
   hindiTagline: "आस्था से अनुभव तक।",
-  logoUrl: "/assets/srv-logo.png",
+  logoUrl: "/assets/optimized/srv-logo-192.webp",
   copyrightYear: "2026",
 
   // ── Verified Contact Details (Single Source of Truth) ──

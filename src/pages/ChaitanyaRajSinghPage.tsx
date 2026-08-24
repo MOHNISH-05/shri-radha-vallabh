@@ -148,7 +148,7 @@ export const ChaitanyaRajSinghPage: React.FC = () => {
       </section>
 
       {/* 02. THE ROYAL HOUSE */}
-      <SectionBg id="royal-story" src={jp('Jaisalmer fort -17.jpg')}
+      <SectionBg id="royal-story" src="/assets/optimized/jaisalmer-fort-palace-1920.webp"
         brightness="brightness-[0.50]"
         gradientClass="bg-gradient-to-b from-[#050709]/80 via-[#050709]/55 to-[#050709]/88">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

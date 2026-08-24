@@ -54,14 +54,14 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     ],
     bestTimeToVisit: 'Early morning (07:30 AM) for peaceful walks or golden twilight (05:00 PM) for sunset views.',
     tags: ['UNESCO World Heritage', 'Living Fort', '99 Bastions', 'Silk Route'],
-    image: '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort.JPG',
+    image: '/assets/optimized/jaisalmer-fort-1920.webp',
     gallery: [
-      '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort.JPG',
+      '/assets/optimized/jaisalmer-fort-1920.webp',
       '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort2.jpg',
       '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort 3.jpg',
       '/images/jaisalmer/Jaisalmer Photos/jaisalmerr fort4.jpg',
       '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort 5.jpg',
-      '/images/jaisalmer/Jaisalmer Photos/Jaisalmer fort -17.jpg'
+      '/assets/optimized/jaisalmer-fort-palace-1920.webp'
     ],
     sourceAttribution: 'Rajasthan Tourism · UNESCO World Heritage Registry'
   },
@@ -493,9 +493,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     ],
     bestTimeToVisit: 'Morning (09:00 AM – 01:00 PM).',
     tags: ['Royal Palace', 'Maharawals Residence', 'Arms Museum', 'Jaisalmer Trust'],
-    image: '/images/jaisalmer/Jaisalmer Photos/Jaisalmer fort -17.jpg',
+    image: '/assets/optimized/jaisalmer-fort-palace-1920.webp',
     gallery: [
-      '/images/jaisalmer/Jaisalmer Photos/Jaisalmer fort -17.jpg',
+      '/assets/optimized/jaisalmer-fort-palace-1920.webp',
       '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort 5.jpg'
     ],
     sourceAttribution: 'Jaisalmer Trust · Rajasthan Tourism'

@@ -22,7 +22,7 @@ export const VisualGallery: React.FC = () => {
         {/* Background Desert Motif Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/jaisalmer_dune_caravan.jpg"
+            src="/assets/optimized/jaisalmer-dune-caravan.webp"
             alt="Thar Desert Dune Silhouette"
             className="w-full h-full object-cover opacity-20 filter brightness-60"
             loading="lazy"
@@ -81,7 +81,7 @@ export const VisualGallery: React.FC = () => {
                 className="group relative w-full text-left rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#C9A24A]/25 hover:border-[#C9A24A] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A24A] cursor-pointer bg-[#0D1117] h-52 sm:h-72 lg:h-80 touch-manipulation"
               >
                 <img
-                  src={item.image}
+                  src={item.thumbnail || item.image}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                   loading="lazy"

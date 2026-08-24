@@ -25,7 +25,7 @@ export const JaisalmerHistoryPage: React.FC = () => {
         hindiTagline="रेत में लिखी एक राजसी कहानी।"
         englishTitle="THE HISTORY OF JAISALMER"
         description="From 12th-century Yaduvanshi Bhati foundations and Silk Route trade to medieval sieges, royal treaties, and modern UNESCO World Heritage glory."
-        backgroundImage="/images/jaisalmer/Jaisalmer Photos/jaisalmer fort.JPG"
+        backgroundImage="/assets/optimized/jaisalmer-fort-1920.webp"
         bgPosition="center 40%"
       >
         <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -50,7 +50,7 @@ export const JaisalmerHistoryPage: React.FC = () => {
         {/* Cinematic full-bleed background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/jaisalmer/Jaisalmer Photos/Jaisalmer fort -17.jpg"
+            src="/assets/optimized/jaisalmer-fort-palace-1920.webp"
             alt=""
             className="w-full h-full object-cover brightness-[0.22]"
             loading="lazy"

@@ -26,7 +26,7 @@ export interface Journey {
   seasonLabel: string;
   highlights: string[];
   packages: Package[];
-  gallery: { title: string; location: string; category: string; image: string }[];
+  gallery: { title: string; location: string; category: string; image: string; thumbnail?: string }[];
 }
 
 export const JOURNEYS_DATA: Record<string, Journey> = {
@@ -53,7 +53,8 @@ export const JOURNEYS_DATA: Record<string, Journey> = {
       title: p.title,
       location: "Jaisalmer Heritage Trail",
       category: p.category.toUpperCase(),
-      image: p.url
+      image: p.url,
+      thumbnail: `/images/jaisalmer/thumbnails/${p.id}.webp`,
     })),
     packages: [
       {

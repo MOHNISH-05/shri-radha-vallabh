@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SITE_CONFIG } from '../data/siteConfig';
 
@@ -18,7 +18,7 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onComplete }) => {
   const initialLogoRef = useRef<HTMLDivElement>(null);
 
   // Measure target navbar logo position dynamically for seamless travel animation
-  const calculateTargetCoordinates = () => {
+  const calculateTargetCoordinates = useCallback(() => {
     const navbarTarget = document.getElementById('navbar-logo-target');
     if (navbarTarget) {
       const rect = navbarTarget.getBoundingClientRect();
@@ -37,30 +37,28 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onComplete }) => {
 
       setTargetCoords({ x: deltaX, y: deltaY, scale });
     }
-  };
+  }, []);
+
+  const triggerHandoff = useCallback(() => {
+    calculateTargetCoordinates();
+    setStage((currentStage) => currentStage === 'video' ? 'handoff' : currentStage);
+  }, [calculateTargetCoordinates]);
 
   useEffect(() => {
-    calculateTargetCoordinates();
+    const measurementFrame = window.requestAnimationFrame(calculateTargetCoordinates);
     window.addEventListener('resize', calculateTargetCoordinates);
     
     // Safety fallback: if video doesn't end or autoplay fails within 6.5s, proceed automatically
     const safetyTimer = setTimeout(() => {
-      if (stage === 'video') {
-        triggerHandoff();
-      }
+      triggerHandoff();
     }, 6500);
 
     return () => {
+      window.cancelAnimationFrame(measurementFrame);
       window.removeEventListener('resize', calculateTargetCoordinates);
       clearTimeout(safetyTimer);
     };
-  }, [stage]);
-
-  const triggerHandoff = () => {
-    if (stage !== 'video') return;
-    calculateTargetCoordinates();
-    setStage('handoff');
-  };
+  }, [calculateTargetCoordinates, triggerHandoff]);
 
   const handleVideoTimeUpdate = () => {
     if (!videoRef.current) return;

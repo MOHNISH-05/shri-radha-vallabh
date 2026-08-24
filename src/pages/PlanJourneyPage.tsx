@@ -35,6 +35,7 @@ export const PlanJourneyPage: React.FC = () => {
 
   useEffect(() => {
     if (destQuery) {
+      // oxlint-disable-next-line react/set-state-in-effect -- URL search params are external navigation state; preserve an in-page query change without remounting and losing the rest of the form.
       setFormData(prev => ({ ...prev, destination: getInitialDestination(destQuery) }));
     }
   }, [destQuery]);

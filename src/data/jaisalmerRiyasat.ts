@@ -109,7 +109,7 @@ export const JAISALMER_RIYASAT_DATA: RiyasatData = {
       name: 'Jaisalmer Fort Palace (Raj Mahal)',
       hindiName: 'राज महल दुर्ग संग्रहालय',
       description: 'The monumental seven-story royal palace overlooking Chauhata Chowk inside Sonar Qila. Houses the royal coronation throne, Gaj Mahal mirror suites, and arms gallery.',
-      image: '/images/jaisalmer/Jaisalmer Photos/Jaisalmer fort -17.jpg',
+      image: '/assets/optimized/jaisalmer-fort-palace-1920.webp',
       significance: 'Historic seat of governance and residential palace of the Maharawals for over seven centuries.'
     },
     {

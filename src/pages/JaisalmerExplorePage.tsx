@@ -35,7 +35,7 @@ const CHAPTERS: Chapter[] = [
     title: 'The Golden Fort — Sonar Qila',
     hindi: 'सोनार किला — स्वर्ण दुर्ग',
     description: 'The UNESCO World Heritage living fortress that has anchored Jaisalmer for 800+ years. One-fourth of the city\'s population still resides within its 99 bastions.',
-    background: jp('jaisalmer fort.JPG'),
+    background: '/assets/optimized/jaisalmer-fort-1920.webp',
     brightness: 'brightness-[0.52]',
     slugs: ['jaisalmer-fort', 'fort-palace'],
   },
@@ -150,7 +150,7 @@ export const JaisalmerExplorePage: React.FC = () => {
         hindiTagline="जैसलमेर की सम्पूर्ण यात्रा"
         englishTitle="Explore All of Jaisalmer"
         description="From the golden bastions of Sonar Qila to border shrines of the Thar — a curated guide to every heritage location, sacred site, and desert experience in and around Jaisalmer."
-        backgroundImage={jp('jaisalmer fort.JPG')}
+        backgroundImage="/assets/optimized/jaisalmer-fort-1920.webp"
         bgPosition="center 40%"
       >
         <div className="flex flex-wrap gap-3">

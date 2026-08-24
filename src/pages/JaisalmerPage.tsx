@@ -79,7 +79,7 @@ export const JaisalmerPage: React.FC = () => {
         {/* Background Visual */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/laxminath-hero.jpg"
+            src="/assets/optimized/laxminath-hero.webp"
             alt="Shri Laxminath Ji in Jaisalmer Golden City"
             className="w-full h-full object-cover object-[center_35%] opacity-80 filter brightness-95 transform scale-105 transition-transform duration-1000"
             loading="eager"
@@ -203,7 +203,7 @@ export const JaisalmerPage: React.FC = () => {
           ───────────────────────────────────────────────────────────── */}
       <section id="introduction" className="relative py-16 sm:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src="/images/jaisalmer/Jaisalmer Photos/jaisalmer fort.JPG" alt="" className="w-full h-full object-cover brightness-[0.32]" loading="lazy" />
+          <img src="/assets/optimized/jaisalmer-fort-1920.webp" alt="" className="w-full h-full object-cover brightness-[0.32]" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050709]/90 via-[#050709]/65 to-[#050709]/90" />
           <div className="absolute inset-0 bg-[#C9A24A]/[0.03]" />
         </div>
@@ -257,7 +257,7 @@ export const JaisalmerPage: React.FC = () => {
 
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-2xl border border-[#C9A24A]/30 aspect-[4/5]">
             <img
-              src="/images/jaisalmer/Jaisalmer Photos/jaisalmer fort.JPG"
+              src="/assets/optimized/jaisalmer-fort-1920.webp"
               alt="Jaisalmer Fort Yellow Sandstone Architecture"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -638,7 +638,7 @@ export const JaisalmerPage: React.FC = () => {
             {/* Right 6 cols: Visual Frame */}
             <div className="lg:col-span-6 relative rounded-3xl overflow-hidden shadow-2xl border border-[#C9A24A]/30 aspect-[16/11]">
               <img
-                src="/images/jaisalmer/Jaisalmer Photos/Jaisalmer fort -17.jpg"
+                src="/assets/optimized/jaisalmer-fort-palace-1920.webp"
                 alt="Jaisalmer Fort Palace Architecture"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -855,7 +855,7 @@ export const JaisalmerPage: React.FC = () => {
               className="group relative w-full text-left rounded-3xl overflow-hidden shadow-2xl border border-[#C9A24A]/30 hover:border-[#C9A24A] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A24A] cursor-pointer bg-[#0D1117] h-64 sm:h-72"
             >
               <img
-                src={item.image}
+                src={item.thumbnail || item.image}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
                 loading="lazy"

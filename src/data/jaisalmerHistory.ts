@@ -55,7 +55,7 @@ export const JAISALMER_HISTORY_PERIODS: HistoryPeriod[] = [
       'Shift of the Bhati capital from Lodruva to Jaisalmer'
     ],
     category: 'FOUNDATION',
-    image: '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort.JPG',
+    image: '/assets/optimized/jaisalmer-fort-1920.webp',
     sources: ['Rajasthan Tourism', 'Incredible India', 'Jaisalmer Trust']
   },
   {
@@ -120,7 +120,7 @@ export const JAISALMER_HISTORY_PERIODS: HistoryPeriod[] = [
       '1688 AD: Foundation of Amar Sagar Lake and Royal Gardens'
     ],
     category: 'MUGHAL_ERA',
-    image: '/images/jaisalmer/Jaisalmer Photos/Jaisalmer fort -17.jpg',
+    image: '/assets/optimized/jaisalmer-fort-palace-1920.webp',
     sources: ['Jaisalmer Trust', 'Rajasthan Tourism']
   },
   {

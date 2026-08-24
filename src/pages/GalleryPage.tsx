@@ -30,7 +30,7 @@ export const GalleryPage: React.FC = () => {
         hindiTagline="यात्राओं की कुछ झलकियाँ।"
         englishTitle="EDITORIAL VISUAL ARCHIVE"
         description="Immerse in the timeless sandstone textures of Thar, sacred temple shrines, and majestic desert twilight moments."
-        backgroundImage="/assets/jaisalmer_dune_caravan.jpg"
+        backgroundImage="/assets/optimized/jaisalmer-dune-caravan.webp"
         bgPosition="center 50%"
       >
         {/* Category Filters */}
@@ -73,7 +73,7 @@ export const GalleryPage: React.FC = () => {
               className="group relative w-full text-left rounded-3xl overflow-hidden shadow-2xl border border-[#C9A24A]/30 hover:border-[#C9A24A] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A24A] cursor-pointer bg-[#0D1117] h-64 sm:h-80 lg:h-96 touch-manipulation"
             >
               <img
-                src={item.image}
+                src={item.thumbnail || item.image}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
                 loading="lazy"

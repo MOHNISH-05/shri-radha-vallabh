@@ -38,7 +38,7 @@ const CAMPAIGNS: Record<string, CampaignData> = {
     ],
     ctaLabel: 'DISCOVER JAISALMER →',
     ctaHref: '/jaisalmer',
-    image: '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort.JPG',
+    image: '/assets/optimized/jaisalmer-fort-1920.webp',
     bgImage: '/images/jaisalmer/Jaisalmer Photos/patawa haveli1.jpeg',
   },
   chardham: {
@@ -56,8 +56,8 @@ const CAMPAIGNS: Record<string, CampaignData> = {
     ],
     ctaLabel: 'PLAN CHAR DHAM YATRA →',
     ctaHref: getJourneyWhatsAppLink('Char Dham Himalayas'),
-    image: '/assets/card-chardham.jpg',
-    bgImage: '/assets/card-chardham.jpg',
+    image: '/assets/optimized/card-chardham.webp',
+    bgImage: '/assets/optimized/card-chardham.webp',
   },
 };
 
