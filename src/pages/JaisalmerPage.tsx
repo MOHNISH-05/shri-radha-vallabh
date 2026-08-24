@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { preload } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -26,6 +27,12 @@ import type { Package } from '../data/journeys';
 import { PackageModal } from '../components/PackageModal';
 import { GalleryLightbox } from '../components/GalleryLightbox';
 import { getJourneyWhatsAppLink } from '../data/siteConfig';
+
+preload('/assets/optimized/laxminath-hero.webp', {
+  as: 'image',
+  fetchPriority: 'high',
+  type: 'image/webp',
+});
 
 export const JaisalmerPage: React.FC = () => {
   const [selectedPkg, setSelectedPkg] = useState<Package | null>(null);
@@ -83,6 +90,7 @@ export const JaisalmerPage: React.FC = () => {
             alt="Shri Laxminath Ji in Jaisalmer Golden City"
             className="w-full h-full object-cover object-[center_35%] opacity-80 filter brightness-95 transform scale-105 transition-transform duration-1000"
             loading="eager"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050709]/95 via-[#050709]/45 to-[#050709]/65" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#050709]/72 via-transparent to-[#050709]/72" />
