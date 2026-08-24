@@ -29,7 +29,10 @@ export interface JaisalmerPlace {
   tags: string[];
   image: string;
   gallery?: string[];
-  sourceAttribution: string;
+  sourceLinks: Array<{
+    label: string;
+    url: string;
+  }>;
 }
 
 export const JAISALMER_PLACES: JaisalmerPlace[] = [
@@ -63,7 +66,10 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
       '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort 5.jpg',
       '/assets/optimized/jaisalmer-fort-palace-1920.webp'
     ],
-    sourceAttribution: 'Rajasthan Tourism · UNESCO World Heritage Registry'
+    sourceLinks: [
+      { label: 'UNESCO World Heritage Centre', url: 'https://whc.unesco.org/en/list/247/' },
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'bada-bagh',
@@ -91,7 +97,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
       '/images/jaisalmer/Jaisalmer Photos/bada bagh.jpeg',
       '/images/jaisalmer/Jaisalmer Photos/bada bagh2.jpeg'
     ],
-    sourceAttribution: 'Jaisalmer Trust · Rajasthan Tourism'
+    sourceLinks: [
+      { label: 'Incredible India — Bada Bagh', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer/bada-bagh' }
+    ]
   },
   {
     id: 'gadisar-lake',
@@ -122,7 +130,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
       '/images/jaisalmer/Jaisalmer Photos/gadisar3.JPG',
       '/images/jaisalmer/Jaisalmer Photos/gadisar4.JPG'
     ],
-    sourceAttribution: 'Rajasthan Tourism · Jaisalmer Municipal Heritage'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer nature', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer/an-oasis-of-golden-beauty-and-natural-wonders' }
+    ]
   },
   {
     id: 'laxminath-ji',
@@ -149,7 +159,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/laxmi nath ji 1.jpeg'
     ],
-    sourceAttribution: 'Rajasthan Tourism · Jaisalmer Trust Archives'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer sacred places', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer/a-journey-through-its-religious-spots' }
+    ]
   },
   {
     id: 'jain-temples',
@@ -177,7 +189,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
       '/images/jaisalmer/Jaisalmer Photos/jain temple 1.jpeg',
       '/images/jaisalmer/Jaisalmer Photos/jain tepmle 2.jpeg'
     ],
-    sourceAttribution: 'Rajasthan Tourism · Archaeological Survey Records'
+    sourceLinks: [
+      { label: 'Incredible India — Jain Temples of Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer/jain-temples-of-jaisalmer' }
+    ]
   },
   {
     id: 'patwon-haveli',
@@ -205,7 +219,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
       '/images/jaisalmer/Jaisalmer Photos/patawa haveli1.jpeg',
       '/images/jaisalmer/Jaisalmer Photos/patawa haweli2.png'
     ],
-    sourceAttribution: 'Rajasthan Tourism · Jaisalmer Heritage Trust'
+    sourceLinks: [
+      { label: 'Incredible India — Patwon Ki Haveli', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer/patwon-ki-haveli' }
+    ]
   },
   {
     id: 'nathmal-haveli',
@@ -232,7 +248,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/nathmal ki haveli.png'
     ],
-    sourceAttribution: 'Rajasthan Tourism Archives'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'salim-singh-haveli',
@@ -259,7 +277,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/salim-singh-haveli.jpeg'
     ],
-    sourceAttribution: 'Rajasthan Tourism · Incredible India'
+    sourceLinks: [
+      { label: 'Incredible India — Salim Singh Ki Haveli', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer/salim-singh-ki-haveli' }
+    ]
   },
   {
     id: 'vyas-chhatri',
@@ -285,7 +305,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/vyas chatri .jpeg'
     ],
-    sourceAttribution: 'Rajasthan Tourism'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer heritage itinerary', url: 'https://www.incredibleindia.gov.in/en/trips/trip-listing/desert-dreams-a-journey-through-golden-jaisalmer' }
+    ]
   },
   {
     id: 'lodruva',
@@ -312,7 +334,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/lodrava.jpg'
     ],
-    sourceAttribution: 'Rajasthan Tourism · Incredible India'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'amar-sagar',
@@ -339,7 +363,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/amar sager .png'
     ],
-    sourceAttribution: 'Rajasthan Tourism'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'tanot-mata',
@@ -365,7 +391,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/tanot mata.png'
     ],
-    sourceAttribution: 'Rajasthan Tourism · BSF Border Memorial Records'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'ramdevra',
@@ -391,7 +419,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/ramdeva.jpeg'
     ],
-    sourceAttribution: 'Incredible India · Rajasthan Tourism Pilgrimage Board'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'sam-dunes',
@@ -418,7 +448,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
       '/images/jaisalmer/Jaisalmer Photos/desertsam1.JPG',
       '/images/jaisalmer/Jaisalmer Photos/desertsam2.JPG'
     ],
-    sourceAttribution: 'Rajasthan Tourism'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'khuri-dunes',
@@ -444,7 +476,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/khuri-dunes.JPG'
     ],
-    sourceAttribution: 'Rajasthan Tourism'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'desert-national-park',
@@ -470,7 +504,10 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/desert-national-park..jpeg'
     ],
-    sourceAttribution: 'Wildlife Institute of India · Rajasthan Forest Department'
+    sourceLinks: [
+      { label: 'Rajasthan Forest Department — management plan', url: 'https://forest.rajasthan.gov.in/content/dam/raj/forest/rajasthan-wild-life/pdf/Managementplan/DNP%20Management%20Plan.pdf' },
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   },
   {
     id: 'fort-palace',
@@ -498,7 +535,9 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
       '/assets/optimized/jaisalmer-fort-palace-1920.webp',
       '/images/jaisalmer/Jaisalmer Photos/jaisalmer fort 5.jpg'
     ],
-    sourceAttribution: 'Jaisalmer Trust · Rajasthan Tourism'
+    sourceLinks: [
+      { label: 'UNESCO World Heritage Centre', url: 'https://whc.unesco.org/en/list/247/' }
+    ]
   },
   {
     id: 'mandir-palace',
@@ -525,6 +564,8 @@ export const JAISALMER_PLACES: JaisalmerPlace[] = [
     gallery: [
       '/images/jaisalmer/Jaisalmer Photos/Mandir Palace (Badal Mahal).jpeg'
     ],
-    sourceAttribution: 'Rajasthan Tourism · Jaisalmer Heritage Registry'
+    sourceLinks: [
+      { label: 'Incredible India — Jaisalmer', url: 'https://www.incredibleindia.gov.in/en/rajasthan/jaisalmer' }
+    ]
   }
 ];

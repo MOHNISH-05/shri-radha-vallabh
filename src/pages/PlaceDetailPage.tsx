@@ -53,6 +53,12 @@ export const PlaceDetailPage: React.FC = () => {
       {/* 01. Place Hero Banner */}
       <PageHero
         breadcrumb={place.name}
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Jaisalmer', to: '/jaisalmer' },
+          { label: 'Explore', to: '/jaisalmer/explore' },
+          { label: place.name },
+        ]}
         badgeText={place.category}
         hindiTagline={place.hindiName}
         englishTitle={place.name}
@@ -89,7 +95,7 @@ export const PlaceDetailPage: React.FC = () => {
             <div className="space-y-4">
               {sectionLabel('02', 'INTRODUCTION')}
               <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#F5EDE0]">
-                An Introduction to {place.name}
+                What is {place.name}?
               </h2>
               <p className="text-xs sm:text-sm text-[#F5EDE0]/85 font-light leading-relaxed">
                 {place.fullOverview}
@@ -203,7 +209,7 @@ export const PlaceDetailPage: React.FC = () => {
                     >
                       <img
                         src={imgSrc}
-                        alt={`${place.name} - View ${i + 1}`}
+                        alt={`${place.name} in Jaisalmer — ${place.category.toLowerCase()} view ${i + 1}`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
@@ -219,8 +225,20 @@ export const PlaceDetailPage: React.FC = () => {
 
             {/* Source transparency */}
             <div className="pt-2 text-xs text-[#F5EDE0]/60">
-              <span className="text-[#C9A24A] font-semibold">Information Source: </span>
-              <span>{place.sourceAttribution}</span>
+              <span className="text-[#C9A24A] font-semibold">Official references: </span>
+              {place.sourceLinks.map((source, index) => (
+                <span key={source.url}>
+                  {index > 0 && <span aria-hidden="true"> · </span>}
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-[#C9A24A]/50 underline-offset-2 transition-colors hover:text-[#F5EDE0]"
+                  >
+                    {source.label}
+                  </a>
+                </span>
+              ))}
             </div>
 
           </div>

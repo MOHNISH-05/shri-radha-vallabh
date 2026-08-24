@@ -3,18 +3,18 @@ import { collectFatalErrors, CRITICAL_ROUTES, PRODUCTION_ORIGIN, scrollThroughPa
 
 const expectedTitles: Record<(typeof CRITICAL_ROUTES)[number], RegExp> = {
   '/': /Shri Radha Vallabh/,
-  '/journeys': /Spiritual & Heritage Journeys/,
-  '/jaisalmer': /Jaisalmer Travel & Heritage Journey/,
-  '/jaisalmer/explore': /Explore Jaisalmer/,
+  '/journeys': /Heritage & Spiritual Journeys Across India/,
+  '/jaisalmer': /Jaisalmer Travel Guide & Heritage Journey/,
+  '/jaisalmer/explore': /Places to Visit in Jaisalmer/,
   '/jaisalmer/history': /History of Jaisalmer/,
   '/jaisalmer/riyasat': /Jaisalmer Riyasat/,
   '/jaisalmer/riyasat/chaitanya-raj-singh': /Maharawal Chaitanya Raj Singh/,
-  '/packages': /Yatra & Heritage Travel Packages/,
+  '/packages': /Jaisalmer & Spiritual Tour Packages/,
   '/about': /About Shri Radha Vallabh/,
-  '/experience': /Travel Reflections & Experiences/,
-  '/stories': /Travel Reflections & Experiences/,
-  '/gallery': /Visual Gallery & Heritage Moments/,
-  '/plan-journey': /Plan Your Custom Journey/,
+  '/experience': /Heritage Travel Stories & Reflections/,
+  '/stories': /Heritage Travel Stories & Reflections/,
+  '/gallery': /Jaisalmer Heritage Photo Gallery/,
+  '/plan-journey': /Plan a Custom Jaisalmer Heritage Journey/,
 };
 
 for (const route of CRITICAL_ROUTES) {

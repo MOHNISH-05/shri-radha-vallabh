@@ -5,10 +5,9 @@ import { LogoIntro } from './components/LogoIntro';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
+import { absoluteSeoUrl, buildStructuredData, getSeoForPath } from './data/seo';
 
 /* ── Dedicated Pages ─────────────────────────────────────── */
-import { JAISALMER_PLACES } from './data/jaisalmerPlaces';
-
 const HomePage = lazy(() => import('./pages/HomePage').then((module) => ({ default: module.HomePage })));
 const JourneysPage = lazy(() => import('./pages/JourneysPage').then((module) => ({ default: module.JourneysPage })));
 const JaisalmerPage = lazy(() => import('./pages/JaisalmerPage').then((module) => ({ default: module.JaisalmerPage })));
@@ -24,63 +23,20 @@ const PlanJourneyPage = lazy(() => import('./pages/PlanJourneyPage').then((modul
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage })));
 const ChaitanyaRajSinghPage = lazy(() => import('./pages/ChaitanyaRajSinghPage').then((module) => ({ default: module.ChaitanyaRajSinghPage })));
 
-const PRODUCTION_ORIGIN = 'https://shri-radha-vallabh.vercel.app';
-
 /* ── Title & SEO Manager ─────────────────────────────────── */
 const PageTitleManager: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const metadata: Record<string, { title: string; description: string }> = {
-      '/': {
-        title: 'Shri Radha Vallabh | Heritage & Spiritual Journeys',
-        description: 'Curated spiritual, cultural and luxury heritage journeys across India with thoughtful planning and personal coordination.',
-      },
-      '/journeys': {
-        title: 'Spiritual & Heritage Journeys Across India | Shri Radha Vallabh',
-        description: 'Explore curated spiritual circuits, royal heritage trails and immersive cultural journeys across India.',
-      },
-      '/jaisalmer': {
-        title: 'Jaisalmer Travel & Heritage Journey | Shri Radha Vallabh',
-        description: 'Discover Jaisalmer Fort, sacred temples, carved havelis and the Thar Desert through a cinematic, curated heritage journey.',
-      },
-      '/jaisalmer/explore': {
-        title: 'Explore Jaisalmer | Forts, Havelis, Temples & Desert | Shri Radha Vallabh',
-        description: 'Explore Jaisalmer across six editorial chapters covering Sonar Qila, royal cenotaphs, sacred temples, havelis and desert landscapes.',
-      },
-      '/jaisalmer/history': {
-        title: 'History of Jaisalmer | Bhati Rajputs, Sonar Qila & Royal Heritage',
-        description: 'Follow Jaisalmer from its Bhati foundations and Silk Route prominence to princely-state history and living heritage today.',
-      },
-      '/jaisalmer/riyasat': {
-        title: 'Jaisalmer Riyasat | Bhati Royal Heritage & Maharawals',
-        description: 'Learn about Jaisalmer Riyasat, the Bhati dynasty, its Maharawals and the present cultural role of the royal house.',
-      },
-      '/jaisalmer/riyasat/chaitanya-raj-singh': {
-        title: 'Maharawal Chaitanya Raj Singh | Royal House of Jaisalmer',
-        description: 'A photographic profile of Maharawal Chaitanya Raj Singh, titular Maharawal and current head of Jaisalmer\'s royal house.',
-      },
-      '/packages': { title: 'Yatra & Heritage Travel Packages | Shri Radha Vallabh', description: 'Browse curated spiritual and heritage travel packages with private planning support.' },
-      '/about': { title: 'About Shri Radha Vallabh | Heritage & Journeys', description: 'Meet Shri Radha Vallabh Heritage & Journeys and our approach to thoughtful cultural travel.' },
-      '/stories': { title: 'Travel Reflections & Experiences | Shri Radha Vallabh', description: 'Read stories and reflections from spiritual, cultural and heritage journeys across India.' },
-      '/gallery': { title: 'Visual Gallery & Heritage Moments | Shri Radha Vallabh', description: 'Explore a visual archive of sacred places, royal heritage and memorable journeys.' },
-      '/plan-journey': { title: 'Plan Your Custom Journey | Shri Radha Vallabh', description: 'Share your travel preferences and receive a tailored journey plan with direct WhatsApp coordination.' },
-    };
-
-    let page: { title: string; description: string } | undefined = metadata[pathname];
-    if (pathname.startsWith('/jaisalmer/places/')) {
-      const slug = pathname.replace('/jaisalmer/places/', '');
-      const place = JAISALMER_PLACES.find((item) => item.slug === slug);
-      page = place
-        ? { title: `${place.name} | Jaisalmer Heritage Guide`, description: place.shortDescription }
-        : undefined;
-    }
-
+    const page = getSeoForPath(pathname);
     const resolved = page || {
       title: 'Page Not Found | Shri Radha Vallabh',
       description: 'The requested page could not be found.',
+      image: '/assets/optimized/laxminath-hero.webp',
+      imageAlt: 'Shri Radha Vallabh Heritage & Journeys',
     };
     document.title = resolved.title;
+    document.documentElement.lang = 'en-IN';
 
     const upsertMeta = (selector: string, attributes: Record<string, string>) => {
       let element = document.head.querySelector<HTMLMetaElement>(selector);
@@ -91,24 +47,46 @@ const PageTitleManager: React.FC = () => {
       Object.entries(attributes).forEach(([key, value]) => element?.setAttribute(key, value));
     };
 
-    const canonicalPath = pathname === '/experience' ? '/stories' : pathname;
-    const canonicalUrl = `${PRODUCTION_ORIGIN}${canonicalPath}`;
+    const canonicalUrl = page ? absoluteSeoUrl(page.path) : absoluteSeoUrl(pathname);
+    const imageUrl = absoluteSeoUrl(resolved.image);
 
     upsertMeta('meta[name="title"]', { name: 'title', content: resolved.title });
     upsertMeta('meta[name="description"]', { name: 'description', content: resolved.description });
+    upsertMeta('meta[name="robots"]', { name: 'robots', content: page ? 'index, follow, max-image-preview:large' : 'noindex, follow' });
+    upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: resolved.title });
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: resolved.description });
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
+    upsertMeta('meta[property="og:image"]', { property: 'og:image', content: imageUrl });
+    upsertMeta('meta[property="og:image:alt"]', { property: 'og:image:alt', content: resolved.imageAlt });
+    upsertMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary_large_image' });
     upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: resolved.title });
     upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: resolved.description });
+    upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: imageUrl });
+    upsertMeta('meta[name="twitter:image:alt"]', { name: 'twitter:image:alt', content: resolved.imageAlt });
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonical) {
+    if (!page) {
+      canonical?.remove();
+    } else if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    canonical.href = canonicalUrl;
+    if (page && canonical) canonical.href = canonicalUrl;
+
+    let schema = document.head.querySelector<HTMLScriptElement>('script#route-json-ld');
+    if (!page) {
+      schema?.remove();
+      return;
+    }
+    if (!schema) {
+      schema = document.createElement('script');
+      schema.id = 'route-json-ld';
+      schema.type = 'application/ld+json';
+      document.head.appendChild(schema);
+    }
+    schema.textContent = JSON.stringify(buildStructuredData(page));
   }, [pathname]);
 
   return null;

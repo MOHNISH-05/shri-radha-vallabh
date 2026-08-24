@@ -5,6 +5,7 @@ import { ChevronRight } from 'lucide-react';
 
 interface PageHeroProps {
   breadcrumb: string;
+  breadcrumbItems?: Array<{ label: string; to?: string }>;
   badgeText: string;
   hindiTagline: string;
   englishTitle: string;
@@ -18,6 +19,7 @@ interface PageHeroProps {
 
 export const PageHero: React.FC<PageHeroProps> = ({
   breadcrumb,
+  breadcrumbItems,
   badgeText,
   hindiTagline,
   englishTitle,
@@ -29,6 +31,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
   children,
 }) => {
   const safeBg = backgroundImage || '/assets/featured-jaisalmer-arch.jpg';
+  const resolvedBreadcrumbs = breadcrumbItems || [
+    { label: 'Home', to: '/' },
+    { label: breadcrumb },
+  ];
 
   return (
     <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden bg-[#080B0F] border-b border-[#C9A24A]/25">
@@ -56,14 +62,21 @@ export const PageHero: React.FC<PageHeroProps> = ({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-2 text-xs font-semibold text-[#F5EDE0]/60 tracking-wider uppercase"
+          className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#F5EDE0]/60 tracking-wider uppercase"
           aria-label="Breadcrumb"
         >
-          <Link to="/" className="hover:text-[#C9A24A] transition-colors">
-            Home
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-[#C9A24A]/60 shrink-0" />
-          <span className="text-[#C9A24A] font-bold">{breadcrumb}</span>
+          {resolvedBreadcrumbs.map((item, index) => (
+            <React.Fragment key={`${item.label}-${index}`}>
+              {index > 0 && <ChevronRight className="w-3.5 h-3.5 text-[#C9A24A]/60 shrink-0" />}
+              {item.to ? (
+                <Link to={item.to} className="hover:text-[#C9A24A] transition-colors">
+                  {item.label}
+                </Link>
+              ) : (
+                <span className="text-[#C9A24A] font-bold">{item.label}</span>
+              )}
+            </React.Fragment>
+          ))}
         </motion.nav>
 
         {/* Badge & Hindi Signature */}

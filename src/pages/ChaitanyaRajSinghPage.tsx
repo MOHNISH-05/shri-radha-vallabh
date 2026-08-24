@@ -99,7 +99,9 @@ export const ChaitanyaRajSinghPage: React.FC = () => {
         </div>
 
         <div className="absolute top-28 left-4 sm:left-8 z-20">
-          <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F5EDE0]/60">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F5EDE0]/60">
+            <Link to="/" className="hover:text-[#C9A24A] transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3 text-[#C9A24A]/50" />
             <Link to="/jaisalmer" className="hover:text-[#C9A24A] transition-colors">Jaisalmer</Link>
             <ChevronRight className="w-3 h-3 text-[#C9A24A]/50" />
             <Link to="/jaisalmer/riyasat" className="hover:text-[#C9A24A] transition-colors">Riyasat</Link>

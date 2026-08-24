@@ -35,6 +35,9 @@ test('robots and sitemap remain available and canonical', async ({ request }) =>
   const xml = await sitemap.text();
   expect((xml.match(/<url>/g) || []).length).toBe(30);
   expect(xml).toContain(`${PRODUCTION_ORIGIN}/jaisalmer/places/mandir-palace`);
+  expect(xml).toContain('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"');
+  expect((xml.match(/<image:image>/g) || []).length).toBe(30);
+  expect(xml).not.toContain(`${PRODUCTION_ORIGIN}/experience`);
 });
 
 for (const route of ['/', '/gallery', '/plan-journey']) {
