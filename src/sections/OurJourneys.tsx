@@ -82,7 +82,9 @@ export const OurJourneys: React.FC = () => {
   const scroll = (dir: 'left' | 'right') => {
     const el = scrollRef.current;
     if (!el) return;
-    const amount = el.offsetWidth * 0.75;
+    const firstCard = el.firstElementChild as HTMLElement | null;
+    const gap = Number.parseFloat(window.getComputedStyle(el).columnGap) || 0;
+    const amount = firstCard ? firstCard.getBoundingClientRect().width + gap : el.offsetWidth;
     el.scrollBy({ left: dir === 'right' ? amount : -amount, behavior: 'smooth' });
   };
 
@@ -105,7 +107,7 @@ export const OurJourneys: React.FC = () => {
       <div className="relative z-10">
 
         {/* ── Section header ─── */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-10">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-10">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -156,30 +158,31 @@ export const OurJourneys: React.FC = () => {
         </div>
 
         {/* ── Horizontal scroll carousel with swipe peek on mobile ─── */}
-        <div
-          ref={scrollRef}
-          onScroll={onScroll}
-          className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 px-4 sm:px-8 lg:px-12 scrollbar-hide snap-x snap-mandatory touch-pan-x"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          role="list"
-          aria-label="Journey destinations"
-        >
-          {DESTINATIONS.map((dest, index) => {
-            const whatsapp = getJourneyWhatsAppLink(dest.name);
-            return (
-              <motion.div
-                key={dest.slug}
-                role="listitem"
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.7, delay: Math.min(index * 0.08, 0.4) }}
-                className={`relative flex-none w-[78vw] max-w-[270px] sm:w-[280px] h-[370px] sm:h-[420px] rounded-2xl overflow-hidden shadow-2xl snap-start group border transition-all duration-500 hover:-translate-y-1.5 ${
-                  dest.active
-                    ? 'border-[#C9A24A]/70 hover:border-[#C9A24A]'
-                    : 'border-white/10 hover:border-[#C9A24A]/40'
-                }`}
-              >
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            ref={scrollRef}
+            onScroll={onScroll}
+            className="flex gap-3 md:gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory touch-pan-x scroll-smooth"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            role="list"
+            aria-label="Journey destinations"
+          >
+            {DESTINATIONS.map((dest, index) => {
+              const whatsapp = getJourneyWhatsAppLink(dest.name);
+              return (
+                <motion.div
+                  key={dest.slug}
+                  role="listitem"
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.7, delay: Math.min(index * 0.08, 0.4) }}
+                  className={`relative flex-none w-[calc(100%_-_3rem)] md:w-[calc((100%_-_2rem)/3)] lg:w-[calc((100%_-_4rem)/5)] h-[370px] sm:h-[420px] rounded-2xl overflow-hidden shadow-2xl snap-start snap-always group border transition-all duration-500 hover:-translate-y-1.5 ${
+                    dest.active
+                      ? 'border-[#C9A24A]/70 hover:border-[#C9A24A]'
+                      : 'border-white/10 hover:border-[#C9A24A]/40'
+                  }`}
+                >
                 {/* Card image */}
                 <img
                   src={dest.image}
@@ -243,14 +246,11 @@ export const OurJourneys: React.FC = () => {
                     )}
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
-
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-8 bg-gradient-to-r from-[#05070B] to-transparent pointer-events-none z-20" />
-        <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-8 bg-gradient-to-l from-[#05070B] to-transparent pointer-events-none z-20" />
       </div>
     </section>
   );
