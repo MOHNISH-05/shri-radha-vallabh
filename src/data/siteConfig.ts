@@ -1,0 +1,49 @@
+/* ─────────────────────────────────────────────────────────────
+   SHRI RADHA VALLABH — MASTER CONFIGURATION
+   Central Source of Truth for Brand Data, Contacts & Campaigns
+   ───────────────────────────────────────────────────────────── */
+
+export const SITE_CONFIG = {
+  // ── Brand Identity ──
+  brandName: "SHRI RADHA VALLABH",
+  positioning: "HERITAGE · SPIRITUALITY · CULTURE · JOURNEY",
+  tagline: "Journeys rooted in tradition. Designed for today.",
+  hindiTagline: "आस्था से अनुभव तक।",
+  logoUrl: "/assets/srv-logo.png",
+  copyrightYear: "2026",
+
+  // ── Verified Contact Details (Single Source of Truth) ──
+  whatsappNumber: "+918209290716", // Confirmed Client WhatsApp
+  phoneNumber: "+918209290716",
+  email: "contact@shriradhavallabh.com", // [TODO: Client confirmation for custom domain email]
+  instagramHandle: "@shri_radhavallabh2008",
+  instagramUrl: "https://instagram.com/shri_radhavallabh2008",
+  location: "Vrindavan / Jaisalmer / All India",
+
+  // ── Active Seasonal Campaign Switcher ──
+  // Options: 'jaisalmer' | 'chardham' | 'vrindavan' | 'ayodhya' | 'kashi' | 'dwarka'
+  activeFeaturedJourney: "jaisalmer",
+
+  // ── Verification & Trust Signals (No Unverified Numbers) ──
+  trustPillars: [
+    { hindi: "पवित्र यात्राएँ", english: "Sacred Journeys" },
+    { hindi: "व्यक्तिगत सहयोग", english: "Personal Attention" },
+    { hindi: "हमेशा उपलब्ध", english: "Always Available" },
+    { hindi: "चुनिंदा अनुभव", english: "Curated Experiences" },
+    { hindi: "परंपरा और विश्वास", english: "Tradition & Trust" },
+  ],
+} as const;
+
+/* ─── WhatsApp Link Generators ───────────────────────────── */
+
+export const getWhatsAppLink = (message?: string) => {
+  const defaultMsg = `Namaste ${SITE_CONFIG.brandName} 🙏\nI would like to enquire about your curated journeys.`;
+  const encodedMsg = encodeURIComponent(message || defaultMsg);
+  const cleanNumber = SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, "");
+  return `https://wa.me/${cleanNumber}?text=${encodedMsg}`;
+};
+
+export const getJourneyWhatsAppLink = (journeyTitle: string) => {
+  const msg = `Namaste ${SITE_CONFIG.brandName} 🙏\nI am interested in exploring the ${journeyTitle}.\nPlease share available dates and customized itinerary details.`;
+  return getWhatsAppLink(msg);
+};

@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Rozha+One&family=Noto+Serif+Devanagari:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    background-color: #080B0F;
+    color: #F5EDE0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-hindi {
+    font-family: 'Rozha One', 'Noto Serif Devanagari', serif;
+  }
+
+  /* Dedicated class for headline-level Devanagari — Noto Serif Devanagari
+     has superior matra and conjunct rendering for display sizes */
+  .font-devanagari {
+    font-family: 'Noto Serif Devanagari', 'Rozha One', serif;
+    font-feature-settings: 'kern' 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   LUXURY SCROLLBAR
+───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #080B0F; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #C9A24A, #AA771C); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #D8B982; }
+
+/* ─────────────────────────────────────────────
+   GOLD UTILITIES
+───────────────────────────────────────────── */
+.gold-text {
+  background: linear-gradient(135deg, #F5EDE0 0%, #C9A24A 45%, #AA771C 75%, #D8B982 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-glow {
+  box-shadow: 0 0 40px rgba(201, 162, 74, 0.20), 0 0 80px rgba(201, 162, 74, 0.08);
+}
+
+.gold-border { border-color: rgba(201, 162, 74, 0.35); }
+
+/* ─────────────────────────────────────────────
+   GLASS / BACKDROP
+───────────────────────────────────────────── */
+.dark-glass {
+  background: rgba(8, 11, 15, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ─────────────────────────────────────────────
+   ARCHITECTURAL OVERLAYS
+───────────────────────────────────────────── */
+.cinematic-vignette {
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(8, 11, 15, 0.85) 100%);
+}
+
+/* Jaali dot-grid heritage motif */
+.jaali-pattern {
+  background-image: radial-gradient(rgba(201, 162, 74, 0.10) 1.2px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* ─────────────────────────────────────────────
+   HERO GOLD PARTICLE FLOAT ANIMATION
+───────────────────────────────────────────── */
+@keyframes floatUp {
+  0%   { transform: translateY(0)   scale(1);    opacity: 0; }
+  10%  { opacity: 0.55; }
+  80%  { opacity: 0.3; }
+  100% { transform: translateY(-95vh) scale(0.4); opacity: 0; }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.12); }
+}
+
+/* ─────────────────────────────────────────────
+   HORIZONTAL CAROUSEL — HIDE SCROLLBAR
+───────────────────────────────────────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+/* Sandstone grain */
+.sandstone-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION TRANSITIONS — cinematic gradient bridges
+───────────────────────────────────────────── */
+.section-fade-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, #080B0F);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.section-fade-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, transparent, #080B0F);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ─────────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────────── */
+
+/* Slow cinematic zoom (Ken Burns) */
+@keyframes cinematic-zoom {
+  0%   { transform: scale(1.0); }
+  100% { transform: scale(1.06); }
+}
+.animate-cinematic-zoom {
+  animation: cinematic-zoom 24s ease-out infinite alternate;
+  transform-origin: center center;
+}
+
+/* Hero zoom with very subtle drift */
+@keyframes hero-drift {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  50%  { transform: scale(1.04) translate(-0.6%, 0.4%); }
+  100% { transform: scale(1.06) translate(0.4%, -0.3%); }
+}
+.animate-hero-drift {
+  animation: hero-drift 28s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+/* Diya flame flicker */
+@keyframes diya-flicker {
+  0%, 100% { opacity: 0.85; transform: scale(1) rotate(-1deg);    filter: drop-shadow(0 0 8px  rgba(201,162,74,0.55)); }
+  25%       { opacity: 1.0;  transform: scale(1.06) rotate(1deg);  filter: drop-shadow(0 0 16px rgba(216,185,130,0.90)); }
+  50%       { opacity: 0.90; transform: scale(0.97) rotate(-0.5deg); filter: drop-shadow(0 0 12px rgba(201,162,74,0.70)); }
+  75%       { opacity: 1.0;  transform: scale(1.04) rotate(1.5deg); filter: drop-shadow(0 0 20px rgba(216,185,130,0.85)); }
+}
+.animate-diya {
+  animation: diya-flicker 2.8s ease-in-out infinite;
+}
+
+/* Gold particle drift — desert dust */
+@keyframes dust-float {
+  0%   { transform: translate(0, 0)   scale(1);    opacity: 0; }
+  15%  { opacity: 0.55; }
+  70%  { opacity: 0.40; }
+  100% { transform: translate(var(--dx, 30px), var(--dy, -45px)) scale(0.5); opacity: 0; }
+}
+.gold-particle {
+  animation: dust-float var(--dur, 10s) ease-out var(--delay, 0s) infinite;
+}
+
+/* Subtle warm overlay pulse */
+@keyframes warm-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.55; }
+}
+.animate-warm-pulse { animation: warm-pulse 6s ease-in-out infinite; }
+
+/* Star twinkle */
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%       { opacity: 0.8; transform: scale(1.4); }
+}
+.animate-star { animation: star-twinkle var(--dur, 3s) ease-in-out var(--delay, 0s) infinite; }
+
+/* Vertical subtle float */
+@keyframes float-vertical {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-8px); }
+}
+.animate-float { animation: float-vertical 5s ease-in-out infinite; }
+
+/* Scroll progress indicator glow */
+@keyframes indicator-glow {
+  0%, 100% { box-shadow: 0 0 6px rgba(201,162,74,0.3); }
+  50%       { box-shadow: 0 0 14px rgba(201,162,74,0.7); }
+}
+.animate-indicator-active { animation: indicator-glow 2s ease-in-out infinite; }
+
+/* ─────────────────────────────────────────────
+   JHAROKHA ARCHITECTURAL FRAME
+───────────────────────────────────────────── */
+.jharokha-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+.jharokha-frame::before,
+.jharokha-frame::after {
+  content: '';
+  position: absolute;
+  border: 1.5px solid rgba(201, 162, 74, 0.12);
+}
+.jharokha-frame::before {
+  top: 16px; left: 16px; right: 16px; bottom: 16px;
+  border-radius: 2px;
+}
+.jharokha-frame::after {
+  top: 28px; left: 28px; right: 28px; bottom: 28px;
+  border-radius: 1px;
+}
+
+/* ─────────────────────────────────────────────
+   CHAPTER SCROLL INDICATOR
+───────────────────────────────────────────── */
+.chapter-indicator {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* ─────────────────────────────────────────────
+   EXPERIENCE CARD IMAGE ZOOM
+───────────────────────────────────────────── */
+.exp-card:hover .exp-img { transform: scale(1.08); }
+.exp-img { transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* ─────────────────────────────────────────────
+   FORM INPUT FOCUS
+───────────────────────────────────────────── */
+.journey-input:focus {
+  outline: none;
+  border-color: rgba(201,162,74,0.7);
+  box-shadow: 0 0 0 2px rgba(201,162,74,0.15);
+}
+
+/* ─────────────────────────────────────────────
+   SECTION CONNECTOR GRADIENT
+   Creates smooth visual blends between sections
+───────────────────────────────────────────── */
+.connect-warm {
+  background: linear-gradient(to bottom, #080B0F 0%, #120E07 40%, #080B0F 100%);
+}
+.connect-dark {
+  background: linear-gradient(to bottom, #080B0F 0%, #06090E 50%, #080B0F 100%);
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE OPTIMIZATION
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .gold-particle { display: none; }
+  .jharokha-frame { display: none; }
+  .animate-hero-drift { animation: cinematic-zoom 20s ease-out infinite alternate; }
+}
+@media (max-width: 480px) {
+  .animate-cinematic-zoom,
+  .animate-hero-drift { animation-duration: 16s; }
+}
+
+/* ─────────────────────────────────────────────
+   MODAL FADE IN
+───────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out forwards;
+}
+
+/* ─────────────────────────────────────────────
+   TAILWIND MISSING UTILITIES
+───────────────────────────────────────────── */
+.scale-106 { transform: scale(1.06); }
+.scale-108 { transform: scale(1.08); }
+.hover\:scale-106:hover { transform: scale(1.06); }
+.hover\:scale-108:hover { transform: scale(1.08); }
+.group-hover\:scale-106 { transform: scale(1.06); }
+.group-hover\:scale-108 { transform: scale(1.08); }
+
+/* ─────────────────────────────────────────────
+   PREFERS-REDUCED-MOTION ACCESSIBILITY
+───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* Kill all custom animations */
+  .animate-cinematic-zoom,
+  .animate-hero-drift,
+  .animate-warm-pulse,
+  .animate-diya,
+  .animate-float,
+  .animate-star,
+  .gold-particle,
+  .animate-indicator-active {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Remove Framer Motion transforms */
+  [data-framer-component-type] {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Disable transition durations globally */
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
