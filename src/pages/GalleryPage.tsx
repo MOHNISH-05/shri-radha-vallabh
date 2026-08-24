@@ -21,7 +21,7 @@ export const GalleryPage: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen bg-[#050709] text-[#F5EDE0]">
+    <div className="min-h-screen bg-[#050709] text-[#F5EDE0] perf-defer-sections">
       
       {/* 01. Page Hero */}
       <PageHero

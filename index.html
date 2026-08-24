@@ -32,10 +32,48 @@
 
     <!-- Favicon — SRV logo -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" href="/assets/srv-logo.png" />
+    <link rel="alternate icon" type="image/webp" href="/assets/optimized/srv-logo-192.webp" />
 
     <!-- Theme colour for mobile browsers -->
     <meta name="theme-color" content="#080B0F" />
+
+    <!-- Direct-navigation LCP assets are discovered before the lazy route bundle. -->
+    <script>
+      (() => {
+        const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+        const criticalImages = {
+          '/': { src: '/assets/optimized/srv-intro-poster.webp' },
+          '/jaisalmer': { src: '/assets/optimized/laxminath-hero.webp' },
+          '/jaisalmer/explore': {
+            src: '/assets/optimized/jaisalmer-fort-1280.webp',
+            srcset: '/assets/optimized/jaisalmer-fort-1280.webp 1280w, /assets/optimized/jaisalmer-fort-1920.webp 1920w',
+          },
+          '/jaisalmer/history': {
+            src: '/assets/optimized/jaisalmer-fort-1280.webp',
+            srcset: '/assets/optimized/jaisalmer-fort-1280.webp 1280w, /assets/optimized/jaisalmer-fort-1920.webp 1920w',
+          },
+          '/gallery': { src: '/assets/optimized/jaisalmer-dune-caravan.webp' },
+          '/plan-journey': {
+            src: '/assets/optimized/jaisalmer-night-fort-1280.webp',
+            srcset: '/assets/optimized/jaisalmer-night-fort-1280.webp 1280w, /images/jaisalmer/web_DJI_0727.jpg 1920w',
+          },
+        };
+        const criticalImage = criticalImages[pathname];
+        if (!criticalImage) return;
+
+        const preload = document.createElement('link');
+        preload.rel = 'preload';
+        preload.as = 'image';
+        preload.type = 'image/webp';
+        preload.href = criticalImage.src;
+        preload.fetchPriority = 'high';
+        if (criticalImage.srcset) {
+          preload.setAttribute('imagesrcset', criticalImage.srcset);
+          preload.setAttribute('imagesizes', '100vw');
+        }
+        document.head.appendChild(preload);
+      })();
+    </script>
 
     <!-- Google Fonts — preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

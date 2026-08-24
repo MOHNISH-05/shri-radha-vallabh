@@ -143,14 +143,15 @@ export const JaisalmerExplorePage: React.FC = () => {
       .filter((p): p is JaisalmerPlace => Boolean(p));
 
   return (
-    <div className="bg-[#050709] min-h-screen">
+    <div className="bg-[#050709] min-h-screen perf-defer-sections">
       <PageHero
         breadcrumb="Explore Jaisalmer"
         badgeText="18 Heritage Locations · 6 Editorial Chapters"
         hindiTagline="जैसलमेर की सम्पूर्ण यात्रा"
         englishTitle="Explore All of Jaisalmer"
         description="From the golden bastions of Sonar Qila to border shrines of the Thar — a curated guide to every heritage location, sacred site, and desert experience in and around Jaisalmer."
-        backgroundImage="/assets/optimized/jaisalmer-fort-1920.webp"
+        backgroundImage="/assets/optimized/jaisalmer-fort-1280.webp"
+        backgroundImageSrcSet="/assets/optimized/jaisalmer-fort-1280.webp 1280w, /assets/optimized/jaisalmer-fort-1920.webp 1920w"
         bgPosition="center 40%"
       >
         <div className="flex flex-wrap gap-3">

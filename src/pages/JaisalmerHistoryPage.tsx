@@ -25,7 +25,8 @@ export const JaisalmerHistoryPage: React.FC = () => {
         hindiTagline="रेत में लिखी एक राजसी कहानी।"
         englishTitle="THE HISTORY OF JAISALMER"
         description="From 12th-century Yaduvanshi Bhati foundations and Silk Route trade to medieval sieges, royal treaties, and modern UNESCO World Heritage glory."
-        backgroundImage="/assets/optimized/jaisalmer-fort-1920.webp"
+        backgroundImage="/assets/optimized/jaisalmer-fort-1280.webp"
+        backgroundImageSrcSet="/assets/optimized/jaisalmer-fort-1280.webp 1280w, /assets/optimized/jaisalmer-fort-1920.webp 1920w"
         bgPosition="center 40%"
       >
         <div className="flex flex-wrap items-center gap-3 pt-2">

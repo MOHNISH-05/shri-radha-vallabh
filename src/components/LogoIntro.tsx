@@ -101,11 +101,20 @@ export const LogoIntro: React.FC<LogoIntroProps> = ({ onComplete }) => {
             autoPlay
             muted
             playsInline
+            preload="auto"
+            poster="/assets/optimized/srv-intro-poster.webp"
+            width={720}
+            height={1280}
             onTimeUpdate={handleVideoTimeUpdate}
             onEnded={triggerHandoff}
             onError={triggerHandoff}
             className="w-full h-full object-contain max-w-5xl max-h-[90vh]"
           >
+            <source
+              media="(max-width: 767px)"
+              src="/assets/optimized/srv-reassembly-mobile.mp4"
+              type="video/mp4"
+            />
             <source src="/assets/srv-reassembly.mp4" type="video/mp4" />
           </video>
         </motion.div>

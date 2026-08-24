@@ -76,7 +76,8 @@ export const PlanJourneyPage: React.FC = () => {
         hindiTagline="आपकी अगली यात्रा, आपकी तरह।"
         englishTitle="PLAN YOUR CUSTOM JOURNEY"
         description="Share your destination, dates, and family preferences below to receive a personalized itinerary and dedicated coordination directly on WhatsApp."
-        backgroundImage="/images/jaisalmer/web_DJI_0727.jpg"
+        backgroundImage="/assets/optimized/jaisalmer-night-fort-1280.webp"
+        backgroundImageSrcSet="/assets/optimized/jaisalmer-night-fort-1280.webp 1280w, /images/jaisalmer/web_DJI_0727.jpg 1920w"
         bgPosition="center 40%"
       />
 

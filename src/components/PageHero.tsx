@@ -10,6 +10,8 @@ interface PageHeroProps {
   englishTitle: string;
   description: string;
   backgroundImage?: string | null;
+  backgroundImageSrcSet?: string;
+  backgroundImageSizes?: string;
   bgPosition?: string;
   children?: React.ReactNode;
 }
@@ -21,6 +23,8 @@ export const PageHero: React.FC<PageHeroProps> = ({
   englishTitle,
   description,
   backgroundImage = '/assets/featured-jaisalmer-arch.jpg',
+  backgroundImageSrcSet,
+  backgroundImageSizes = '100vw',
   bgPosition = 'center 45%',
   children,
 }) => {
@@ -32,10 +36,14 @@ export const PageHero: React.FC<PageHeroProps> = ({
       <div className="absolute inset-0 z-0">
         <img
           src={safeBg}
+          srcSet={backgroundImageSrcSet}
+          sizes={backgroundImageSrcSet ? backgroundImageSizes : undefined}
           alt={englishTitle}
           className="w-full h-full object-cover brightness-[0.55]"
           style={{ objectPosition: bgPosition }}
           loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#080B0F]/75 via-[#080B0F]/45 to-[#080B0F]/90" />
         <div className="absolute inset-0 jaali-pattern opacity-20 pointer-events-none" />

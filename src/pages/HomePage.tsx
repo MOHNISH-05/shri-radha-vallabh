@@ -14,7 +14,7 @@ import { FinalCTA } from '../sections/FinalCTA';
 
 export const HomePage: React.FC = () => {
   return (
-    <main className="w-full">
+    <main className="w-full perf-defer-sections">
       {/* 01. Master Hero — Authentic Laxminath Ji Visual */}
       <Hero />
 
