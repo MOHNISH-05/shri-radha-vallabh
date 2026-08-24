@@ -20,6 +20,14 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      const handleEscape = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') setMobileMenuOpen(false);
+      };
+      window.addEventListener('keydown', handleEscape);
+      return () => {
+        window.removeEventListener('keydown', handleEscape);
+        document.body.style.overflow = '';
+      };
     } else {
       document.body.style.overflow = '';
     }
@@ -154,6 +162,7 @@ export const Navbar: React.FC = () => {
               className="w-11 h-11 rounded-full bg-[#0D1117]/80 border border-[#C9A24A]/30 text-[#F5EDE0] flex items-center justify-center active:scale-95 transition-all touch-manipulation cursor-pointer"
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -165,6 +174,7 @@ export const Navbar: React.FC = () => {
       {/* Full-Screen Mobile Drawer */}
       {mobileMenuOpen && (
         <div
+          id="mobile-navigation-menu"
           className="fixed inset-0 z-50 lg:hidden bg-[#080B0F]/98 backdrop-blur-2xl flex flex-col justify-between p-6 pt-20 animate-fadeIn"
           style={{ paddingTop: 'max(5rem, env(safe-area-inset-top, 5rem))' }}
         >

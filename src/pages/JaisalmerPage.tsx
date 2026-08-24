@@ -847,11 +847,12 @@ export const JaisalmerPage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {ACTIVE_JOURNEY.gallery.slice(0, 6).map((item, idx) => (
-            <div
-              key={idx}
+          {ACTIVE_JOURNEY.gallery.slice(0, 6).map((item) => (
+            <button
+              key={item.title}
+              type="button"
               onClick={() => setSelectedGalleryItem(item)}
-              className="group relative rounded-3xl overflow-hidden shadow-2xl border border-[#C9A24A]/30 hover:border-[#C9A24A] cursor-pointer bg-[#0D1117] h-64 sm:h-72"
+              className="group relative w-full text-left rounded-3xl overflow-hidden shadow-2xl border border-[#C9A24A]/30 hover:border-[#C9A24A] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A24A] cursor-pointer bg-[#0D1117] h-64 sm:h-72"
             >
               <img
                 src={item.image}
@@ -865,7 +866,7 @@ export const JaisalmerPage: React.FC = () => {
                 </span>
                 <h3 className="font-serif text-sm font-bold text-[#F5EDE0]">{item.title}</h3>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 

@@ -97,7 +97,7 @@ export const CLIENT_JAISALMER_PHOTOS: ClientPhoto[] = [
     id: "client-photo-9",
     title: "Sam Sand Dunes Golden Hour",
     originalName: "DJI_0742.JPG",
-    url: "/images/jaisalmer/web_DJI_0742.JPG",
+    url: "/images/jaisalmer/web_DJI_0742.jpg",
     width: 1920,
     height: 1080,
     category: "desert",

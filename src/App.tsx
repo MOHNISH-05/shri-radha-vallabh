@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import { ScrollToTop } from './components/ScrollToTop';
 import { LogoIntro } from './components/LogoIntro';
 import { Navbar } from './components/Navbar';
@@ -23,6 +23,8 @@ const GalleryPage = lazy(() => import('./pages/GalleryPage').then((module) => ({
 const PlanJourneyPage = lazy(() => import('./pages/PlanJourneyPage').then((module) => ({ default: module.PlanJourneyPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage })));
 const ChaitanyaRajSinghPage = lazy(() => import('./pages/ChaitanyaRajSinghPage').then((module) => ({ default: module.ChaitanyaRajSinghPage })));
+
+const PRODUCTION_ORIGIN = 'https://shri-radha-vallabh.vercel.app';
 
 /* ── Title & SEO Manager ─────────────────────────────────── */
 const PageTitleManager: React.FC = () => {
@@ -89,9 +91,16 @@ const PageTitleManager: React.FC = () => {
       Object.entries(attributes).forEach(([key, value]) => element?.setAttribute(key, value));
     };
 
+    const canonicalPath = pathname === '/experience' ? '/stories' : pathname;
+    const canonicalUrl = `${PRODUCTION_ORIGIN}${canonicalPath}`;
+
+    upsertMeta('meta[name="title"]', { name: 'title', content: resolved.title });
     upsertMeta('meta[name="description"]', { name: 'description', content: resolved.description });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: resolved.title });
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: resolved.description });
+    upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
+    upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: resolved.title });
+    upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: resolved.description });
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonical) {
@@ -99,7 +108,7 @@ const PageTitleManager: React.FC = () => {
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    canonical.href = `${window.location.origin}${pathname}`;
+    canonical.href = canonicalUrl;
   }, [pathname]);
 
   return null;
@@ -144,6 +153,7 @@ export const AppContent: React.FC = () => {
 
           <Route path="/packages" element={<PackagesPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/experience" element={<Navigate to="/stories" replace />} />
           <Route path="/stories" element={<StoriesPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/plan-journey" element={<PlanJourneyPage />} />

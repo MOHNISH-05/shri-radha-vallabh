@@ -91,7 +91,7 @@ export const PlanJourneyPage: React.FC = () => {
           className="bg-[#0D1117]/95 backdrop-blur-xl p-6 sm:p-12 rounded-3xl border border-[#C9A24A]/40 shadow-2xl space-y-8"
         >
           {errorMessage && (
-            <div className="flex items-center gap-2 p-4 rounded-xl bg-red-950/70 border border-red-500/50 text-red-200 text-xs sm:text-sm animate-shake">
+            <div id="journey-form-error" role="alert" className="flex items-center gap-2 p-4 rounded-xl bg-red-950/70 border border-red-500/50 text-red-200 text-xs sm:text-sm animate-shake">
               <AlertCircle className="w-5 h-5 text-red-400 shrink-0" />
               <span>{errorMessage}</span>
             </div>
@@ -106,10 +106,11 @@ export const PlanJourneyPage: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-destination" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Primary Destination
                 </label>
                 <select
+                  id="journey-destination"
                   value={formData.destination}
                   onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
                   className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -125,10 +126,11 @@ export const PlanJourneyPage: React.FC = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-duration" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Preferred Duration
                 </label>
                 <select
+                  id="journey-duration"
                   value={formData.duration}
                   onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
                   className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -152,10 +154,11 @@ export const PlanJourneyPage: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-date" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Tentative Travel Date
                 </label>
                 <input
+                  id="journey-date"
                   type="date"
                   value={formData.travelDate}
                   onChange={(e) => setFormData({ ...formData, travelDate: e.target.value })}
@@ -164,10 +167,11 @@ export const PlanJourneyPage: React.FC = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-adults" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Adult Travellers
                 </label>
                 <select
+                  id="journey-adults"
                   value={formData.adults}
                   onChange={(e) => setFormData({ ...formData, adults: e.target.value })}
                   className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -181,10 +185,11 @@ export const PlanJourneyPage: React.FC = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-seniors" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Senior Citizens Travelling?
                 </label>
                 <select
+                  id="journey-seniors"
                   value={formData.seniorsTravelling}
                   onChange={(e) => setFormData({ ...formData, seniorsTravelling: e.target.value })}
                   className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -205,10 +210,11 @@ export const PlanJourneyPage: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-style" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Experience Style
                 </label>
                 <select
+                  id="journey-style"
                   value={formData.journeyType}
                   onChange={(e) => setFormData({ ...formData, journeyType: e.target.value })}
                   className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -221,10 +227,11 @@ export const PlanJourneyPage: React.FC = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-stay" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Accommodation Style
                 </label>
                 <select
+                  id="journey-stay"
                   value={formData.stayPreference}
                   onChange={(e) => setFormData({ ...formData, stayPreference: e.target.value })}
                   className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -246,38 +253,43 @@ export const PlanJourneyPage: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-name" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Full Name <span className="text-[#C9A24A]">*</span>
                 </label>
                 <input
+                  id="journey-name"
                   type="text"
                   placeholder="Enter your full name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation"
+                  aria-describedby={errorMessage ? 'journey-form-error' : undefined}
                   required
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-phone" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   WhatsApp Mobile Number <span className="text-[#C9A24A]">*</span>
                 </label>
                 <input
+                  id="journey-phone"
                   type="tel"
                   placeholder="e.g. 9876543210"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation"
+                  aria-describedby={errorMessage ? 'journey-form-error' : undefined}
                   required
                 />
               </div>
 
               <div className="sm:col-span-2 space-y-1.5">
-                <label className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
+                <label htmlFor="journey-notes" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Special Requests / Dietary / Timing Notes (Optional)
                 </label>
                 <textarea
+                  id="journey-notes"
                   rows={3}
                   placeholder="Any specific temples, dietary preferences, or timing requirements..."
                   value={formData.specialNotes}

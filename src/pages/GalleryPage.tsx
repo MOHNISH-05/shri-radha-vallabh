@@ -62,14 +62,15 @@ export const GalleryPage: React.FC = () => {
         {/* Dynamic 2-3-4 column responsive grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
           {filteredItems.map((item, idx) => (
-            <motion.div
-              key={idx}
+            <motion.button
+              key={item.title}
+              type="button"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: (idx % 6) * 0.08 }}
               onClick={() => setSelectedItem(item)}
-              className="group relative rounded-3xl overflow-hidden shadow-2xl border border-[#C9A24A]/30 hover:border-[#C9A24A] cursor-pointer bg-[#0D1117] h-64 sm:h-80 lg:h-96 touch-manipulation"
+              className="group relative w-full text-left rounded-3xl overflow-hidden shadow-2xl border border-[#C9A24A]/30 hover:border-[#C9A24A] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A24A] cursor-pointer bg-[#0D1117] h-64 sm:h-80 lg:h-96 touch-manipulation"
             >
               <img
                 src={item.image}
@@ -99,7 +100,7 @@ export const GalleryPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.button>
           ))}
         </div>
 

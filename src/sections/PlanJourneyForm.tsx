@@ -87,7 +87,7 @@ export const PlanJourneyForm: React.FC = () => {
           className="bg-[#0D1117]/95 backdrop-blur-xl p-5 sm:p-10 md:p-12 rounded-2xl sm:rounded-3xl border border-[#C9A24A]/40 shadow-2xl space-y-5 sm:space-y-6"
         >
           {errorMessage && (
-            <div className="flex items-center gap-2 p-3.5 rounded-xl bg-red-950/60 border border-red-500/40 text-red-200 text-xs animate-shake">
+            <div id="home-journey-form-error" role="alert" className="flex items-center gap-2 p-3.5 rounded-xl bg-red-950/60 border border-red-500/40 text-red-200 text-xs animate-shake">
               <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
               <span>{errorMessage}</span>
             </div>
@@ -97,10 +97,11 @@ export const PlanJourneyForm: React.FC = () => {
             
             {/* Destination Selection */}
             <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
+              <label htmlFor="home-journey-destination" className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
                 Select Destination
               </label>
               <select
+                id="home-journey-destination"
                 value={formData.destination}
                 onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
                 className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -116,10 +117,11 @@ export const PlanJourneyForm: React.FC = () => {
 
             {/* Travel Date */}
             <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
+              <label htmlFor="home-journey-date" className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
                 Tentative Travel Date
               </label>
               <input
+                id="home-journey-date"
                 type="date"
                 value={formData.travelDate}
                 onChange={(e) => setFormData({ ...formData, travelDate: e.target.value })}
@@ -129,10 +131,11 @@ export const PlanJourneyForm: React.FC = () => {
 
             {/* Number of Travellers */}
             <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
+              <label htmlFor="home-journey-travellers" className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
                 Number of Travellers
               </label>
               <select
+                id="home-journey-travellers"
                 value={formData.travellers}
                 onChange={(e) => setFormData({ ...formData, travellers: e.target.value })}
                 className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -146,10 +149,11 @@ export const PlanJourneyForm: React.FC = () => {
 
             {/* Journey Type */}
             <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
+              <label htmlFor="home-journey-style" className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
                 Journey Experience Type
               </label>
               <select
+                id="home-journey-style"
                 value={formData.journeyType}
                 onChange={(e) => setFormData({ ...formData, journeyType: e.target.value })}
                 className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer"
@@ -163,30 +167,34 @@ export const PlanJourneyForm: React.FC = () => {
 
             {/* Name */}
             <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
+              <label htmlFor="home-journey-name" className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
                 Your Name <span className="text-[#C9A24A]">*</span>
               </label>
               <input
+                id="home-journey-name"
                 type="text"
                 placeholder="Enter your full name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation"
+                aria-describedby={errorMessage ? 'home-journey-form-error' : undefined}
                 required
               />
             </div>
 
             {/* Phone Number */}
             <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
+              <label htmlFor="home-journey-phone" className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">
                 WhatsApp Phone Number <span className="text-[#C9A24A]">*</span>
               </label>
               <input
+                id="home-journey-phone"
                 type="tel"
                 placeholder="e.g. 9876543210"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation"
+                aria-describedby={errorMessage ? 'home-journey-form-error' : undefined}
                 required
               />
             </div>

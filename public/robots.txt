@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shriradhavallabh.com/sitemap.xml
+Sitemap: https://shri-radha-vallabh.vercel.app/sitemap.xml

@@ -70,14 +70,15 @@ export const VisualGallery: React.FC = () => {
           {/* 2-column mobile / 3-column desktop editorial grid */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {filteredGallery.map((item, idx) => (
-              <motion.div
-                key={idx}
+              <motion.button
+                key={item.title}
+                type="button"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.05 }}
                 onClick={() => setSelectedItem(item)}
-                className="group relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#C9A24A]/25 hover:border-[#C9A24A] cursor-pointer bg-[#0D1117] h-52 sm:h-72 lg:h-80 touch-manipulation"
+                className="group relative w-full text-left rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#C9A24A]/25 hover:border-[#C9A24A] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A24A] cursor-pointer bg-[#0D1117] h-52 sm:h-72 lg:h-80 touch-manipulation"
               >
                 <img
                   src={item.image}
@@ -107,7 +108,7 @@ export const VisualGallery: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
 
