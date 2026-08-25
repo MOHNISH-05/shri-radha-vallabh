@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MessageCircle, Sparkles, Send, AlertCircle, ShieldCheck, Clock } from 'lucide-react';
 import { PageHero } from '../components/PageHero';
+import { JaisalmerLocation } from '../components/JaisalmerLocation';
 import { SITE_CONFIG } from '../data/siteConfig';
 
 export const PlanJourneyPage: React.FC = () => {
@@ -338,6 +339,9 @@ export const PlanJourneyPage: React.FC = () => {
             <p className="text-xs text-[#F5EDE0]/70 font-light">Pacing, transport, and dining customized for children and elderly travelers.</p>
           </div>
         </div>
+
+        {/* 04. Verified Jaisalmer Location */}
+        <JaisalmerLocation />
 
       </section>
 

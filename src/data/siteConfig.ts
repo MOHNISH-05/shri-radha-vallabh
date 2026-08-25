@@ -34,6 +34,18 @@ export const SITE_CONFIG = {
   ],
 } as const;
 
+// ── Owner-provided Google Maps location ──
+// Keep this separate from SITE_CONFIG contact data: the public listing exists,
+// but its legal/brand relationship and full NAP details are not yet confirmed.
+export const MAPS_CONFIG = {
+  listingName: "Shriradha Vallabh tours",
+  locality: "Jaisalmer, Rajasthan",
+  latitude: 26.9127521,
+  longitude: 70.9118934,
+  mapsUrl: "https://www.google.com/maps/place/Shriradha+Vallabh+tours/@26.9127521,70.9093185,17z/data=!3m1!4b1!4m6!3m5!1s0x3947bd4c3b34537f:0x57cbf3923a57bee9!8m2!3d26.9127521!4d70.9118934!16s%2Fg%2F11zx094zr2?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D",
+  embedUrl: "https://www.google.com/maps?q=26.9127521,70.9118934&output=embed",
+} as const;
+
 /* ─── WhatsApp Link Generators ───────────────────────────── */
 
 export const getWhatsAppLink = (message?: string) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SITE_CONFIG, getWhatsAppLink } from '../data/siteConfig';
+import { MAPS_CONFIG, SITE_CONFIG, getWhatsAppLink } from '../data/siteConfig';
 import { MessageCircle, MapPin, ArrowUpRight } from 'lucide-react';
 import { InstagramIcon } from './InstagramIcon';
 
@@ -157,6 +157,16 @@ export const Footer: React.FC = () => {
                 <MapPin className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
                 <span>{SITE_CONFIG.location}</span>
               </div>
+              <a
+                href={MAPS_CONFIG.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Find ${MAPS_CONFIG.listingName} on Google Maps`}
+                className="flex min-h-8 items-center gap-2 rounded-sm transition-colors hover:text-[#D4AF37] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D4AF37]"
+              >
+                <MapPin className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                <span>Find us on Google Maps</span>
+              </a>
             </div>
 
             <div className="pt-2">

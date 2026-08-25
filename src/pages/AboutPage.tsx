@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Heart, Sparkles, Shield, Compass, MessageCircle } from 'lucide-react';
 import { PageHero } from '../components/PageHero';
+import { JaisalmerLocation } from '../components/JaisalmerLocation';
 import { SITE_CONFIG, getWhatsAppLink } from '../data/siteConfig';
 
 export const AboutPage: React.FC = () => {
@@ -165,7 +166,10 @@ export const AboutPage: React.FC = () => {
           </div>
         </div>
 
-        {/* 04. Contact & Planning CTA */}
+        {/* 04. Verified Jaisalmer Location */}
+        <JaisalmerLocation compact />
+
+        {/* 05. Contact & Planning CTA */}
         <div className="rounded-3xl bg-gradient-to-r from-[#0D1117] via-[#121722] to-[#0D1117] border border-[#C9A24A]/40 p-8 sm:p-12 text-center space-y-6 shadow-2xl">
           <div className="max-w-xl mx-auto space-y-2">
             <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-[#C9A24A]">

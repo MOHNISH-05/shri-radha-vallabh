@@ -1,4 +1,5 @@
 import { JAISALMER_PLACES } from './jaisalmerPlaces.ts';
+import { MAPS_CONFIG } from './siteConfig.ts';
 
 export const SEO_ORIGIN = 'https://shri-radha-vallabh.vercel.app';
 export const BRAND_NAME = 'Shri Radha Vallabh Heritage & Journeys';
@@ -17,6 +18,7 @@ export interface RouteSeo {
   pageType: 'WebPage' | 'CollectionPage' | 'AboutPage' | 'ContactPage' | 'ImageGallery';
   entityType?: 'TouristDestination' | 'TouristAttraction' | 'Person' | 'Thing';
   entityName?: string;
+  localPlaceMention?: boolean;
   breadcrumbs: SeoBreadcrumb[];
 }
 
@@ -112,6 +114,7 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
     image: '/assets/patwon-haveli.png',
     imageAlt: 'Golden sandstone architecture of Patwon Ki Haveli in Jaisalmer',
     pageType: 'AboutPage',
+    localPlaceMention: true,
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }],
   },
   '/stories': {
@@ -139,6 +142,7 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
     image: '/assets/optimized/jaisalmer-night-fort-1280.webp',
     imageAlt: 'Jaisalmer Fort and the Golden City illuminated after sunset',
     pageType: 'ContactPage',
+    localPlaceMention: true,
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Plan Journey', path: '/plan-journey' }],
   },
 };
@@ -211,6 +215,7 @@ export const buildStructuredData = (seo: RouteSeo) => {
   const imageId = `${url}#primaryimage`;
   const breadcrumbId = `${url}#breadcrumb`;
   const entityId = `${url}#entity`;
+  const localPlaceId = `${SEO_ORIGIN}/#shriradha-vallabh-tours-location`;
 
   const organization = {
     '@type': 'Organization',
@@ -272,6 +277,28 @@ export const buildStructuredData = (seo: RouteSeo) => {
   };
 
   const graph: Array<Record<string, unknown>> = [organization, website, image, breadcrumb];
+
+  if (seo.localPlaceMention) {
+    const localPlace = {
+      '@type': 'Place',
+      '@id': localPlaceId,
+      name: MAPS_CONFIG.listingName,
+      hasMap: MAPS_CONFIG.mapsUrl,
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: MAPS_CONFIG.latitude,
+        longitude: MAPS_CONFIG.longitude,
+      },
+      containedInPlace: {
+        '@type': 'City',
+        name: 'Jaisalmer',
+        containedInPlace: { '@type': 'State', name: 'Rajasthan' },
+      },
+    };
+
+    webpage.mentions = { '@id': localPlaceId };
+    graph.push(localPlace);
+  }
 
   if (seo.entityType && seo.entityName) {
     const entity: Record<string, unknown> = {
