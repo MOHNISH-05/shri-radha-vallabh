@@ -20,6 +20,12 @@ playwright-report/
 !.env.example
 .vercel
 
+# Owner research notes and unused identity-review candidates (kept locally, never published)
+public/images/riyasat/New Text Document.txt
+public/images/riyasat/jawahar singh.jpeg
+public/images/riyasat/saliwahan singh tellest king 7.5 feet.jpeg
+public/images/riyasat/brajraj singh .jpeg
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
