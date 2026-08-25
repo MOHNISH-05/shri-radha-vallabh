@@ -10,7 +10,7 @@ const expectedTitles: Record<(typeof CRITICAL_ROUTES)[number], RegExp> = {
   '/jaisalmer/riyasat': /Jaisalmer Riyasat/,
   '/jaisalmer/riyasat/chaitanya-raj-singh': /Maharawal Chaitanya Raj Singh/,
   '/packages': /Jaisalmer & Spiritual Tour Packages/,
-  '/about': /About Shri Radha Vallabh/,
+  '/about': /About Ashish Vyas/,
   '/experience': /Heritage Travel Stories & Reflections/,
   '/stories': /Heritage Travel Stories & Reflections/,
   '/gallery': /Jaisalmer Heritage Photo Gallery/,

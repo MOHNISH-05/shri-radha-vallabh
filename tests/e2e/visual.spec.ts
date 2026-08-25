@@ -9,6 +9,7 @@ const visualRoutes = [
   ['jaisalmer-riyasat', '/jaisalmer/riyasat'],
   ['chaitanya-raj-singh', '/jaisalmer/riyasat/chaitanya-raj-singh'],
   ['gallery', '/gallery'],
+  ['about', '/about'],
   ['plan-journey', '/plan-journey'],
 ] as const;
 

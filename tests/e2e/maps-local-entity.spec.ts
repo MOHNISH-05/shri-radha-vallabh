@@ -9,9 +9,12 @@ test('Google Maps calls to action use the exact owner-provided listing', async (
   await waitForApp(page);
 
   const directions = page.getByRole('link', { name: `Get directions to ${MAPS_CONFIG.listingName} on Google Maps` });
-  await expect(directions).toHaveAttribute('href', MAPS_CONFIG.mapsUrl);
-  await expect(directions).toHaveAttribute('target', '_blank');
-  await expect(directions).toHaveAttribute('rel', 'noopener noreferrer');
+  await expect(directions).toHaveCount(2);
+  for (const direction of await directions.all()) {
+    await expect(direction).toHaveAttribute('href', MAPS_CONFIG.mapsUrl);
+    await expect(direction).toHaveAttribute('target', '_blank');
+    await expect(direction).toHaveAttribute('rel', 'noopener noreferrer');
+  }
 
   const footerMap = page.getByRole('link', { name: `Find ${MAPS_CONFIG.listingName} on Google Maps` });
   await expect(footerMap).toHaveAttribute('href', MAPS_CONFIG.mapsUrl);

@@ -19,6 +19,7 @@ export interface RouteSeo {
   entityType?: 'TouristDestination' | 'TouristAttraction' | 'Person' | 'Thing';
   entityName?: string;
   localPlaceMention?: boolean;
+  aboutStoryPeople?: boolean;
   breadcrumbs: SeoBreadcrumb[];
 }
 
@@ -109,12 +110,13 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/about': {
     path: '/about',
-    title: 'About Shri Radha Vallabh Heritage & Journeys',
-    description: 'Learn how Shri Radha Vallabh Heritage & Journeys curates unhurried cultural, spiritual and heritage travel with personal coordination.',
-    image: '/assets/patwon-haveli.png',
-    imageAlt: 'Golden sandstone architecture of Patwon Ki Haveli in Jaisalmer',
+    title: 'About Ashish Vyas & Shri Radha Vallabh Tours | Jaisalmer',
+    description: 'Meet founder Ashish Vyas and discover the Jaisalmer family roots, 2013 Kedarnath turning point, 50+ Char Dham yatras and next generation of Shri Radha Vallabh.',
+    image: '/images/about/ashish-vyas-1024.webp',
+    imageAlt: 'Ashish Vyas, founder and owner of Shriradha Vallabh Tours, at Kedarnath Temple',
     pageType: 'AboutPage',
     localPlaceMention: true,
+    aboutStoryPeople: true,
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }],
   },
   '/stories': {
@@ -216,6 +218,7 @@ export const buildStructuredData = (seo: RouteSeo) => {
   const breadcrumbId = `${url}#breadcrumb`;
   const entityId = `${url}#entity`;
   const localPlaceId = `${SEO_ORIGIN}/#shriradha-vallabh-tours-location`;
+  const mentions: Array<{ '@id': string }> = [];
 
   const organization = {
     '@type': 'Organization',
@@ -296,9 +299,37 @@ export const buildStructuredData = (seo: RouteSeo) => {
       },
     };
 
-    webpage.mentions = { '@id': localPlaceId };
+    mentions.push({ '@id': localPlaceId });
     graph.push(localPlace);
   }
+
+  if (seo.aboutStoryPeople) {
+    const ashishId = `${SEO_ORIGIN}/about#ashish-vyas`;
+    const yuvrajId = `${SEO_ORIGIN}/about#yuvraj-jeet-vyas`;
+    const ashish = {
+      '@type': 'Person',
+      '@id': ashishId,
+      name: 'Ashish Vyas',
+      description: 'Founder and owner of Shriradha Vallabh Tours in Jaisalmer, established in 2007, with more than 20 years of pilgrimage and travel experience.',
+      image: absoluteSeoUrl('/images/about/ashish-vyas-1024.webp'),
+      homeLocation: { '@type': 'City', name: 'Jaisalmer' },
+    };
+    const yuvraj = {
+      '@type': 'Person',
+      '@id': yuvrajId,
+      name: 'Yuvraj Ashish Vyas',
+      alternateName: 'Jeet Vyas',
+      description: 'The next generation of the family, supporting the digital presence and online communication of Shri Radha Vallabh.',
+      image: absoluteSeoUrl('/images/about/yuvraj-jeet-vyas-960.webp'),
+      homeLocation: { '@type': 'City', name: 'Jaisalmer' },
+    };
+
+    webpage.about = { '@id': ashishId };
+    mentions.push({ '@id': yuvrajId });
+    graph.push(ashish, yuvraj);
+  }
+
+  if (mentions.length > 0) webpage.mentions = mentions;
 
   if (seo.entityType && seo.entityName) {
     const entity: Record<string, unknown> = {
