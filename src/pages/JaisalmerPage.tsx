@@ -22,6 +22,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { JAISALMER_PLACES } from '../data/jaisalmerPlaces';
+import { JAISALMER_EXPERIENCES } from '../data/jaisalmerExperiences';
 import { ACTIVE_JOURNEY } from '../data/journeys';
 import type { Package } from '../data/journeys';
 import { PackageModal } from '../components/PackageModal';
@@ -69,8 +70,9 @@ export const JaisalmerPage: React.FC = () => {
     { id: 'introduction', label: 'Sandstone Majesty' },
     { id: 'packages', label: 'Packages' },
     { id: 'explore-highlights', label: 'Top 6 Landmarks' },
+    { id: 'safari-adventure', label: 'Safari & Adventure' },
     { id: 'history-story', label: 'The Story' },
-    { id: 'living-traditions', label: 'Culture & Desert' },
+    { id: 'living-traditions', label: 'Sacred & Living Culture' },
     { id: 'stay-and-travel', label: 'Stay & Travel' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'faqs', label: 'FAQs' },
@@ -573,6 +575,38 @@ export const JaisalmerPage: React.FC = () => {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
+          05. DESERT SAFARI & ADVENTURE (EXPERIENCE PREVIEW)
+          ───────────────────────────────────────────────────────────── */}
+      <section id="safari-adventure" className="relative overflow-hidden bg-[#080B0F] py-16 sm:py-24">
+        <div className="absolute inset-0 opacity-25" aria-hidden="true">
+          <img src="/images/jaisalmer/safari/hero/jaisalmer-safari-hero.webp" alt="" width={1920} height={1276} sizes="100vw" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080B0F] via-[#080B0F]/60 to-[#080B0F]" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl space-y-3">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#C9A24A]">THAR EXPERIENCES</p>
+              <h2 className="font-serif text-3xl font-bold text-[#F5EDE0] sm:text-4xl lg:text-5xl">Desert Safari &amp; Adventure</h2>
+              <p className="font-devanagari text-base text-[#D8B982]" lang="hi">थार का रोमांच</p>
+              <p className="text-xs font-light leading-6 text-[#F5EDE0]/72 sm:text-sm">Experience Jaisalmer beyond its monuments through carefully arranged journeys into the Thar—from traditional camel safaris and locally coordinated jeep rides to desert camps, cultural evenings and quiet nights beneath the stars.</p>
+            </div>
+            <Link to="/jaisalmer/safari-adventure" className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-[#C9A24A]/45 bg-[#0D1117] px-5 py-3 text-[10px] font-bold uppercase tracking-widest text-[#C9A24A] transition-all hover:bg-[#C9A24A] hover:text-[#050709]">Explore all desert experiences <ArrowUpRight className="h-4 w-4" /></Link>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-12">
+            {JAISALMER_EXPERIENCES.map((experience, index) => (
+              <motion.article key={experience.id} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: Math.min(index, 2) * 0.08 }} className={`group overflow-hidden rounded-3xl border border-[#C9A24A]/25 bg-[#0D1117] shadow-2xl ${index === 0 ? 'lg:col-span-6' : index < 3 ? 'lg:col-span-3' : 'lg:col-span-4'}`}>
+                <div className={`overflow-hidden ${index === 0 ? 'h-64 sm:h-80' : index < 3 ? 'h-52 sm:h-64 lg:h-80' : 'h-52 sm:h-60'}`}><img src={experience.image} alt={experience.imageAlt} width={experience.imageWidth} height={experience.imageHeight} sizes={index === 0 ? '(min-width: 1024px) 50vw, 100vw' : index < 3 ? '(min-width: 1024px) 25vw, 100vw' : '(min-width: 1024px) 33vw, 100vw'} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" /></div>
+                <div className="space-y-3 p-5 sm:p-6"><p className="font-devanagari text-xs text-[#D8B982]" lang="hi">{experience.hindiName}</p><h3 className="font-serif text-xl font-bold text-[#F5EDE0]">{experience.name}</h3><p className="text-xs font-light leading-6 text-[#F5EDE0]/70">{experience.shortDescription}</p><Link to={`/plan-journey?destination=Jaisalmer&experience=${experience.slug}`} className="inline-flex min-h-11 items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#C9A24A]">{experience.cta}<ArrowUpRight className="h-3.5 w-3.5" /></Link></div>
+              </motion.article>
+            ))}
+          </div>
+
+          <p className="text-center text-[11px] font-light leading-5 text-[#F5EDE0]/52">Dune bashing is optional. Experience availability and suitability depend on traveller preference, local operating conditions and the selected itinerary.</p>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
           06. THE STORY OF JAISALMER (SHORT EDITORIAL HISTORY HIGHLIGHT)
           ───────────────────────────────────────────────────────────── */}
       <section id="history-story" className="relative py-16 sm:py-24 overflow-hidden">
@@ -679,7 +713,7 @@ export const JaisalmerPage: React.FC = () => {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          08. CULTURE / SPIRITUALITY / DESERT (SHORT EDITORIAL OVERVIEW)
+          07. SACRED & LIVING CULTURE
           ───────────────────────────────────────────────────────────── */}
       <section id="living-traditions" className="relative py-16 sm:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0" aria-hidden="true">
@@ -694,13 +728,13 @@ export const JaisalmerPage: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-[#C9A24A]">
-            SPIRITUALITY, DESERT &amp; FOLK CULTURE
+            SPIRITUALITY, TRADITION &amp; FOLK HERITAGE
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5EDE0]">
-            The Living Soul of the Desert
+            Sacred &amp; Living Culture
           </h2>
           <p className="font-devanagari text-lg text-[#D8B982]">
-            आस्था, संगीत और थार का अनंत विस्तार
+            आस्था, परंपरा और लोक संस्कृति
           </p>
         </div>
 
@@ -723,19 +757,19 @@ export const JaisalmerPage: React.FC = () => {
             </Link>
           </div>
 
-          {/* Thar Desert */}
+          {/* Local Traditions */}
           <div className="p-6 rounded-3xl bg-[#0D1117] border border-[#C9A24A]/25 space-y-4 hover:border-[#C9A24A]/70 transition-all flex flex-col justify-between">
             <div className="space-y-3">
               <div className="w-10 h-10 rounded-xl bg-[#080B0F] border border-[#C9A24A]/40 flex items-center justify-center text-[#C9A24A]">
-                <Tent className="w-5 h-5" />
+                <Users className="w-5 h-5" />
               </div>
-              <h3 className="font-serif text-lg font-bold text-[#F5EDE0]">Thar Dunes &amp; Glamping</h3>
+              <h3 className="font-serif text-lg font-bold text-[#F5EDE0]">Local Traditions</h3>
               <p className="text-xs text-[#F5EDE0]/75 font-light leading-relaxed">
-                Experience golden hour camel treks across wind ripples, Swiss luxury glamping tents in Sam dunes, and dark sky stargazing under the Milky Way.
+                Encounter living customs shaped by desert communities, temple practice, family hospitality and the seasonal rhythms of western Rajasthan.
               </p>
             </div>
-            <Link to="/jaisalmer/places/sam-dunes" className="text-xs font-bold text-[#C9A24A] hover:text-white inline-flex items-center gap-1">
-              <span>Desert Experiences</span>
+            <Link to="/jaisalmer/explore#chapter-sacred" className="text-xs font-bold text-[#C9A24A] hover:text-white inline-flex items-center gap-1">
+              <span>Explore Sacred Jaisalmer</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -748,13 +782,13 @@ export const JaisalmerPage: React.FC = () => {
               </div>
               <h3 className="font-serif text-lg font-bold text-[#F5EDE0]">Manganiyar Melodies</h3>
               <p className="text-xs text-[#F5EDE0]/75 font-light leading-relaxed">
-                Hear soul-stirring oral lineages on the Kamaicha and Khartal by campfire light, celebrating centuries of Rajasthan's musical heritage.
+                Discover the oral lineages, regional instruments and devotional character that sustain western Rajasthan's living folk heritage.
               </p>
             </div>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#C9A24A] hover:text-white inline-flex items-center gap-1">
-              <span>Cultural Evenings</span>
+            <Link to="/jaisalmer/safari-adventure#cultural-evening" className="text-xs font-bold text-[#C9A24A] hover:text-white inline-flex items-center gap-1">
+              <span>Respectful Cultural Experiences</span>
               <ChevronRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
 
         </div>

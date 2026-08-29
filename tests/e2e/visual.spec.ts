@@ -5,6 +5,7 @@ const visualRoutes = [
   ['home', '/'],
   ['jaisalmer', '/jaisalmer'],
   ['jaisalmer-explore', '/jaisalmer/explore'],
+  ['jaisalmer-safari', '/jaisalmer/safari-adventure'],
   ['jaisalmer-history', '/jaisalmer/history'],
   ['jaisalmer-riyasat', '/jaisalmer/riyasat'],
   ['chaitanya-raj-singh', '/jaisalmer/riyasat/chaitanya-raj-singh'],

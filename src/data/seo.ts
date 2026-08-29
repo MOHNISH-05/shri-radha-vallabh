@@ -66,6 +66,17 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
     entityName: 'Jaisalmer',
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer', path: '/jaisalmer' }, { name: 'Explore', path: '/jaisalmer/explore' }],
   },
+  '/jaisalmer/safari-adventure': {
+    path: '/jaisalmer/safari-adventure',
+    title: 'Jaisalmer Desert Safari, Camel Safari & Camp Experiences',
+    description: 'Explore Jaisalmer camel safari, jeep safari, dune bashing, desert camp, stargazing and Rajasthani cultural evening experiences in the Thar.',
+    image: '/images/jaisalmer/safari/hero/jaisalmer-safari-hero.webp',
+    imageAlt: 'Camel safari at sunset on the sand dunes near Jaisalmer',
+    pageType: 'CollectionPage',
+    entityType: 'TouristDestination',
+    entityName: 'Jaisalmer Desert Safari & Adventure',
+    breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer', path: '/jaisalmer' }, { name: 'Safari & Adventure', path: '/jaisalmer/safari-adventure' }],
+  },
   '/jaisalmer/history': {
     path: '/jaisalmer/history',
     title: 'History of Jaisalmer | Rawal Jaisal, Bhati Rajputs & Sonar Qila',

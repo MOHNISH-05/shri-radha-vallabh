@@ -5,6 +5,7 @@ import { ArrowUpRight, MessageCircle, Crown } from 'lucide-react';
 import { PageHero } from '../components/PageHero';
 import { JAISALMER_PLACES } from '../data/jaisalmerPlaces';
 import type { JaisalmerPlace } from '../data/jaisalmerPlaces';
+import { JAISALMER_EXPERIENCES } from '../data/jaisalmerExperiences';
 import { getJourneyWhatsAppLink } from '../data/siteConfig';
 
 const JP = '/images/jaisalmer/Jaisalmer Photos';
@@ -24,7 +25,8 @@ interface Chapter {
   description: string;
   background: string;
   brightness: string;
-  slugs: string[];
+  slugs?: string[];
+  experienceSlugs?: string[];
 }
 
 const CHAPTERS: Chapter[] = [
@@ -84,8 +86,19 @@ const CHAPTERS: Chapter[] = [
     slugs: ['sam-dunes', 'khuri-dunes', 'desert-national-park'],
   },
   {
-    id: 'beyond',
+    id: 'safari',
     number: '06',
+    category: 'SAFARI & ADVENTURE',
+    title: 'Desert Experiences — Safari, Camp & Culture',
+    hindi: 'थार का रोमांच — सफारी और संस्कृति',
+    description: 'Experience discovery beyond the landmark directory: traditional camel trails, locally coordinated jeep outings and considered nights in the Thar.',
+    background: '/images/jaisalmer/safari/hero/jaisalmer-safari-hero.webp',
+    brightness: 'brightness-[0.48]',
+    experienceSlugs: ['camel-safari', 'jeep-safari', 'desert-camp'],
+  },
+  {
+    id: 'beyond',
+    number: '07',
     category: 'PILGRIMAGE & WATER',
     title: 'Beyond the Walls — Lakes, Forests & Border Shrines',
     hindi: 'जैसलमेर के परे — झीलें, वन और तीर्थ',
@@ -134,6 +147,17 @@ const PlaceCard: React.FC<{ place: JaisalmerPlace }> = ({ place }) => (
   </Link>
 );
 
+const ExperienceCard: React.FC<{ slug: string }> = ({ slug }) => {
+  const experience = JAISALMER_EXPERIENCES.find((item) => item.slug === slug);
+  if (!experience) return null;
+  return (
+    <Link to={`/jaisalmer/safari-adventure#${experience.slug}`} className="group flex flex-col overflow-hidden rounded-3xl border border-[#C9A24A]/30 bg-[#080B0F]/90 transition-all duration-300 hover:border-[#C9A24A]/70">
+      <div className="h-48 overflow-hidden"><img src={experience.image} alt={experience.imageAlt} width={experience.imageWidth} height={experience.imageHeight} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" /></div>
+      <div className="flex flex-1 flex-col p-5"><p className="font-devanagari text-xs text-[#D8B982]" lang="hi">{experience.hindiName}</p><h3 className="mt-2 font-serif text-lg font-bold text-[#F5EDE0]">{experience.name}</h3><p className="mt-3 flex-1 text-[11px] font-light leading-relaxed text-[#F5EDE0]/70">{experience.shortDescription}</p><span className="mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[#C9A24A]">Explore experience <ArrowUpRight className="h-3.5 w-3.5" /></span></div>
+    </Link>
+  );
+};
+
 export const JaisalmerExplorePage: React.FC = () => {
   const waUrl = getJourneyWhatsAppLink('Jaisalmer Heritage & Spiritual Journey');
 
@@ -146,7 +170,7 @@ export const JaisalmerExplorePage: React.FC = () => {
     <div className="bg-[#050709] min-h-screen perf-defer-sections">
       <PageHero
         breadcrumb="Explore Jaisalmer"
-        badgeText="18 Heritage Locations · 6 Editorial Chapters"
+        badgeText="18 Heritage Locations · 7 Editorial Chapters"
         hindiTagline="जैसलमेर की सम्पूर्ण यात्रा"
         englishTitle="Explore All of Jaisalmer"
         description="From the golden bastions of Sonar Qila to border shrines of the Thar — a curated guide to every heritage location, sacred site, and desert experience in and around Jaisalmer."
@@ -183,9 +207,9 @@ export const JaisalmerExplorePage: React.FC = () => {
         </div>
       </div>
 
-      {/* 6 Cinematic Chapters */}
+      {/* 7 Cinematic Chapters */}
       {CHAPTERS.map((ch, chIdx) => {
-        const places = getPlacesBySlug(ch.slugs);
+        const places = getPlacesBySlug(ch.slugs || []);
         return (
           <section
             key={ch.id}
@@ -234,7 +258,7 @@ export const JaisalmerExplorePage: React.FC = () => {
                 </p>
               </motion.div>
 
-              {/* Place cards */}
+              {/* Place or experience cards */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -250,6 +274,11 @@ export const JaisalmerExplorePage: React.FC = () => {
                 {places.map((place, pIdx) => (
                   <motion.div key={place.slug} variants={fadeUp} custom={pIdx}>
                     <PlaceCard place={place} />
+                  </motion.div>
+                ))}
+                {ch.experienceSlugs?.map((slug, pIdx) => (
+                  <motion.div key={slug} variants={fadeUp} custom={pIdx}>
+                    <ExperienceCard slug={slug} />
                   </motion.div>
                 ))}
               </motion.div>

@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test('homepage intro uses the matching poster and mobile delivery asset', async ({ page }) => {
+  await page.clock.install();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
 
