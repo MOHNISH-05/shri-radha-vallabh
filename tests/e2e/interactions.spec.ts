@@ -53,7 +53,7 @@ test('Plan Journey validates safely and generates the expected WhatsApp payload'
   await page.getByRole('button', { name: /Send Enquiry on WhatsApp/i }).click();
 
   const openedUrl = await page.locator('body').getAttribute('data-qa-opened-url');
-  expect(openedUrl).toMatch(/^https:\/\/wa\.me\/918209290716\?text=/);
+  expect(openedUrl).toMatch(/^https:\/\/wa\.me\/917976015517\?text=/);
   const decoded = decodeURIComponent(openedUrl || '');
   expect(decoded).toContain('Automated QA Traveller');
   expect(decoded).toContain('9876543210');
@@ -83,5 +83,5 @@ test('footer MNB credit exposes the isolated developer WhatsApp link', async ({ 
 
   await credit.focus();
   await expect(credit).toBeFocused();
-  await expect(page.locator('a[href^="https://wa.me/918209290716"]')).not.toHaveCount(0);
+  await expect(page.locator('a[href^="https://wa.me/917976015517"]')).not.toHaveCount(0);
 });

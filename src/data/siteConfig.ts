@@ -13,8 +13,9 @@ export const SITE_CONFIG = {
   copyrightYear: "2026",
 
   // ── Verified Contact Details (Single Source of Truth) ──
-  whatsappNumber: "+918209290716", // Confirmed Client WhatsApp
-  phoneNumber: "+918209290716",
+  whatsappNumber: "+917976015517", // Confirmed Client WhatsApp
+  phoneNumber: "+917976015517",
+  phoneDisplay: "+91 79760 15517",
   email: "shriradhavallabhtours@gmail.com", // Confirmed Client Email
   officeAddress: "Vyasa Para, On Fort, Jaisalmer, Rajasthan, India", // Confirmed Client Address
   instagramHandle: "@shri_radhavallabh2008",
@@ -75,4 +76,6 @@ export const getTharSoulWhatsAppLink = () => {
   const msg = `Hello ${SITE_CONFIG.brandName},\nI am interested in the Thar Soul 1 Day / Sunset Safari.\n\nPlease share the current price and availability.`;
   return getWhatsAppLink(msg);
 };
+
+export const getTelLink = () => `tel:${SITE_CONFIG.phoneNumber}`;
 

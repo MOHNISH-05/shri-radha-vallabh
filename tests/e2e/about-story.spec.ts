@@ -56,7 +56,7 @@ test('About page retains Plan Journey, WhatsApp and Maps conversion paths', asyn
   const content = page.locator('main');
 
   await expect(content.getByRole('link', { name: 'Plan a Journey', exact: true })).toHaveAttribute('href', '/plan-journey');
-  await expect(content.getByRole('link', { name: 'WhatsApp Us', exact: true })).toHaveAttribute('href', /^https:\/\/wa\.me\/918209290716/);
+  await expect(content.getByRole('link', { name: 'WhatsApp Us', exact: true })).toHaveAttribute('href', /^https:\/\/wa\.me\/917976015517/);
   const directions = content.getByRole('link', { name: `Get directions to ${MAPS_CONFIG.listingName} on Google Maps` });
   await expect(directions).toHaveCount(2);
   await expect(directions.first()).toHaveAttribute('href', MAPS_CONFIG.mapsUrl);

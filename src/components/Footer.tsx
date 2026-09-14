@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MAPS_CONFIG, SITE_CONFIG, getWhatsAppLink } from '../data/siteConfig';
-import { MessageCircle, MapPin, ArrowUpRight, Mail } from 'lucide-react';
+import { MessageCircle, MapPin, ArrowUpRight, Mail, Phone } from 'lucide-react';
 import { InstagramIcon } from './InstagramIcon';
 
 const MNB_WHATSAPP_URL = 'https://wa.me/917849931611?text=Hi%20Mohnish%2C%20I%20visited%20the%20Shri%20Radha%20Vallabh%20website%20and%20would%20like%20to%20connect%20with%20you.';
@@ -144,9 +144,18 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-[#25D366] transition-colors"
+                aria-label={`WhatsApp: ${SITE_CONFIG.phoneDisplay}`}
               >
                 <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0" />
-                <span>WhatsApp: {SITE_CONFIG.whatsappNumber}</span>
+                <span>WhatsApp: {SITE_CONFIG.phoneDisplay}</span>
+              </a>
+              <a
+                href={`tel:${SITE_CONFIG.phoneNumber}`}
+                className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors"
+                aria-label={`Call us: ${SITE_CONFIG.phoneDisplay}`}
+              >
+                <Phone className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                <span>Call: {SITE_CONFIG.phoneDisplay}</span>
               </a>
               <a
                 href={`mailto:${SITE_CONFIG.email}`}

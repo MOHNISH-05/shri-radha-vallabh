@@ -1,5 +1,5 @@
 import { JAISALMER_PLACES } from './jaisalmerPlaces.ts';
-import { MAPS_CONFIG } from './siteConfig.ts';
+import { MAPS_CONFIG, SITE_CONFIG } from './siteConfig.ts';
 
 export const SEO_ORIGIN = 'https://shri-radha-vallabh.vercel.app';
 export const BRAND_NAME = 'Shri Radha Vallabh Heritage & Journeys';
@@ -270,7 +270,7 @@ export const buildStructuredData = (seo: RouteSeo) => {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+918209290716',
+      telephone: SITE_CONFIG.phoneNumber,
       contactType: 'travel planning',
       availableLanguage: ['English', 'Hindi'],
     },

@@ -28,7 +28,7 @@ The website for **Shri Radha Vallabh (Heritage & Journeys)** has been fully conv
 - **Positioning:** `HERITAGE · SPIRITUALITY · CULTURE · JOURNEY`
 - **Tagline:** *"Journeys rooted in tradition. Designed for today."*
 - **Devanagari Tagline:** *आस्था से अनुभव तक।*
-- **Confirmed Phone & WhatsApp:** `+91 82092 90716` (Centralized in `src/data/siteConfig.ts`)
+- **Confirmed Phone & WhatsApp:** `+91 79760 15517` (Centralized in `src/data/siteConfig.ts`)
 - **Confirmed Instagram:** `@shri_radhavallabh2008` ([https://instagram.com/shri_radhavallabh2008](https://instagram.com/shri_radhavallabh2008))
 - **Primary Hero Visual:** Authentic photograph of Laxminath Ji shrine in Jaisalmer (`laxminath-hero.jpg`)
 - **Client Photography Manifest:** 14 high-resolution original client photos in `/images/jaisalmer/`
@@ -50,7 +50,7 @@ The website for **Shri Radha Vallabh (Heritage & Journeys)** has been fully conv
 4. **Eliminated Unverified Statistical Claims:**
    - Replaced generic claims (*"1000+ travelers"*, *"15 years experience"*) with qualitative value pillars in `StatsBar.tsx`.
 5. **Removed Unconfirmed Email & Address:**
-   - Cleaned footer contact points to focus exclusively on confirmed direct channels: WhatsApp (`+91 82092 90716`) and Instagram (`@shri_radhavallabh2008`).
+   - Cleaned footer contact points to focus exclusively on confirmed direct channels: WhatsApp (`+91 79760 15517`) and Instagram (`@shri_radhavallabh2008`).
 
 ---
 
@@ -62,7 +62,7 @@ All communication buttons throughout the application are powered by centralized 
 - **Packages Section & Modal:** Pre-filled message with specific package title and custom date enquiry.
 - **Custom Journey Planner Form:** Validates name and 10-digit mobile number; formats structured WhatsApp message with destination, travel date, travelers, journey type, and privacy assurance notice.
 - **Global Floating WhatsApp:** Positioned with `env(safe-area-inset-bottom)` support.
-- **Footer Direct Chat:** Instant connection to `+91 82092 90716`.
+- **Footer Direct Chat:** Instant connection to `+91 79760 15517`.
 
 ---
 

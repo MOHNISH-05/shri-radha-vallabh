@@ -785,7 +785,7 @@ const htmlContent = `<!DOCTYPE html>
           <div style="margin-top:3.5mm; display:flex; justify-content:space-between; font-size:6.8pt; color:rgba(245,237,224,0.6); letter-spacing:0.12em; text-transform:uppercase;">
             <span>Verified Client Source-of-Truth</span>
             <span>Founder-Led • 7+ Generations in Jaisalmer</span>
-            <span>Direct WhatsApp: +91 82092 90716</span>
+            <span>Direct WhatsApp: +91 79760 15517</span>
           </div>
         </div>
       </div>
@@ -1818,7 +1818,7 @@ const htmlContent = `<!DOCTYPE html>
           For Customized Tours • Chauffeur Transportation • Desert Glamping &amp; Safaris • B2B Contracting &amp; DMC Alliances
         </p>
         <div style="font-size:7.5pt; color:#E5C378; font-weight:600;">
-          Direct WhatsApp / Call Line: <span style="color:#FFFFFF; font-size:9.5pt; font-family:'Cinzel',serif; margin-left:1.5mm;">+91 82092 90716</span>
+          Direct WhatsApp / Call Line: <span style="color:#FFFFFF; font-size:9.5pt; font-family:'Cinzel',serif; margin-left:1.5mm;">+91 79760 15517</span>
           <span style="color:rgba(201,162,74,0.6); margin:0 2mm;">|</span>
           Email: <span style="color:#FFFFFF; font-size:8.5pt; font-family:'Plus Jakarta Sans',sans-serif;">shriradhavallabhtours@gmail.com</span>
         </div>
@@ -1843,7 +1843,7 @@ const htmlContent = `<!DOCTYPE html>
 
         <div class="contact-grid-cell">
           <span class="contact-lbl">Direct Phone &amp; WhatsApp (Confirmed)</span>
-          <span class="contact-val" style="color:#25D366; font-size:9.5pt;">+91 82092 90716</span>
+          <span class="contact-val" style="color:#25D366; font-size:9.5pt;">+91 79760 15517</span>
           <span style="font-size:6.8pt; color:rgba(245,237,224,0.7);">Instant messaging for B2B queries &amp; custom quotes</span>
         </div>
 

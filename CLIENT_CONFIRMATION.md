@@ -9,8 +9,8 @@ This document lists all verified business data and the remaining items that requ
 | Field | Value in Codebase | Source / Status |
 |---|---|---|
 | **Brand Name** | SHRI RADHA VALLABH — Heritage & Journeys | ✅ Verified Client Brand |
-| **WhatsApp Number** | `+918209290716` | ✅ Confirmed by Client |
-| **Phone Number** | `+918209290716` | ✅ Confirmed by Client |
+| **WhatsApp Number** | `+917976015517` | ✅ Confirmed by Client |
+| **Phone Number** | `+917976015517` | ✅ Confirmed by Client |
 | **Instagram Handle** | `@shri_radhavallabh2008` | ✅ Confirmed by Client |
 | **Instagram URL** | `https://instagram.com/shri_radhavallabh2008` | ✅ Confirmed by Client |
 | **Official Email** | `shriradhavallabhtours@gmail.com` | ✅ Confirmed by Client |
