@@ -17,6 +17,9 @@ const JaisalmerHistoryPage = lazy(() => import('./pages/JaisalmerHistoryPage').t
 const JaisalmerRiyasatPage = lazy(() => import('./pages/JaisalmerRiyasatPage').then((module) => ({ default: module.JaisalmerRiyasatPage })));
 const PlaceDetailPage = lazy(() => import('./pages/PlaceDetailPage').then((module) => ({ default: module.PlaceDetailPage })));
 const PackagesPage = lazy(() => import('./pages/PackagesPage').then((module) => ({ default: module.PackagesPage })));
+const JaisalmerPackageDetailPage = lazy(() => import('./pages/JaisalmerPackageDetailPage').then((module) => ({ default: module.JaisalmerPackageDetailPage })));
+const SafariExperiencesPage = lazy(() => import('./pages/SafariExperiencesPage').then((module) => ({ default: module.SafariExperiencesPage })));
+const TharSoulPage = lazy(() => import('./pages/TharSoulPage').then((module) => ({ default: module.TharSoulPage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then((module) => ({ default: module.AboutPage })));
 const StoriesPage = lazy(() => import('./pages/StoriesPage').then((module) => ({ default: module.StoriesPage })));
 const GalleryPage = lazy(() => import('./pages/GalleryPage').then((module) => ({ default: module.GalleryPage })));
@@ -132,6 +135,10 @@ export const AppContent: React.FC = () => {
           <Route path="/jaisalmer/places/:slug" element={<PlaceDetailPage />} />
 
           <Route path="/packages" element={<PackagesPage />} />
+          <Route path="/packages/jaisalmer-3-nights-4-days" element={<JaisalmerPackageDetailPage />} />
+          <Route path="/packages/rajwadi" element={<Navigate to="/packages/jaisalmer-3-nights-4-days?tier=maharawal" replace />} />
+          <Route path="/safari" element={<SafariExperiencesPage />} />
+          <Route path="/safari/thar-soul" element={<TharSoulPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/experience" element={<Navigate to="/stories" replace />} />
           <Route path="/stories" element={<StoriesPage />} />

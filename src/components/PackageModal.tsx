@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { X, Calendar, CheckCircle, MapPin, Sparkles, MessageCircle } from 'lucide-react';
 import type { Package } from '../data/journeys';
 import { getWhatsAppLink } from '../data/siteConfig';
@@ -123,15 +124,24 @@ export const PackageModal: React.FC<PackageModalProps> = ({ pkg, onClose }) => {
               Tariff: {pkg.startingPrice}
             </span>
           </div>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:brightness-110 text-white font-bold text-[10px] uppercase tracking-wider transition-all shadow-lg text-center flex items-center justify-center gap-2"
-          >
-            <MessageCircle className="w-4 h-4 fill-white stroke-none" />
-            <span>Enquire on WhatsApp</span>
-          </a>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <Link
+              to="/packages/jaisalmer-3-nights-4-days"
+              onClick={onClose}
+              className="flex-1 sm:flex-none px-4 py-3 rounded-full bg-[#0B0E14] border border-[#C9A24A]/40 text-[#F5EDE0] hover:bg-[#C9A24A] hover:text-[#050709] font-bold text-[10px] uppercase tracking-wider transition-all text-center"
+            >
+              All 5 Tiers
+            </Link>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-none px-5 py-3 rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:brightness-110 text-white font-bold text-[10px] uppercase tracking-wider transition-all shadow-lg text-center flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+              <span>Enquire</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

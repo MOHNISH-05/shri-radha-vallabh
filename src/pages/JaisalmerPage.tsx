@@ -20,14 +20,22 @@ import {
   Crown,
   Music4,
   ShieldCheck,
+  Calendar,
+  Sunset,
 } from 'lucide-react';
 import { JAISALMER_PLACES } from '../data/jaisalmerPlaces';
 import { JAISALMER_EXPERIENCES } from '../data/jaisalmerExperiences';
 import { ACTIVE_JOURNEY } from '../data/journeys';
 import type { Package } from '../data/journeys';
+import {
+  PACKAGE_TIERS_LIST,
+  TRAVEL_TYPES_LIST,
+  getTravelType,
+} from '../data/jaisalmerPackages';
+import type { TravelTypeKey } from '../data/jaisalmerPackages';
 import { PackageModal } from '../components/PackageModal';
 import { GalleryLightbox } from '../components/GalleryLightbox';
-import { getJourneyWhatsAppLink } from '../data/siteConfig';
+import { getJourneyWhatsAppLink, getPackageWhatsAppLink, getWhatsAppLink } from '../data/siteConfig';
 
 preload('/assets/optimized/laxminath-hero.webp', {
   as: 'image',
@@ -37,6 +45,7 @@ preload('/assets/optimized/laxminath-hero.webp', {
 
 export const JaisalmerPage: React.FC = () => {
   const [selectedPkg, setSelectedPkg] = useState<Package | null>(null);
+  const [packageAudience, setPackageAudience] = useState<TravelTypeKey>('couple');
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<{ title: string; location: string; category: string; image: string } | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
@@ -299,11 +308,16 @@ export const JaisalmerPage: React.FC = () => {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          03. CURATED JAISALMER JOURNEYS (PACKAGES IMMEDIATELY AFTER SANDSTONE!)
+          03. CURATED JAISALMER JOURNEYS (NEW VERIFIED PACKAGE SYSTEM)
           ───────────────────────────────────────────────────────────── */}
       <section id="packages" className="relative py-16 sm:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src="/images/jaisalmer/Jaisalmer Photos/patawa haveli1.jpeg" alt="" className="w-full h-full object-cover brightness-[0.28]" loading="lazy" />
+          <img
+            src="/images/jaisalmer/Jaisalmer Photos/patawa haveli1.jpeg"
+            alt=""
+            className="w-full h-full object-cover brightness-[0.28]"
+            loading="lazy"
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050709]/90 via-[#050709]/70 to-[#050709]/92" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -311,13 +325,13 @@ export const JaisalmerPage: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
               <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-[#C9A24A]">
-                CURATED TRAVEL EXPERIENCES
+                CURATED TRAVEL EXPERIENCES · 3N/4D TIERS &amp; CUSTOM
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5EDE0]">
                 Curated Jaisalmer Journeys
               </h2>
               <p className="font-devanagari text-base text-[#D8B982]">
-                हर यात्रा की अपनी एक कहानी है।
+                हर यात्रा की अपनी एक कहानी है — युगल, परिवार, बैचलर एवं समूह।
               </p>
               <p className="text-xs sm:text-sm text-[#F5EDE0]/70 font-light max-w-xl">
                 Thoughtfully paced itineraries blending living heritage, private guided fort walks, sacred temple visits, and luxury desert glamping.
@@ -328,62 +342,94 @@ export const JaisalmerPage: React.FC = () => {
               to="/packages"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#C9A24A] hover:text-white transition-colors"
             >
-              <span>View All Tour Packages</span>
+              <span>View All Packages &amp; Compare Tiers</span>
               <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
 
+          {/* Audience Filter Pills */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-[#080B0F]/90 border border-[#C9A24A]/30">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#C9A24A] shrink-0">
+                TRAVELLING WITH:
+              </span>
+              <span className="text-xs text-[#F5EDE0]/80 hidden md:inline">
+                {getTravelType(packageAudience).tagline}
+              </span>
+            </div>
+
+            <div className="inline-flex p-1 rounded-full bg-[#0D1117] border border-[#C9A24A]/30 flex-wrap gap-1">
+              {TRAVEL_TYPES_LIST.map((type) => {
+                const isSel = type.id === packageAudience;
+                return (
+                  <button
+                    key={type.id}
+                    onClick={() => setPackageAudience(type.id)}
+                    className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer min-h-[36px] ${
+                      isSel
+                        ? 'bg-[#C9A24A] text-[#050709] shadow-md'
+                        : 'text-[#F5EDE0]/70 hover:text-[#C9A24A]'
+                    }`}
+                  >
+                    <span>{type.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Package Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {ACTIVE_JOURNEY.packages.map((pkg, idx) => {
-              const pkgWaUrl = getJourneyWhatsAppLink(`Jaisalmer — ${pkg.title}`);
+            {/* 1. Gorbandh (Basic) */}
+            {(() => {
+              const tier = PACKAGE_TIERS_LIST[0]; // Gorbandh
+              const audLabel = getTravelType(packageAudience).label;
+              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days');
 
               return (
                 <motion.div
-                  key={pkg.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  transition={{ duration: 0.6 }}
                   className="bg-[#0D1117] rounded-3xl border border-[#C9A24A]/30 overflow-hidden shadow-xl hover:border-[#C9A24A]/80 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5"
                 >
-                  {/* Image */}
                   <div className="relative h-56 overflow-hidden">
                     <img
-                      src={pkg.image}
-                      alt={pkg.title}
+                      src={tier.image}
+                      alt={tier.imageAlt}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117] via-transparent to-black/30" />
-                    
-                    <div className="absolute top-4 left-4 bg-[#080B0F]/90 backdrop-blur-md px-3 py-1 rounded-full border border-[#C9A24A]/40 text-[#C9A24A] text-[10px] font-bold tracking-wider">
-                      {pkg.duration}
+                    <div className="absolute top-4 left-4 bg-[#C9A24A] text-[#050709] px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+                      {tier.tier}
                     </div>
-
+                    <div className="absolute top-4 right-4 bg-[#080B0F]/90 backdrop-blur-md px-3 py-1 rounded-full border border-[#C9A24A]/40 text-[#D8B982] text-[10px] font-bold tracking-wider flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-[#C9A24A]" />
+                      <span>3N / 4D</span>
+                    </div>
                     <div className="absolute bottom-3 left-4 right-4">
-                      <span className="text-[9px] uppercase tracking-widest text-[#D8B982] font-semibold block">
-                        {pkg.tagline}
+                      <span className="text-[9px] uppercase tracking-widest text-[#C9A24A] font-bold block">
+                        {tier.tagline}
                       </span>
-                      <h3 className="font-serif text-lg font-bold text-[#F5EDE0] leading-snug">
-                        {pkg.title}
+                      <h3 className="font-serif text-xl font-bold text-[#F5EDE0] leading-snug">
+                        {tier.name}
                       </h3>
+                      <span className="font-devanagari text-xs text-[#D8B982]/80">{tier.hindiName}</span>
                     </div>
                   </div>
 
-                  {/* Body Content */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
                     <p className="text-xs text-[#F5EDE0]/80 font-light leading-relaxed">
-                      {pkg.description}
+                      {tier.description}
                     </p>
-
-                    {/* Highlights */}
                     <div className="space-y-2 pt-2 border-t border-[#C9A24A]/15">
                       <span className="text-[9px] uppercase font-bold text-[#C9A24A] tracking-wider block">
-                        Package Inclusions
+                        Included Highlights
                       </span>
                       <div className="space-y-1.5">
-                        {pkg.highlights.map((h, i) => (
+                        {tier.inclusionsSummary.slice(0, 3).map((h, i) => (
                           <div key={i} className="flex items-center gap-2 text-xs text-[#F5EDE0]/85 font-light">
                             <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A24A] shrink-0" />
                             <span className="leading-snug">{h}</span>
@@ -392,36 +438,28 @@ export const JaisalmerPage: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Actions */}
                     <div className="pt-4 border-t border-[#C9A24A]/20 space-y-3">
                       <div className="flex items-center justify-between">
                         <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
                         <div className="text-right">
-                          <span className="font-serif text-sm sm:text-base font-bold gold-text">
-                            {pkg.startingPrice}
-                          </span>
-                          <span className="text-[9px] text-[#C9A24A]/70 block">
-                            Customized per dates &amp; group
-                          </span>
+                          <span className="font-serif text-sm sm:text-base font-bold gold-text">Price on Request</span>
+                          <span className="text-[9px] text-[#C9A24A]/70 block">Customized per dates &amp; party</span>
                         </div>
                       </div>
-
                       <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => setSelectedPkg(pkg)}
+                        <Link
+                          to={`/packages/jaisalmer-3-nights-4-days?type=${packageAudience}&tier=${tier.id}`}
                           className="flex-1 py-3 rounded-full bg-[#080B0F] border border-[#C9A24A]/40 text-[#F5EDE0] hover:bg-[#C9A24A] hover:text-[#080B0F] font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer min-h-[44px] touch-manipulation active:scale-95"
                         >
                           <span>VIEW ITINERARY</span>
                           <ChevronRight className="w-3.5 h-3.5" />
-                        </button>
-
+                        </Link>
                         <a
                           href={pkgWaUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-md active:scale-95 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
-                          aria-label={`Enquire ${pkg.title} on WhatsApp`}
-                          title="Enquire on WhatsApp"
+                          aria-label={`Enquire ${tier.name} on WhatsApp`}
                         >
                           <MessageCircle className="w-4 h-4 fill-white stroke-none" />
                         </a>
@@ -430,11 +468,407 @@ export const JaisalmerPage: React.FC = () => {
                   </div>
                 </motion.div>
               );
-            })}
+            })()}
+
+            {/* 2. Morchan (Deluxe) */}
+            {(() => {
+              const tier = PACKAGE_TIERS_LIST[2]; // Morchan
+              const audLabel = getTravelType(packageAudience).label;
+              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days');
+
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="bg-[#0D1117] rounded-3xl border border-[#C9A24A]/45 overflow-hidden shadow-xl hover:border-[#C9A24A] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={tier.image}
+                      alt={tier.imageAlt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117] via-transparent to-black/30" />
+                    <div className="absolute top-4 left-4 bg-[#C9A24A] text-[#050709] px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+                      {tier.tier}
+                    </div>
+                    <div className="absolute top-4 right-4 bg-[#080B0F]/90 backdrop-blur-md px-3 py-1 rounded-full border border-[#C9A24A]/40 text-[#D8B982] text-[10px] font-bold tracking-wider flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-[#C9A24A]" />
+                      <span>3N / 4D</span>
+                    </div>
+                    <div className="absolute bottom-3 left-4 right-4">
+                      <span className="text-[9px] uppercase tracking-widest text-[#C9A24A] font-bold block">
+                        {tier.tagline}
+                      </span>
+                      <h3 className="font-serif text-xl font-bold text-[#F5EDE0] leading-snug">
+                        {tier.name}
+                      </h3>
+                      <span className="font-devanagari text-xs text-[#D8B982]/80">{tier.hindiName}</span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
+                    <p className="text-xs text-[#F5EDE0]/80 font-light leading-relaxed">
+                      {tier.description}
+                    </p>
+                    <div className="space-y-2 pt-2 border-t border-[#C9A24A]/15">
+                      <span className="text-[9px] uppercase font-bold text-[#C9A24A] tracking-wider block">
+                        Included Highlights
+                      </span>
+                      <div className="space-y-1.5">
+                        {tier.inclusionsSummary.slice(0, 3).map((h, i) => (
+                          <div key={i} className="flex items-center gap-2 text-xs text-[#F5EDE0]/85 font-light">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A24A] shrink-0" />
+                            <span className="leading-snug">{h}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-[#C9A24A]/20 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
+                        <div className="text-right">
+                          <span className="font-serif text-sm sm:text-base font-bold gold-text">Price on Request</span>
+                          <span className="text-[9px] text-[#C9A24A]/70 block">Customized per dates &amp; party</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Link
+                          to={`/packages/jaisalmer-3-nights-4-days?type=${packageAudience}&tier=${tier.id}`}
+                          className="flex-1 py-3 rounded-full bg-[#080B0F] border border-[#C9A24A]/40 text-[#F5EDE0] hover:bg-[#C9A24A] hover:text-[#080B0F] font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer min-h-[44px] touch-manipulation active:scale-95"
+                        >
+                          <span>VIEW ITINERARY</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
+                        <a
+                          href={pkgWaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-md active:scale-95 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
+                          aria-label={`Enquire ${tier.name} on WhatsApp`}
+                        >
+                          <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })()}
+
+            {/* 3. Maharawal (Executive) */}
+            {(() => {
+              const tier = PACKAGE_TIERS_LIST[4]; // Maharawal
+              const audLabel = getTravelType(packageAudience).label;
+              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days');
+
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="bg-[#0D1117] rounded-3xl border border-[#C9A24A]/60 overflow-hidden shadow-xl hover:border-[#C9A24A] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={tier.image}
+                      alt={tier.imageAlt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117] via-transparent to-black/30" />
+                    <div className="absolute top-4 left-4 bg-[#C9A24A] text-[#050709] px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase flex items-center gap-1">
+                      <Crown className="w-3 h-3" />
+                      <span>{tier.tier}</span>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-[#080B0F]/90 backdrop-blur-md px-3 py-1 rounded-full border border-[#C9A24A]/40 text-[#D8B982] text-[10px] font-bold tracking-wider flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-[#C9A24A]" />
+                      <span>3N / 4D</span>
+                    </div>
+                    <div className="absolute bottom-3 left-4 right-4">
+                      <span className="text-[9px] uppercase tracking-widest text-[#C9A24A] font-bold block">
+                        {tier.tagline}
+                      </span>
+                      <h3 className="font-serif text-xl font-bold text-[#F5EDE0] leading-snug">
+                        {tier.name}
+                      </h3>
+                      <span className="font-devanagari text-xs text-[#D8B982]/80">{tier.hindiName}</span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
+                    <p className="text-xs text-[#F5EDE0]/80 font-light leading-relaxed">
+                      {tier.description}
+                    </p>
+                    <div className="space-y-2 pt-2 border-t border-[#C9A24A]/15">
+                      <span className="text-[9px] uppercase font-bold text-[#C9A24A] tracking-wider block">
+                        Included Highlights
+                      </span>
+                      <div className="space-y-1.5">
+                        {tier.inclusionsSummary.slice(0, 3).map((h, i) => (
+                          <div key={i} className="flex items-center gap-2 text-xs text-[#F5EDE0]/85 font-light">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A24A] shrink-0" />
+                            <span className="leading-snug">{h}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-[#C9A24A]/20 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
+                        <div className="text-right">
+                          <span className="font-serif text-sm sm:text-base font-bold gold-text">Price on Request</span>
+                          <span className="text-[9px] text-[#C9A24A]/70 block">Customized per dates &amp; party</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Link
+                          to={`/packages/jaisalmer-3-nights-4-days?type=${packageAudience}&tier=${tier.id}`}
+                          className="flex-1 py-3 rounded-full bg-[#080B0F] border border-[#C9A24A]/40 text-[#F5EDE0] hover:bg-[#C9A24A] hover:text-[#080B0F] font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer min-h-[44px] touch-manipulation active:scale-95"
+                        >
+                          <span>VIEW ITINERARY</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
+                        <a
+                          href={pkgWaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-md active:scale-95 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
+                          aria-label={`Enquire ${tier.name} on WhatsApp`}
+                        >
+                          <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })()}
+
+            {/* 4. Thar Soul 1-Day Sunset Safari */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="bg-[#0D1117] rounded-3xl border border-[#C9A24A]/35 overflow-hidden shadow-xl hover:border-[#C9A24A]/80 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5"
+            >
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src="/images/jaisalmer/safari/camel-safari/camel-safari-jaisalmer.webp"
+                  alt="Thar Soul Sunset Safari"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117] via-transparent to-black/30" />
+                <div className="absolute top-4 left-4 bg-[#C9A24A] text-[#050709] px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase flex items-center gap-1">
+                  <Sunset className="w-3 h-3" />
+                  <span>DEDICATED SAFARI</span>
+                </div>
+                <div className="absolute top-4 right-4 bg-[#080B0F]/90 backdrop-blur-md px-3 py-1 rounded-full border border-[#C9A24A]/40 text-[#D8B982] text-[10px] font-bold tracking-wider">
+                  2:30 PM – 9:30 PM
+                </div>
+                <div className="absolute bottom-3 left-4 right-4">
+                  <span className="text-[9px] uppercase tracking-widest text-[#C9A24A] font-bold block">
+                    PURE THAR MAGIC · 1 DAY
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-[#F5EDE0] leading-snug">
+                    Thar Soul — Sunset Safari
+                  </h3>
+                  <span className="font-devanagari text-xs text-[#D8B982]/80">थार सोल — सूर्यास्त सफारी</span>
+                </div>
+              </div>
+
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
+                <p className="text-xs text-[#F5EDE0]/80 font-light leading-relaxed">
+                  An unhurried afternoon desert trail through untouched dunes. Features desert village life, traditional chai &amp; snacks, camel trek, and golden sunset.
+                </p>
+                <div className="space-y-2 pt-2 border-t border-[#C9A24A]/15">
+                  <span className="text-[9px] uppercase font-bold text-[#C9A24A] tracking-wider block">
+                    Safari Highlights
+                  </span>
+                  <div className="space-y-1.5">
+                    {['Desert Village Cultural Walk', 'Warm Chai & Local Savouries', 'Sunset Camel Safari on Dunes'].map((h, i) => (
+                      <div key={i} className="flex items-center gap-2 text-xs text-[#F5EDE0]/85 font-light">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A24A] shrink-0" />
+                        <span className="leading-snug">{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-[#C9A24A]/20 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
+                    <div className="text-right">
+                      <span className="font-serif text-sm sm:text-base font-bold gold-text">Price on Request</span>
+                      <span className="text-[9px] text-[#C9A24A]/70 block">Afternoon 7-hour experience</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      to="/safari/thar-soul"
+                      className="flex-1 py-3 rounded-full bg-[#080B0F] border border-[#C9A24A]/40 text-[#F5EDE0] hover:bg-[#C9A24A] hover:text-[#080B0F] font-semibold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer min-h-[44px] touch-manipulation active:scale-95"
+                    >
+                      <span>VIEW SAFARI</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <a
+                      href={getJourneyWhatsAppLink('Jaisalmer — Thar Soul 1-Day Sunset Safari')}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-md active:scale-95 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
+                      aria-label="Enquire Thar Soul on WhatsApp"
+                    >
+                      <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 5. Custom Tailor-Made Package Card (Any Group, Couple, Bachelor, Family) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="bg-gradient-to-br from-[#0D1117] via-[#121927] to-[#080B0F] rounded-3xl border-2 border-[#C9A24A] overflow-hidden shadow-2xl flex flex-col justify-between group hover:-translate-y-1.5"
+            >
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src="/images/jaisalmer/Jaisalmer Photos/bada bagh.jpeg"
+                  alt="Custom Jaisalmer Package"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117] via-[#0D1117]/40 to-transparent" />
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-[#C9A24A] to-[#AA771C] text-[#050709] px-3.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase flex items-center gap-1 shadow-lg">
+                  <Sparkles className="w-3 h-3" />
+                  <span>ANY GROUP OR COUPLE</span>
+                </div>
+                <div className="absolute bottom-3 left-4 right-4">
+                  <span className="text-[9px] uppercase tracking-widest text-[#C9A24A] font-bold block">
+                    TAILORED TO YOUR WISHES
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-[#F5EDE0] leading-snug">
+                    Bespoke Custom Package
+                  </h3>
+                  <span className="font-devanagari text-xs text-[#D8B982]/80">कस्टम टूर पैकेज — आपकी पसंद, आपका समय</span>
+                </div>
+              </div>
+
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
+                <p className="text-xs text-[#F5EDE0]/85 font-light leading-relaxed">
+                  Design your exact trip — whether a quiet romantic couple getaway, a joyful family vacation with kids &amp; elders, an adventurous bachelor crew dune trip, or a large group / corporate pilgrimage.
+                </p>
+                <div className="space-y-2 pt-2 border-t border-[#C9A24A]/25">
+                  <span className="text-[9px] uppercase font-bold text-[#C9A24A] tracking-wider block">
+                    Custom Options
+                  </span>
+                  <div className="space-y-1.5">
+                    {[
+                      'Couple · Family · Bachelor · Large Group',
+                      'Choice of 2N, 3N, 4N, or 5N+ nights',
+                      'Heritage Haveli, Luxury Camp, or Royal Palace',
+                      'Private AC Sedan, Innova Crysta, or Tempo',
+                    ].map((h, i) => (
+                      <div key={i} className="flex items-center gap-2 text-xs text-[#F5EDE0]/90 font-light">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A24A] shrink-0" />
+                        <span className="leading-snug">{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-[#C9A24A]/20 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
+                    <div className="text-right">
+                      <span className="font-serif text-sm sm:text-base font-bold text-[#C9A24A]">Custom Quote</span>
+                      <span className="text-[9px] text-[#C9A24A]/70 block">Tailored to party size &amp; dates</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      to="/packages#custom-package-builder"
+                      className="flex-1 py-3 rounded-full bg-[#C9A24A] hover:bg-[#AA771C] text-[#050709] font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer min-h-[44px] shadow-lg active:scale-95"
+                    >
+                      <span>CUSTOMIZE PACKAGE</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <a
+                      href={getWhatsAppLink(`Namaste Shri Radha Vallabh 🙏\nI want to discuss a customized Jaisalmer package for my upcoming journey (${getTravelType(packageAudience).label}).`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-md active:scale-95 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation"
+                      aria-label="Enquire custom package on WhatsApp"
+                    >
+                      <MessageCircle className="w-4 h-4 fill-white stroke-none" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 6. View All 5 Tiers & Spiritual Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-[#080B0F]/90 rounded-3xl border border-[#C9A24A]/30 overflow-hidden shadow-xl p-6 flex flex-col justify-between space-y-6 hover:border-[#C9A24A]/70 transition-all"
+            >
+              <div className="space-y-3">
+                <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-[#C9A24A] block">
+                  ALL 5 TIERS &amp; PILGRIMAGES
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[#F5EDE0]">
+                  Explore All Packages
+                </h3>
+                <p className="text-xs text-[#F5EDE0]/75 font-light leading-relaxed">
+                  Compare all 5 Jaisalmer confirmed tiers (Gorbandh, Jharokha, Morchan, Leheriya, Maharawal) and explore spiritual pilgrimage circuits including Char Dham, Vrindavan, and Ayodhya &amp; Kashi.
+                </p>
+                <div className="space-y-2 pt-2">
+                  {['All 5 Jaisalmer Tiers Compared', 'Custom Itinerary Builder', 'Char Dham & Vrindavan Yatras', 'Human Coordinator Support'].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs text-[#D8B982]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A24A]" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-3 pt-4 border-t border-[#C9A24A]/20">
+                <Link
+                  to="/packages"
+                  className="w-full py-3.5 rounded-full bg-[#080B0F] border border-[#C9A24A] text-[#C9A24A] hover:bg-[#C9A24A] hover:text-[#050709] font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md"
+                >
+                  <span>Open Full Packages Portal</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href={getWhatsAppLink('Namaste Shri Radha Vallabh 🙏\nI would like to explore all Jaisalmer tour packages and custom options.')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 rounded-full bg-[#0D1117] border border-[#25D366]/50 text-[#25D366] hover:bg-[#25D366] hover:text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>WhatsApp Coordinator</span>
+                </a>
+              </div>
+            </motion.div>
           </div>
 
         </div>
       </section>
+
 
       {/* ─────────────────────────────────────────────────────────────
           04. EXPLORE JAISALMER (6 HIGHLIGHTS ONLY)
@@ -879,7 +1313,12 @@ export const JaisalmerPage: React.FC = () => {
       {/* ─────────────────────────────────────────────────────────────
           10. PHOTOGRAPHIC GALLERY & LIGHTBOX
           ───────────────────────────────────────────────────────────── */}
-      <section id="gallery" className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section id="gallery" className="relative py-16 sm:py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src="/images/jaisalmer/Jaisalmer Photos/gadisar.JPG" alt="" className="w-full h-full object-cover brightness-[0.28]" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050709]/90 via-[#050709]/65 to-[#050709]/90" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         <div className="flex items-center justify-between">
           <div className="space-y-1">
@@ -923,13 +1362,18 @@ export const JaisalmerPage: React.FC = () => {
           ))}
         </div>
 
+        </div>{/* close z-10 inner */}
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
           11. FREQUENTLY ASKED QUESTIONS
           ───────────────────────────────────────────────────────────── */}
-      <section id="faqs" className="py-16 sm:py-24 bg-[#080B0F] border-y border-[#C9A24A]/20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section id="faqs" className="relative py-16 sm:py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src="/images/jaisalmer/Jaisalmer Photos/desertsam1.JPG" alt="" className="w-full h-full object-cover brightness-[0.22]" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050709]/92 via-[#050709]/75 to-[#050709]/94" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center space-y-2">
             <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-[#C9A24A]">
@@ -1006,7 +1450,7 @@ export const JaisalmerPage: React.FC = () => {
             })}
           </div>
 
-        </div>
+        </div>{/* close z-10 inner wrapper */}
       </section>
 
       {/* ─────────────────────────────────────────────────────────────

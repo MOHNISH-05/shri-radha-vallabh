@@ -54,7 +54,7 @@ export const JOURNEYS_DATA: Record<string, Journey> = {
       location: "Jaisalmer Heritage Trail",
       category: p.category.toUpperCase(),
       image: p.url,
-      thumbnail: `/images/jaisalmer/thumbnails/${p.id}.webp`,
+      thumbnail: p.url,
     })),
     packages: [
       {

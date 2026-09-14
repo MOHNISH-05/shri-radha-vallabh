@@ -13,6 +13,8 @@ This document lists all verified business data and the remaining items that requ
 | **Phone Number** | `+918209290716` | ✅ Confirmed by Client |
 | **Instagram Handle** | `@shri_radhavallabh2008` | ✅ Confirmed by Client |
 | **Instagram URL** | `https://instagram.com/shri_radhavallabh2008` | ✅ Confirmed by Client |
+| **Official Email** | `shriradhavallabhtours@gmail.com` | ✅ Confirmed by Client |
+| **Physical Office Address** | Vyasa Para, On Fort, Jaisalmer, Rajasthan, India | ✅ Confirmed by Client |
 | **Core Deity Visual** | Authentic Laxminath Ji deity photo (`/assets/laxminath-hero.jpg`) | ✅ Confirmed Source of Truth |
 | **Jaisalmer Photography** | 14 Original Google Drive Client Photos (`/images/jaisalmer/`) | ✅ Verified Client Assets |
 | **Active Season** | Jaisalmer Heritage & Desert Glamping | ✅ Confirmed Active Campaign |
@@ -24,19 +26,18 @@ This document lists all verified business data and the remaining items that requ
 
 The following items are currently formatted as **safe placeholders** with explicit disclaimers:
 
-1. **Package Prices**: Displayed as `"Starting from ₹18,500*"` with disclaimer `*Enquire for latest rates & customized dates`.
+1. **Package Prices**: Displayed as `"Tariff: Price on Request"` with direct WhatsApp enquiry buttons.
 2. **Testimonials**: Framed as general guest archetype reviews with monogram initials (`HC`, `DF`, `ST`) rather than false individual identities.
-3. **Trust Indicators**: Centered on service quality (*Curated Experiences, Personal Attention, Sacred Journeys*) rather than unverified numeric claims (*"10,000+ travelers"*).
-4. **Email Address**: Set to `contact@shriradhavallabh.com` in `siteConfig.ts` pending domain setup.
+3. **Trust Indicators**: Centered on service quality (*Curated Experiences, Personal Attention, Sacred Journeys*) rather than unverified numeric claims.
 
 ---
 
 ## 3. Client Action Checklist Before Public Launch
 
-Please review and confirm the following items:
+Please review and confirm the remaining items:
 
-- [ ] **Official Email Address**: Confirm preferred email (e.g. `info@shriradhavallabh.com` or Gmail address).
-- [ ] **Physical Office Address**: Confirm official registered address for the website footer.
+- [x] **Official Email Address**: `shriradhavallabhtours@gmail.com` ✅ **Confirmed**
+- [x] **Physical Office Address**: `Vyasa Para, On Fort, Jaisalmer, Rajasthan` ✅ **Confirmed**
 - [ ] **Commercial Package Pricing**: Provide confirmed tariff rates or keep "Custom Quote on Request".
 - [ ] **Hotel & Stay Partners**: Confirm heritage hotel / desert camp partner names if they should be featured.
 - [ ] **Real Guest Testimonials**: Provide 3–5 real guest reviews with photos or permission to display.

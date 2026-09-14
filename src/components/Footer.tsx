@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MAPS_CONFIG, SITE_CONFIG, getWhatsAppLink } from '../data/siteConfig';
-import { MessageCircle, MapPin, ArrowUpRight } from 'lucide-react';
+import { MessageCircle, MapPin, ArrowUpRight, Mail } from 'lucide-react';
 import { InstagramIcon } from './InstagramIcon';
 
 const MNB_WHATSAPP_URL = 'https://wa.me/917849931611?text=Hi%20Mohnish%2C%20I%20visited%20the%20Shri%20Radha%20Vallabh%20website%20and%20would%20like%20to%20connect%20with%20you.';
@@ -12,7 +12,9 @@ export const Footer: React.FC = () => {
   const quickLinks = [
     { name: 'Journeys', path: '/journeys' },
     { name: 'Jaisalmer', path: '/jaisalmer' },
-    { name: 'Packages', path: '/packages' },
+    { name: 'Safari Experiences', path: '/safari' },
+    { name: 'Thar Soul Safari', path: '/safari/thar-soul' },
+    { name: 'Packages (3N/4D)', path: '/packages' },
     { name: 'About', path: '/about' },
     { name: 'Stories & Experience', path: '/stories' },
     { name: 'Visual Gallery', path: '/gallery' },
@@ -20,6 +22,8 @@ export const Footer: React.FC = () => {
   ];
 
   const futureDestinations = [
+    { name: 'Jaisalmer 3N/4D Packages', path: '/packages/jaisalmer-3-nights-4-days' },
+    { name: 'Thar Soul 1-Day Sunset Safari', path: '/safari/thar-soul' },
     { name: 'Jaisalmer Experience Hub', path: '/jaisalmer' },
     { name: 'Jaisalmer All 18 Landmarks', path: '/jaisalmer/explore' },
     { name: 'Jaisalmer History & Riyasat', path: '/jaisalmer/history' },
@@ -143,6 +147,13 @@ export const Footer: React.FC = () => {
               >
                 <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0" />
                 <span>WhatsApp: {SITE_CONFIG.whatsappNumber}</span>
+              </a>
+              <a
+                href={`mailto:${SITE_CONFIG.email}`}
+                className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors"
+              >
+                <Mail className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                <span>{SITE_CONFIG.email}</span>
               </a>
               <a
                 href={SITE_CONFIG.instagramUrl}

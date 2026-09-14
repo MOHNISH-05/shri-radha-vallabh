@@ -19,6 +19,8 @@ playwright-report/
 .env.*
 !.env.example
 .vercel
+scratch/
+~$*
 
 # Owner research notes and unused identity-review candidates (kept locally, never published)
 public/images/riyasat/New Text Document.txt

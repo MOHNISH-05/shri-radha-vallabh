@@ -33,11 +33,13 @@ test('robots and sitemap remain available and canonical', async ({ request }) =>
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
-  expect((xml.match(/<url>/g) || []).length).toBe(31);
+  expect((xml.match(/<url>/g) || []).length).toBe(34);
   expect(xml).toContain(`${PRODUCTION_ORIGIN}/jaisalmer/safari-adventure`);
+  expect(xml).toContain(`${PRODUCTION_ORIGIN}/packages/jaisalmer-3-nights-4-days`);
+  expect(xml).toContain(`${PRODUCTION_ORIGIN}/safari/thar-soul`);
   expect(xml).toContain(`${PRODUCTION_ORIGIN}/jaisalmer/places/mandir-palace`);
   expect(xml).toContain('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"');
-  expect((xml.match(/<image:image>/g) || []).length).toBe(31);
+  expect((xml.match(/<image:image>/g) || []).length).toBe(34);
   expect(xml).not.toContain(`${PRODUCTION_ORIGIN}/experience`);
 });
 

@@ -15,10 +15,11 @@ export const SITE_CONFIG = {
   // ── Verified Contact Details (Single Source of Truth) ──
   whatsappNumber: "+918209290716", // Confirmed Client WhatsApp
   phoneNumber: "+918209290716",
-  email: "contact@shriradhavallabh.com", // [TODO: Client confirmation for custom domain email]
+  email: "shriradhavallabhtours@gmail.com", // Confirmed Client Email
+  officeAddress: "Vyasa Para, On Fort, Jaisalmer, Rajasthan, India", // Confirmed Client Address
   instagramHandle: "@shri_radhavallabh2008",
   instagramUrl: "https://instagram.com/shri_radhavallabh2008",
-  location: "Vrindavan / Jaisalmer / All India",
+  location: "Vyasa Para, On Fort, Jaisalmer / All India",
 
   // ── Active Seasonal Campaign Switcher ──
   // Options: 'jaisalmer' | 'chardham' | 'vrindavan' | 'ayodhya' | 'kashi' | 'dwarka'
@@ -35,10 +36,9 @@ export const SITE_CONFIG = {
 } as const;
 
 // ── Owner-provided Google Maps location ──
-// Keep this separate from SITE_CONFIG contact data: the public listing exists,
-// but its legal/brand relationship and full NAP details are not yet confirmed.
 export const MAPS_CONFIG = {
   listingName: "Shriradha Vallabh tours",
+  address: "Vyasa Para, On Fort, Jaisalmer, Rajasthan",
   locality: "Jaisalmer, Rajasthan",
   latitude: 26.9127521,
   longitude: 70.9118934,
@@ -59,3 +59,20 @@ export const getJourneyWhatsAppLink = (journeyTitle: string) => {
   const msg = `Namaste ${SITE_CONFIG.brandName} 🙏\nI am interested in exploring the ${journeyTitle}.\nPlease share available dates and customized itinerary details.`;
   return getWhatsAppLink(msg);
 };
+
+export const getPackageWhatsAppLink = (
+  travelType: string = 'Couple',
+  packageName: string = 'Gorbandh',
+  journeyName: string = 'Jaisalmer 3 Nights / 4 Days'
+) => {
+  const formattedType = travelType.charAt(0).toUpperCase() + travelType.slice(1);
+  const formattedPackage = packageName.charAt(0).toUpperCase() + packageName.slice(1);
+  const msg = `Hello ${SITE_CONFIG.brandName},\nI am interested in the ${journeyName} package.\n\nTravel type: ${formattedType}\nPackage: ${formattedPackage}\n\nPlease share the current price and availability.`;
+  return getWhatsAppLink(msg);
+};
+
+export const getTharSoulWhatsAppLink = () => {
+  const msg = `Hello ${SITE_CONFIG.brandName},\nI am interested in the Thar Soul 1 Day / Sunset Safari.\n\nPlease share the current price and availability.`;
+  return getWhatsAppLink(msg);
+};
+

@@ -39,6 +39,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Journeys',     hindi: 'यात्राएँ',      path: '/journeys'     },
     { name: 'Jaisalmer',   hindi: 'जैसलमेर',       path: '/jaisalmer'    },
+    { name: 'Safari',      hindi: 'सफारी',         path: '/safari'       },
     { name: 'Packages',    hindi: 'पैकेज',          path: '/packages'     },
     { name: 'About',       hindi: 'हमारे बारे में', path: '/about'        },
     { name: 'Experience',  hindi: 'अनुभव',         path: '/stories'      },
@@ -98,7 +99,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-5" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5" aria-label="Main navigation">
             {navLinks.map((link) => {
               const active = isActive(link.path);
 
