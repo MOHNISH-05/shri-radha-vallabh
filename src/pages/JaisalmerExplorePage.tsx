@@ -183,6 +183,9 @@ export const JaisalmerExplorePage: React.FC = () => {
             className="px-5 py-2.5 rounded-full bg-[#C9A24A]/15 border border-[#C9A24A]/40 text-[#C9A24A] text-[10px] font-bold uppercase tracking-widest hover:bg-[#C9A24A] hover:text-[#050709] transition-all min-h-[40px] flex items-center">
             ← JAISALMER PORTAL
           </Link>
+          <Link to="/jaisalmer/itinerary" className="px-5 py-2.5 rounded-full border border-[#C9A24A]/40 bg-[#050709]/60 text-[#C9A24A] text-[10px] font-bold uppercase tracking-widest hover:bg-[#C9A24A] hover:text-[#050709] transition-all min-h-[40px] flex items-center">
+            PLAN 2–4 DAYS →
+          </Link>
           <Link to="/plan-journey?destination=Jaisalmer"
             className="px-5 py-2.5 rounded-full bg-[#C9A24A] text-[#050709] text-[10px] font-bold uppercase tracking-widest hover:brightness-110 transition-all min-h-[40px] flex items-center">
             PLAN YOUR JOURNEY →

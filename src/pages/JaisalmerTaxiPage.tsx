@@ -148,6 +148,7 @@ export const JaisalmerTaxiPage: React.FC = () => {
           <h2 className="font-serif text-3xl font-bold sm:text-5xl">Plan transport with the whole Jaisalmer journey.</h2>
           <p className="text-sm font-light leading-7 text-[#F5EDE0]/72">Combine arrival pickup, sightseeing, desert transfers and accommodation preferences in one enquiry.</p>
           <div className="flex flex-wrap justify-center gap-3">
+            <Link to="/jaisalmer/itinerary" className="inline-flex min-h-12 items-center rounded-full border border-[#C9A24A]/50 px-6 py-3.5 text-[10px] font-bold uppercase tracking-widest text-[#C9A24A]">Read the 2–4 day itinerary</Link>
             <Link to="/jaisalmer/explore" className="inline-flex min-h-12 items-center rounded-full border border-[#C9A24A]/50 px-6 py-3.5 text-[10px] font-bold uppercase tracking-widest text-[#C9A24A]">Explore Jaisalmer sightseeing</Link>
             <Link to="/plan-journey?destination=Jaisalmer" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#C9A24A] px-6 py-3.5 text-[10px] font-bold uppercase tracking-widest text-[#050709]">Request a custom plan <ArrowUpRight className="h-4 w-4" /></Link>
           </div>

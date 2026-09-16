@@ -258,6 +258,17 @@ export const SafariExperiencesPage: React.FC = () => {
         </div>
       </section>
 
+      <section className="pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl border border-[#C9A24A]/25 bg-[#0D1117] p-7 sm:p-9 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div><p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C9A24A]">PLAN THE WHOLE STAY</p><h3 className="mt-2 font-serif text-2xl font-bold">Choosing the desert day first?</h3><p className="mt-2 max-w-2xl text-sm font-light leading-6 text-[#F5EDE0]/70">See how a sunset, safari or camp stay can sit comfortably within a two-, three- or four-day Jaisalmer visit.</p></div>
+          <div className="flex shrink-0 flex-wrap gap-3 md:max-w-xs md:justify-end">
+            <Link to="/jaisalmer/itinerary" className="inline-flex min-h-12 items-center rounded-full border border-[#C9A24A]/55 px-6 py-3.5 text-[10px] font-bold uppercase tracking-widest text-[#C9A24A] hover:bg-[#C9A24A] hover:text-[#050709]">View itinerary guide</Link>
+            <Link to="/jaisalmer/safari-adventure" className="inline-flex min-h-12 items-center rounded-full border border-[#C9A24A]/35 px-6 py-3.5 text-[10px] font-bold uppercase tracking-widest text-[#F5EDE0]/78 hover:border-[#C9A24A] hover:text-[#C9A24A]">Compare safari styles</Link>
+            <Link to="/jaisalmer/places/sam-dunes" className="inline-flex min-h-12 items-center rounded-full border border-[#C9A24A]/35 px-6 py-3.5 text-[10px] font-bold uppercase tracking-widest text-[#F5EDE0]/78 hover:border-[#C9A24A] hover:text-[#C9A24A]">Explore Sam Sand Dunes</Link>
+          </div>
+        </div>
+      </section>
+
       {/* 06. Credits */}
       <section className="border-t border-[#C9A24A]/15 bg-[#050709] px-4 py-5 text-center">
         <details className="mx-auto max-w-4xl text-left text-[10px] leading-5 text-[#F5EDE0]/45">

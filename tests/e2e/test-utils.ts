@@ -7,6 +7,7 @@ export const CRITICAL_ROUTES = [
   '/journeys',
   '/jaisalmer',
   '/jaisalmer/explore',
+  '/jaisalmer/itinerary',
   '/jaisalmer/safari-adventure',
   '/jaisalmer/history',
   '/jaisalmer/riyasat',

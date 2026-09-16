@@ -2,10 +2,11 @@ import { expect, test } from '@playwright/test';
 import { collectFatalErrors, CRITICAL_ROUTES, PRODUCTION_ORIGIN, scrollThroughPage, waitForApp } from './test-utils';
 
 const expectedTitles: Record<(typeof CRITICAL_ROUTES)[number], RegExp> = {
-  '/': /Jaisalmer Tours & Tour Packages/,
+  '/': /Jaisalmer Travel Agency & Custom Tours/,
   '/journeys': /Heritage & Spiritual Journeys Across India/,
-  '/jaisalmer': /Jaisalmer Tours, Travel Guide & Custom Trips/,
+  '/jaisalmer': /Jaisalmer Travel Guide & Custom Tours/,
   '/jaisalmer/explore': /Places to Visit in Jaisalmer/,
+  '/jaisalmer/itinerary': /Jaisalmer Itinerary for 2, 3 & 4 Days/,
   '/jaisalmer/safari-adventure': /Jaisalmer Desert Safari Guide/,
   '/jaisalmer/history': /History of Jaisalmer/,
   '/jaisalmer/riyasat': /Jaisalmer Riyasat/,
@@ -16,8 +17,8 @@ const expectedTitles: Record<(typeof CRITICAL_ROUTES)[number], RegExp> = {
   '/safari/thar-soul': /Thar Soul Sunset Safari Jaisalmer/,
   '/jaisalmer-taxi': /Jaisalmer Taxi Service, Airport Pickup & Sightseeing Cab/,
   '/about': /About SRV Yaatra & Ashish Vyas/,
-  '/experience': /Heritage Travel Stories & Jaisalmer Guides/,
-  '/stories': /Heritage Travel Stories & Jaisalmer Guides/,
+  '/experience': /Heritage Travel Stories & Journey Reflections/,
+  '/stories': /Heritage Travel Stories & Journey Reflections/,
   '/gallery': /Jaisalmer Heritage & Desert Photo Gallery/,
   '/plan-journey': /Plan a Custom Jaisalmer Trip/,
 };

@@ -1252,6 +1252,7 @@ export const JaisalmerPage: React.FC = () => {
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#F5EDE0]">
               Where to Stay &amp; Getting Here
             </h2>
+            <Link to="/jaisalmer/itinerary" className="inline-flex pt-2 text-xs font-bold uppercase tracking-wider text-[#C9A24A] hover:text-white">Build a 2–4 day Jaisalmer itinerary →</Link>
           </div>
 
           {/* 4 Stay Styles */}

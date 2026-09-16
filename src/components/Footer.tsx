@@ -12,6 +12,7 @@ export const Footer: React.FC = () => {
   const quickLinks = [
     { name: 'Journeys', path: '/journeys' },
     { name: 'Jaisalmer Tours & Travel Guide', path: '/jaisalmer' },
+    { name: 'Jaisalmer 2–4 Day Itinerary', path: '/jaisalmer/itinerary' },
     { name: 'Jaisalmer Desert Safaris', path: '/safari' },
     { name: 'Thar Soul Safari', path: '/safari/thar-soul' },
     { name: 'Jaisalmer Tour Packages', path: '/packages' },
@@ -27,6 +28,7 @@ export const Footer: React.FC = () => {
     { name: 'Thar Soul 1-Day Sunset Safari', path: '/safari/thar-soul' },
     { name: 'Jaisalmer Experience Hub', path: '/jaisalmer' },
     { name: 'Jaisalmer All 18 Landmarks', path: '/jaisalmer/explore' },
+    { name: 'Jaisalmer 2–4 Day Itinerary', path: '/jaisalmer/itinerary' },
     { name: 'Sam Sand Dunes Visitor Guide', path: '/jaisalmer/places/sam-dunes' },
     { name: 'Jaisalmer History & Riyasat', path: '/jaisalmer/history' },
     { name: 'Char Dham Himalayas (Upcoming)', path: '/journeys' },

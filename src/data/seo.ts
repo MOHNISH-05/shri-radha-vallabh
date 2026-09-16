@@ -1,6 +1,6 @@
 import { JAISALMER_PLACES } from './jaisalmerPlaces.ts';
 import { MAPS_CONFIG, SITE_CONFIG } from './siteConfig.ts';
-import { DESERT_SAFARI_GUIDE_FAQS, JAISALMER_TAXI_FAQS, JAISALMER_TRAVEL_FAQS, type SeoFaq } from './seoContent.ts';
+import { DESERT_SAFARI_GUIDE_FAQS, JAISALMER_ITINERARY_FAQS, JAISALMER_TAXI_FAQS, JAISALMER_TRAVEL_FAQS, type SeoFaq } from './seoContent.ts';
 
 export const SEO_ORIGIN = 'https://srvyaatra.com';
 export const BRAND_NAME = 'SRV Yaatra';
@@ -28,7 +28,7 @@ export interface RouteSeo {
 const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   '/': {
     path: '/',
-    title: 'Jaisalmer Tours & Tour Packages | SRV Yaatra',
+    title: 'Jaisalmer Travel Agency & Custom Tours | SRV Yaatra',
     description: 'Plan Jaisalmer tours, tour packages, sightseeing, desert experiences and transportation with SRV Yaatra, a local travel team in Jaisalmer.',
     image: '/assets/optimized/laxminath-hero.webp',
     imageAlt: 'Shri Laxminath Ji with the golden heritage landscape of Jaisalmer',
@@ -46,7 +46,7 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/jaisalmer': {
     path: '/jaisalmer',
-    title: 'Jaisalmer Tours, Travel Guide & Custom Trips | SRV Yaatra',
+    title: 'Jaisalmer Travel Guide & Custom Tours | SRV Yaatra',
     description: 'Plan a Jaisalmer tour through Sonar Qila, havelis, sacred places and the Thar Desert, with practical itineraries, local travel guidance and custom trip planning.',
     image: '/assets/optimized/laxminath-hero.webp',
     imageAlt: 'Shri Laxminath Ji and Jaisalmer golden sandstone heritage',
@@ -74,7 +74,7 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
     image: '/images/jaisalmer/safari/hero/jaisalmer-safari-hero.webp',
     imageAlt: 'Camel safari at sunset on the sand dunes near Jaisalmer',
     pageType: 'CollectionPage',
-    entityType: 'TouristDestination',
+    entityType: 'Thing',
     entityName: 'Jaisalmer Desert Safari & Adventure',
     faqs: DESERT_SAFARI_GUIDE_FAQS,
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer', path: '/jaisalmer' }, { name: 'Safari & Adventure', path: '/jaisalmer/safari-adventure' }],
@@ -165,8 +165,8 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/stories': {
     path: '/stories',
-    title: 'Heritage Travel Stories & Jaisalmer Guides | SRV Yaatra',
-    description: 'Read cultural, spiritual and heritage travel reflections from journeys through sacred places, royal landscapes and living traditions across India.',
+    title: 'Heritage Travel Stories & Journey Reflections | SRV Yaatra',
+    description: 'Read cultural, spiritual and heritage travel reflections from Jaisalmer and journeys through sacred places, royal landscapes and living traditions across India.',
     image: '/assets/temple-twilight.jpg',
     imageAlt: 'Temple architecture illuminated at twilight',
     pageType: 'CollectionPage',
@@ -190,6 +190,18 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
     pageType: 'ContactPage',
     localPlaceMention: true,
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Plan Journey', path: '/plan-journey' }],
+  },
+  '/jaisalmer/itinerary': {
+    path: '/jaisalmer/itinerary',
+    title: 'Jaisalmer Itinerary for 2, 3 & 4 Days | SRV Yaatra',
+    description: 'Plan a comfortable 2, 3 or 4 day Jaisalmer itinerary with fort walks, havelis, Gadisar Lake, desert time and practical travel planning.',
+    image: '/assets/optimized/jaisalmer-fort-1920.webp',
+    imageAlt: 'Jaisalmer Fort above the Golden City',
+    pageType: 'WebPage',
+    entityType: 'Thing',
+    entityName: 'Jaisalmer Itinerary',
+    faqs: JAISALMER_ITINERARY_FAQS,
+    breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer', path: '/jaisalmer' }, { name: 'Itinerary', path: '/jaisalmer/itinerary' }],
   },
   '/jaisalmer-taxi': {
     path: '/jaisalmer-taxi',

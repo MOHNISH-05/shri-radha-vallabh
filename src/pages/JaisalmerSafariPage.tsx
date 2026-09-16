@@ -70,6 +70,29 @@ export const JaisalmerSafariPage: React.FC = () => {
         </div>
       </section>
 
+      <section className="border-y border-[#C9A24A]/15 bg-[#080B0F] py-14 sm:py-20" aria-labelledby="desert-next-steps">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 id="desert-next-steps" className="sr-only">Continue planning your Jaisalmer desert experience</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            <Link to="/safari" className="rounded-3xl border border-[#C9A24A]/25 bg-[#050709] p-6 transition-colors hover:border-[#C9A24A]/65">
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C9A24A]">READY TO COMPARE OPTIONS?</span>
+              <h3 className="mt-3 font-serif text-xl font-bold">View desert safari packages</h3>
+              <p className="mt-2 text-xs font-light leading-6 text-[#F5EDE0]/68">Compare camel, jeep, sunset, camp and cultural formats before requesting a current quote.</p>
+            </Link>
+            <Link to="/jaisalmer/places/sam-dunes" className="rounded-3xl border border-[#C9A24A]/25 bg-[#050709] p-6 transition-colors hover:border-[#C9A24A]/65">
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C9A24A]">UNDERSTAND THE PLACE</span>
+              <h3 className="mt-3 font-serif text-xl font-bold">Read the Sam Sand Dunes guide</h3>
+              <p className="mt-2 text-xs font-light leading-6 text-[#F5EDE0]/68">Explore the destination context, landscape and visitor considerations around Sam.</p>
+            </Link>
+            <Link to="/jaisalmer/itinerary" className="rounded-3xl border border-[#C9A24A]/25 bg-[#050709] p-6 transition-colors hover:border-[#C9A24A]/65">
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C9A24A]">FIT IT INTO THE JOURNEY</span>
+              <h3 className="mt-3 font-serif text-xl font-bold">Plan the desert within 2–4 days</h3>
+              <p className="mt-2 text-xs font-light leading-6 text-[#F5EDE0]/68">Balance fort walks, havelis and a desert evening around your arrival and departure.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section id="faqs" className="bg-[#050709] py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><h2 className="text-center font-serif text-3xl font-bold sm:text-4xl">Desert Experience FAQs</h2><div className="mt-10 divide-y divide-[#C9A24A]/20 border-y border-[#C9A24A]/20">{DESERT_SAFARI_GUIDE_FAQS.map((faq, index) => <div key={faq.question}><button type="button" onClick={() => setOpenFaq(openFaq === index ? null : index)} className="flex min-h-14 w-full items-center justify-between gap-4 py-5 text-left text-sm font-semibold" aria-expanded={openFaq === index}><span>{faq.question}</span><ChevronDown className={`h-4 w-4 shrink-0 text-[#C9A24A] transition-transform ${openFaq === index ? 'rotate-180' : ''}`} /></button><AnimatePresence initial={false}>{openFaq === index && <motion.p initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden pb-5 text-sm font-light leading-7 text-[#F5EDE0]/68">{faq.answer}</motion.p>}</AnimatePresence></div>)}</div></div>
       </section>

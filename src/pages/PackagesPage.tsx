@@ -459,6 +459,12 @@ Please share a personalized itinerary and best quote.`;
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+              <Link
+                to="/jaisalmer/itinerary"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#080B0F] border border-[#C9A24A]/40 text-[#C9A24A] hover:bg-[#C9A24A] hover:text-[#080B0F] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1 transition-all min-h-[44px]"
+              >
+                <span>Compare 2–4 Day Pace</span>
+              </Link>
               <a
                 href={getWhatsAppLink(customWhatsAppMsg)}
                 target="_blank"

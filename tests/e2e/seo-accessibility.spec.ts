@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { PRODUCTION_ORIGIN, waitForApp } from './test-utils';
 
-for (const route of ['/', '/jaisalmer', '/jaisalmer/explore', '/jaisalmer/safari-adventure', '/jaisalmer-taxi', '/gallery', '/plan-journey']) {
+for (const route of ['/', '/jaisalmer', '/jaisalmer/explore', '/jaisalmer/itinerary', '/jaisalmer/safari-adventure', '/jaisalmer-taxi', '/gallery', '/plan-journey']) {
   test(`${route} has consistent social and canonical metadata`, async ({ page }) => {
     await page.goto(route);
     await waitForApp(page);
@@ -33,18 +33,18 @@ test('robots and sitemap remain available and canonical', async ({ request }) =>
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
-  expect((xml.match(/<url>/g) || []).length).toBe(35);
+  expect((xml.match(/<url>/g) || []).length).toBe(36);
   expect(xml).toContain(`${PRODUCTION_ORIGIN}/jaisalmer/safari-adventure`);
   expect(xml).toContain(`${PRODUCTION_ORIGIN}/packages/jaisalmer-3-nights-4-days`);
   expect(xml).toContain(`${PRODUCTION_ORIGIN}/safari/thar-soul`);
   expect(xml).toContain(`${PRODUCTION_ORIGIN}/jaisalmer/places/mandir-palace`);
   expect(xml).toContain('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"');
-  expect((xml.match(/<image:image>/g) || []).length).toBe(35);
+  expect((xml.match(/<image:image>/g) || []).length).toBe(36);
   expect(xml).toContain(`${PRODUCTION_ORIGIN}/jaisalmer-taxi`);
   expect(xml).not.toContain(`${PRODUCTION_ORIGIN}/experience`);
 });
 
-for (const route of ['/', '/jaisalmer/safari-adventure', '/jaisalmer-taxi', '/gallery', '/plan-journey']) {
+for (const route of ['/', '/jaisalmer/itinerary', '/jaisalmer/safari-adventure', '/jaisalmer-taxi', '/gallery', '/plan-journey']) {
   test(`${route} retains core semantic accessibility`, async ({ page }) => {
     await page.goto(route);
     await waitForApp(page);

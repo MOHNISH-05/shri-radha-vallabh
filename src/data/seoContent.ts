@@ -5,8 +5,8 @@ export interface SeoFaq {
 
 export const JAISALMER_TRAVEL_FAQS: SeoFaq[] = [
   {
-    question: 'How many days are recommended to explore Jaisalmer properly?',
-    answer: 'Three days and two nights suits the main city sights and a desert evening. Four days and three nights gives more time for the fort, havelis, Gadisar Lake, an overnight desert stay and an optional regional excursion without rushing.',
+    question: 'What is Jaisalmer known for?',
+    answer: 'Jaisalmer is known for its living sandstone fort, intricately carved merchant havelis, Jain and Hindu temples, Gadisar Lake, royal heritage and desert experiences around Sam and Khuri.',
   },
   {
     question: 'Are Tanot Mata and Ramdevra inside Jaisalmer city?',
@@ -66,4 +66,12 @@ export const JAISALMER_TAXI_FAQS: SeoFaq[] = [
     question: 'How is the vehicle and price confirmed?',
     answer: 'Share the date, pickup point, destination, passenger count and luggage details. The team will confirm an appropriate available vehicle and provide a current quote before booking.',
   },
+];
+
+export const JAISALMER_ITINERARY_FAQS: SeoFaq[] = [
+  { question: 'How many days are enough for Jaisalmer?', answer: 'Two days can cover the essential old city and a desert sunset when timings work. Three days gives the city and desert more breathing room, while four days can accommodate a regional outing without rushing.' },
+  { question: 'Can Sam Sand Dunes fit into a two-day Jaisalmer itinerary?', answer: 'It can fit when your arrival and departure times allow. A sunset transfer or overnight stay should be planned around the confirmed desert arrangement, season and road timing.' },
+  { question: 'What should a first day in Jaisalmer include?', answer: 'A comfortable first day usually focuses on the fort area, a haveli or two, and Gadisar Lake, with the order adjusted around your hotel location, arrival time and walking comfort.' },
+  { question: 'Can the itinerary suit senior travellers or families?', answer: 'Yes. A custom plan can reduce walking, include rest time, coordinate suitable transfers and place the desert experience at a pace that suits the group. Share accessibility needs before arrangements are confirmed.' },
+  { question: 'Can station or airport transfers be included?', answer: 'Yes. Arrival pickup, local sightseeing and desert transfers can be considered together after the dates, group size, luggage and selected route are shared for a current quote.' },
 ];

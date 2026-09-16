@@ -375,6 +375,16 @@ export const PlaceDetailPage: React.FC = () => {
         </div>
 
         {/* 12–13. Journey actions */}
+        {place.slug === 'sam-dunes' && (
+          <div className="mb-8 rounded-3xl border border-[#C9A24A]/25 bg-[#0D1117] p-6 sm:p-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div>
+              <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-[#C9A24A]">FIT SAM INTO THE RIGHT DAY</span>
+              <h3 className="mt-2 font-serif text-2xl font-bold text-[#F5EDE0]">Plan the desert around your Jaisalmer stay.</h3>
+              <p className="mt-2 max-w-2xl text-sm font-light leading-6 text-[#F5EDE0]/72">Use the itinerary guide to decide whether a Sam sunset or overnight experience best fits your arrival, city sightseeing and departure time.</p>
+            </div>
+            <Link to="/jaisalmer/itinerary" className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full border border-[#C9A24A]/55 px-6 py-3.5 text-[10px] font-bold uppercase tracking-widest text-[#C9A24A] hover:bg-[#C9A24A] hover:text-[#050709]">View 2–4 day guide</Link>
+          </div>
+        )}
         <div className="relative overflow-hidden rounded-3xl border border-[#C9A24A]/35 p-8 sm:p-12 text-center shadow-2xl">
           <img src={place.image} alt={`${place.name} journey backdrop`} className="absolute inset-0 h-full w-full object-cover brightness-[0.28]" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#050709]/95 via-[#050709]/78 to-[#050709]/95" />
