@@ -15,7 +15,12 @@ test('official crest assets are statically served with image MIME types', async 
   for (const [path, type] of iconAssets) {
     const response = await request.get(path);
     expect(response.status(), path).toBe(200);
-    expect(response.headers()['content-type'], path).toContain(type);
+    const contentType = response.headers()['content-type'] || '';
+    if (path === '/favicon.ico') {
+      expect(contentType, path).toMatch(/^image\/(?:x-icon|vnd\.microsoft\.icon)(?:;|$)/);
+    } else {
+      expect(contentType, path).toContain(type);
+    }
     expect((await response.body()).length, path).toBeGreaterThan(500);
   }
 });
