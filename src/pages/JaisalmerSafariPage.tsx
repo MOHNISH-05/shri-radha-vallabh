@@ -4,18 +4,12 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, ChevronDown, MessageCircle } from 'lucide-react';
 import { JAISALMER_EXPERIENCES, SAFARI_IMAGE_CREDITS } from '../data/jaisalmerExperiences';
 import { getJourneyWhatsAppLink } from '../data/siteConfig';
+import { DESERT_SAFARI_GUIDE_FAQS } from '../data/seoContent';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
 };
-
-const faqs = [
-  { question: 'What is the difference between a camel safari and jeep safari?', answer: 'A camel safari offers a slower, traditional trail across the desert, while a jeep safari covers wider desert tracks in a locally coordinated 4×4. The right choice depends on your preferred pace and comfort.' },
-  { question: 'Can a desert camp be combined with a safari?', answer: 'Yes. A customized Jaisalmer journey can combine a camel or jeep safari with sunset, a desert camp stay, dinner and a cultural evening, subject to local availability.' },
-  { question: 'Can families and senior travellers customize the experience?', answer: 'Yes. We can shape the desert portion around traveller interests, comfort and preferred pace. Dune bashing is optional and should only be selected when it suits the traveller.' },
-  { question: 'When are Jaisalmer desert experiences most comfortable?', answer: 'October to March generally brings the most comfortable weather for outdoor desert experiences. Exact arrangements remain dependent on local weather and operating conditions.' },
-];
 
 export const JaisalmerSafariPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -76,8 +70,8 @@ export const JaisalmerSafariPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="bg-[#050709] py-16 sm:py-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><h2 className="text-center font-serif text-3xl font-bold sm:text-4xl">Desert Experience FAQs</h2><div className="mt-10 divide-y divide-[#C9A24A]/20 border-y border-[#C9A24A]/20">{faqs.map((faq, index) => <div key={faq.question}><button type="button" onClick={() => setOpenFaq(openFaq === index ? null : index)} className="flex min-h-14 w-full items-center justify-between gap-4 py-5 text-left text-sm font-semibold" aria-expanded={openFaq === index}><span>{faq.question}</span><ChevronDown className={`h-4 w-4 shrink-0 text-[#C9A24A] transition-transform ${openFaq === index ? 'rotate-180' : ''}`} /></button><AnimatePresence initial={false}>{openFaq === index && <motion.p initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden pb-5 text-sm font-light leading-7 text-[#F5EDE0]/68">{faq.answer}</motion.p>}</AnimatePresence></div>)}</div></div>
+      <section id="faqs" className="bg-[#050709] py-16 sm:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><h2 className="text-center font-serif text-3xl font-bold sm:text-4xl">Desert Experience FAQs</h2><div className="mt-10 divide-y divide-[#C9A24A]/20 border-y border-[#C9A24A]/20">{DESERT_SAFARI_GUIDE_FAQS.map((faq, index) => <div key={faq.question}><button type="button" onClick={() => setOpenFaq(openFaq === index ? null : index)} className="flex min-h-14 w-full items-center justify-between gap-4 py-5 text-left text-sm font-semibold" aria-expanded={openFaq === index}><span>{faq.question}</span><ChevronDown className={`h-4 w-4 shrink-0 text-[#C9A24A] transition-transform ${openFaq === index ? 'rotate-180' : ''}`} /></button><AnimatePresence initial={false}>{openFaq === index && <motion.p initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden pb-5 text-sm font-light leading-7 text-[#F5EDE0]/68">{faq.answer}</motion.p>}</AnimatePresence></div>)}</div></div>
       </section>
 
       <section className="relative overflow-hidden py-20 text-center sm:py-28"><img src="/images/jaisalmer/safari/hero/jaisalmer-safari-hero.webp" alt="Camel and travellers silhouetted at sunset near Jaisalmer" width={1920} height={1276} sizes="100vw" className="absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async" /><div className="absolute inset-0 bg-[#050709]/75" /><div className="relative mx-auto max-w-3xl space-y-5 px-4"><h2 className="font-serif text-3xl font-bold sm:text-5xl">Plan Your Desert Experience</h2><p className="text-sm font-light leading-7 text-[#F5EDE0]/80">Tell us the pace, people and moments that matter to you. We’ll help combine the desert with your wider Jaisalmer journey.</p><div className="flex flex-wrap justify-center gap-3"><Link to="/plan-journey?destination=Jaisalmer" className="rounded-full bg-[#C9A24A] px-7 py-4 text-[10px] font-bold uppercase tracking-widest text-[#050709]">PLAN MY JAISALMER JOURNEY</Link><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#25D366]/60 bg-[#050709]/75 px-7 py-4 text-[10px] font-bold uppercase tracking-widest text-[#25D366]">WHATSAPP US</a></div></div></section>

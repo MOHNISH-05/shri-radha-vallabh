@@ -24,9 +24,10 @@ export const SafariExperiencesPage: React.FC = () => {
         breadcrumb="Safari Experiences"
         badgeText="DESERT &amp; DUNES · JAISALMER"
         hindiTagline="थार की अनंत रेत, सूर्यास्त और सितारे।"
-        englishTitle="DESERT SAFARI EXPERIENCES"
-        description="Experience the raw poetry of the Thar Desert through specialized sunset safaris, camel trails, jeep expeditions, desert camps, and nights under starlit skies."
+        englishTitle="JAISALMER DESERT SAFARI PACKAGES"
+        description="Compare sunset safaris, camel trails, jeep outings, desert camps and starlit cultural evenings, then request current availability and a customized quote."
         backgroundImage="/images/jaisalmer/safari/hero/jaisalmer-safari-hero.webp"
+        backgroundImageAlt="Camel travellers crossing the Jaisalmer dunes at sunset"
         bgPosition="center 40%"
       />
 
@@ -209,7 +210,32 @@ export const SafariExperiencesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 04. Cross-Link: Complete 3N/4D Packages */}
+      {/* 04. Booking clarity */}
+      <section className="border-y border-[#C9A24A]/15 bg-[#0B0E13] py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#C9A24A]">BEFORE YOU CONFIRM</span>
+              <h2 className="mt-3 font-serif text-3xl font-bold text-[#F5EDE0] sm:text-4xl">Read the current safari quote.</h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+              {[
+                ['Route & timing', 'Confirm pickup point, departure time, dune area and expected return time.'],
+                ['Selected activities', 'Camel ride, jeep outing, camp, meals and cultural programme should be listed individually.'],
+                ['Transport', 'Check whether city-to-desert pickup and return are included in the quoted arrangement.'],
+                ['Conditions', 'Weather, local availability and optional activities can affect the final plan and price.'],
+              ].map(([title, body]) => (
+                <div key={title} className="rounded-2xl border border-[#C9A24A]/20 bg-[#080B0F] p-5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#C9A24A]">{title}</h3>
+                  <p className="mt-3 text-xs font-light leading-6 text-[#F5EDE0]/68">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 05. Cross-Link: Complete 3N/4D Packages */}
       <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-[#C9A24A]/30 bg-[#0D1117] p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
           <div className="space-y-2 max-w-2xl">
@@ -220,7 +246,7 @@ export const SafariExperiencesPage: React.FC = () => {
               Looking for Full Jaisalmer Stays &amp; Fort Sightseeing?
             </h3>
             <p className="text-xs sm:text-sm text-[#F5EDE0]/75 font-light">
-              Explore our confirmed Jaisalmer 3 Nights / 4 Days packages for Couples, Families, and Groups across Gorbandh, Jharokha, Morchan, Leheriya, and Maharawal tiers.
+              Explore Jaisalmer 3 Nights / 4 Days package options for couples, families and groups across Gorbandh, Jharokha, Morchan, Leheriya and Maharawal tiers.
             </p>
           </div>
           <Link
@@ -232,7 +258,7 @@ export const SafariExperiencesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 05. Credits */}
+      {/* 06. Credits */}
       <section className="border-t border-[#C9A24A]/15 bg-[#050709] px-4 py-5 text-center">
         <details className="mx-auto max-w-4xl text-left text-[10px] leading-5 text-[#F5EDE0]/45">
           <summary className="cursor-pointer text-center uppercase tracking-widest hover:text-[#C9A24A]">

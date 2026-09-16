@@ -187,8 +187,8 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.9, delay: 0.9 }}
             className="text-xs sm:text-[15px] text-[#F5EFE3]/70 font-light leading-relaxed max-w-md hidden sm:block"
           >
-            Thoughtfully curated journeys through India's sacred traditions,
-            living heritage and unforgettable landscapes.
+            Jaisalmer tours, desert experiences and thoughtfully curated journeys
+            through India's sacred traditions and living heritage.
           </motion.p>
 
           {/* Devotional Shloka Glass Panel */}

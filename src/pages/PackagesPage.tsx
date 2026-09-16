@@ -84,9 +84,10 @@ Please share a personalized itinerary and best quote.`;
         breadcrumb="Packages"
         badgeText="CURATED &amp; CUSTOM TOUR PACKAGES · JAISALMER &amp; PILGRIMAGE"
         hindiTagline="यात्रा चुनिए, अनुभव हम सँवारेंगे।"
-        englishTitle="CURATED TOUR PACKAGES"
-        description="Thoughtfully paced heritage journeys, desert glamping tiers, and bespoke custom packages for couples, families, bachelors, friends, and spiritual pilgrim groups with dedicated human coordination."
+        englishTitle="JAISALMER TOUR PACKAGES"
+        description="Compare thoughtfully paced Jaisalmer heritage, sightseeing and desert-stay packages for couples, families, friends and private groups, or request a customized journey."
         backgroundImage="/images/jaisalmer/Jaisalmer Photos/jaisalmer fort.JPG"
+        backgroundImageAlt="Jaisalmer Fort rising above the Golden City"
         bgPosition="center 30%"
       />
 

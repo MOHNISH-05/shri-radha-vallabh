@@ -55,7 +55,7 @@ test('Safari page renders the complete journey, valid CTAs, and healthy local im
   const response = await page.goto('/jaisalmer/safari-adventure');
   expect(response?.status()).toBe(200);
   await waitForApp(page);
-  await expect(page).toHaveTitle(/Jaisalmer Desert Safari, Camel Safari & Camp Experiences/);
+  await expect(page).toHaveTitle(/Jaisalmer Desert Safari Guide/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${PRODUCTION_ORIGIN}/jaisalmer/safari-adventure`);
 
   for (const name of experienceNames) {
@@ -90,6 +90,6 @@ test('generated sitemap contains one canonical Safari route', async ({ request }
   const response = await request.get('/sitemap.xml');
   expect(response.ok()).toBe(true);
   const sitemap = await response.text();
-  const matches = sitemap.match(/https:\/\/shri-radha-vallabh\.vercel\.app\/jaisalmer\/safari-adventure/g) ?? [];
+  const matches = sitemap.match(/https:\/\/srvyaatra\.com\/jaisalmer\/safari-adventure/g) ?? [];
   expect(matches).toHaveLength(1);
 });

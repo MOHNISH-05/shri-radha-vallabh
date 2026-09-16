@@ -1,6 +1,6 @@
 import { expect, type Page } from '@playwright/test';
 
-export const PRODUCTION_ORIGIN = 'https://shri-radha-vallabh.vercel.app';
+export const PRODUCTION_ORIGIN = 'https://srvyaatra.com';
 
 export const CRITICAL_ROUTES = [
   '/',
@@ -15,6 +15,7 @@ export const CRITICAL_ROUTES = [
   '/packages/jaisalmer-3-nights-4-days',
   '/safari',
   '/safari/thar-soul',
+  '/jaisalmer-taxi',
   '/about',
   '/experience',
   '/stories',

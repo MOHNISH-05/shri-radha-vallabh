@@ -221,7 +221,7 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
                 {selectedTier.tagline}
               </span>
               <h3 className="font-serif text-xl font-bold">
-                {selectedTier.name} â€” {selectedType.label} Package
+                {selectedTier.name} — {selectedType.label} Package
               </h3>
             </div>
           </div>
@@ -418,7 +418,7 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#080B0F] via-transparent to-transparent" />
                           <div className="absolute bottom-2 left-2 right-2 text-[10px] text-[#F5EDE0]/80 font-medium bg-[#080B0F]/80 p-2 rounded-lg backdrop-blur-sm">
-                            Highlights: {day.highlights.join(' â€¢ ')}
+                            Highlights: {day.highlights.join(' • ')}
                           </div>
                         </div>
                       </div>
@@ -497,7 +497,7 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
                   Looking ONLY for a 1-Day Sunset Safari?
                 </span>
                 <p className="text-[#F5EDE0]/70 font-light">
-                  If you already have city accommodation and wish to experience a dedicated afternoon-to-sunset desert trail without an overnight camp stay, explore our specialized <strong>Thar Soul â€” 1 Day / Sunset Safari (2:30 PM â€“ 9:30 PM)</strong>.
+                  If you already have city accommodation and wish to experience a dedicated afternoon-to-sunset desert trail without an overnight camp stay, explore our specialized <strong>Thar Soul — 1 Day / Sunset Safari (2:30 PM – 9:30 PM)</strong>.
                 </p>
                 <Link
                   to="/safari/thar-soul"

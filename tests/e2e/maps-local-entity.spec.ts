@@ -61,8 +61,8 @@ test('location integration remains contained at every required width', async ({ 
   }
 });
 
-for (const route of ['/about', '/plan-journey']) {
-  test(`${route} source schema references the verified Place without invented business facts`, async ({ request }) => {
+for (const route of ['/about', '/plan-journey', '/jaisalmer-taxi']) {
+  test(`${route} source schema references the verified travel agency without invented business facts`, async ({ request }) => {
     const response = await request.get(route);
     expect(response.status()).toBe(200);
     const html = await response.text();
@@ -70,21 +70,27 @@ for (const route of ['/about', '/plan-journey']) {
     expect(match).not.toBeNull();
 
     const schema = JSON.parse(match?.[1] || '{}') as { '@graph': Array<Record<string, unknown>> };
-    const place = schema['@graph'].find((node) => node['@type'] === 'Place');
-    expect(place).toMatchObject({
+    const agency = schema['@graph'].find((node) => node['@type'] === 'TravelAgency');
+    expect(agency).toMatchObject({
       name: MAPS_CONFIG.listingName,
       hasMap: MAPS_CONFIG.mapsUrl,
+      telephone: '+917976015517',
       geo: {
         '@type': 'GeoCoordinates',
         latitude: MAPS_CONFIG.latitude,
         longitude: MAPS_CONFIG.longitude,
       },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Vyasa Para, On Fort',
+        addressLocality: 'Jaisalmer',
+        addressRegion: 'Rajasthan',
+        addressCountry: 'IN',
+      },
     });
-    expect(place).not.toHaveProperty('address');
-    expect(place).not.toHaveProperty('telephone');
-    expect(place).not.toHaveProperty('openingHours');
-    expect(place).not.toHaveProperty('aggregateRating');
-    expect(place).not.toHaveProperty('review');
-    expect(schema['@graph'].some((node) => node['@type'] === 'TravelAgency')).toBe(false);
+    expect(agency).not.toHaveProperty('openingHours');
+    expect(agency).not.toHaveProperty('aggregateRating');
+    expect(agency).not.toHaveProperty('review');
+    expect(agency).not.toHaveProperty('priceRange');
   });
 }

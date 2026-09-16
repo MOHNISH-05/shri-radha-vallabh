@@ -11,6 +11,7 @@ interface PageHeroProps {
   englishTitle: string;
   description: string;
   backgroundImage?: string | null;
+  backgroundImageAlt?: string;
   backgroundImageSrcSet?: string;
   backgroundImageSizes?: string;
   bgPosition?: string;
@@ -25,6 +26,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   englishTitle,
   description,
   backgroundImage = '/assets/featured-jaisalmer-arch.jpg',
+  backgroundImageAlt,
   backgroundImageSrcSet,
   backgroundImageSizes = '100vw',
   bgPosition = 'center 45%',
@@ -44,7 +46,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
           src={safeBg}
           srcSet={backgroundImageSrcSet}
           sizes={backgroundImageSrcSet ? backgroundImageSizes : undefined}
-          alt={englishTitle}
+          alt={backgroundImageAlt || englishTitle}
           className="w-full h-full object-cover brightness-[0.55]"
           style={{ objectPosition: bgPosition }}
           loading="eager"

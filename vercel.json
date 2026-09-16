@@ -3,7 +3,53 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "shri-radha-vallabh.vercel.app" }],
+      "destination": "https://srvyaatra.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/experience",
+      "destination": "/stories",
+      "permanent": true
+    },
+    {
+      "source": "/jaisalmer-tours",
+      "destination": "/jaisalmer",
+      "permanent": true
+    },
+    {
+      "source": "/jaisalmer-tour-packages",
+      "destination": "/packages",
+      "permanent": true
+    },
+    {
+      "source": "/jaisalmer-sightseeing",
+      "destination": "/jaisalmer/explore",
+      "permanent": true
+    },
+    {
+      "source": "/desert-safari",
+      "destination": "/safari",
+      "permanent": true
+    },
+    {
+      "source": "/jaisalmer-camping",
+      "destination": "/safari",
+      "permanent": true
+    },
+    {
+      "source": "/sam-sand-dunes",
+      "destination": "/jaisalmer/places/sam-dunes",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/plan-journey",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
       "destination": "/stories",
       "permanent": true
     }

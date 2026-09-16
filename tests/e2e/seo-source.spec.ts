@@ -33,7 +33,7 @@ for (const route of PUBLIC_SEO_ROUTES) {
     const structuredData = extractJsonLd(html);
     const graphTypes = structuredData['@graph']?.map((node) => node['@type']);
     expect(graphTypes).toEqual(expect.arrayContaining([
-      'Organization',
+      'TravelAgency',
       'WebSite',
       'ImageObject',
       'BreadcrumbList',
@@ -60,7 +60,7 @@ test('generated 404 document is explicitly non-indexable', async () => {
 
 test('client-side unknown routes remove canonical and structured data signals', async ({ page }) => {
   await page.goto('/definitely-not-a-real-page');
-  await expect(page).toHaveTitle('Page Not Found | Shri Radha Vallabh');
+  await expect(page).toHaveTitle('Page Not Found | SRV Yaatra');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow');
   await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
   await expect(page.locator('script#route-json-ld')).toHaveCount(0);

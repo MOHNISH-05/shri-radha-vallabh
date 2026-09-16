@@ -33,6 +33,7 @@ import {
   getTravelType,
 } from '../data/jaisalmerPackages';
 import type { TravelTypeKey } from '../data/jaisalmerPackages';
+import { JAISALMER_TRAVEL_FAQS } from '../data/seoContent';
 import { PackageModal } from '../components/PackageModal';
 import { GalleryLightbox } from '../components/GalleryLightbox';
 import { getJourneyWhatsAppLink, getPackageWhatsAppLink, getWhatsAppLink } from '../data/siteConfig';
@@ -1388,28 +1389,7 @@ export const JaisalmerPage: React.FC = () => {
           </div>
 
           <div className="space-y-4">
-            {[
-              {
-                question: 'How many days are recommended to explore Jaisalmer properly?',
-                answer: 'A duration of 3 Days / 2 Nights or 4 Days / 3 Nights is ideal to comfortably explore Sonar Qila fort, Patwon Haveli, Gadisar Lake, and spend an overnight stay at Sam Sand Dunes without rushing.'
-              },
-              {
-                question: 'Are destinations like Tanot Mata and Ramdevra inside Jaisalmer city?',
-                answer: 'No. Tanot Mata Temple is located approximately 120 km from Jaisalmer near the border, while Ramdevra is located approximately 118 km on the Jodhpur highway. Both are curated as dedicated full-day chauffeured excursions.'
-              },
-              {
-                question: 'Can the itinerary be tailored for senior citizens or vegetarian dietary needs?',
-                answer: 'Yes. All our itineraries can be customized with senior-friendly pacing, accessible hotel rooms, sanitized chauffeur vehicles, and pure vegetarian / Jain / sattvik dining arrangements.'
-              },
-              {
-                question: 'What is the best time of year to visit Jaisalmer?',
-                answer: 'October to March offers pleasant desert winters with daytime temperatures of 20°C–26°C, making it the most comfortable season for fort walks and desert camping.'
-              },
-              {
-                question: 'How do I enquire about customized pricing and itineraries?',
-                answer: 'You can submit your travel dates through our Plan Journey form or speak directly with our travel coordinator on WhatsApp to receive tailored itinerary options.'
-              }
-            ].map((faq, index) => {
+            {JAISALMER_TRAVEL_FAQS.map((faq, index) => {
               const isOpen = openFaqIndex === index;
 
               return (

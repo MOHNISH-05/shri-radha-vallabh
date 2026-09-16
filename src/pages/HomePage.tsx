@@ -2,6 +2,7 @@ import React from 'react';
 import { Hero } from '../sections/Hero';
 import { StatsBar } from '../sections/StatsBar';
 import { BrandStatement } from '../sections/BrandStatement';
+import { JaisalmerServices } from '../sections/JaisalmerServices';
 import { OurJourneys } from '../sections/OurJourneys';
 import { FeaturedJourney } from '../sections/FeaturedJourney';
 import { PackagesSection } from '../sections/PackagesSection';
@@ -24,7 +25,10 @@ export const HomePage: React.FC = () => {
       {/* 03. Brand Statement & Roots */}
       <BrandStatement />
 
-      {/* 04. Our Journeys Universe Carousel */}
+      {/* 04. Search-friendly local service overview */}
+      <JaisalmerServices />
+
+      {/* 05. Our Journeys Universe Carousel */}
       <OurJourneys />
 
       {/* 05. Featured Journey Seasonal Campaign (Jaisalmer) */}

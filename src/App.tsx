@@ -26,6 +26,7 @@ const GalleryPage = lazy(() => import('./pages/GalleryPage').then((module) => ({
 const PlanJourneyPage = lazy(() => import('./pages/PlanJourneyPage').then((module) => ({ default: module.PlanJourneyPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage })));
 const ChaitanyaRajSinghPage = lazy(() => import('./pages/ChaitanyaRajSinghPage').then((module) => ({ default: module.ChaitanyaRajSinghPage })));
+const JaisalmerTaxiPage = lazy(() => import('./pages/JaisalmerTaxiPage').then((module) => ({ default: module.JaisalmerTaxiPage })));
 
 /* ── Title & SEO Manager ─────────────────────────────────── */
 const PageTitleManager: React.FC = () => {
@@ -34,7 +35,7 @@ const PageTitleManager: React.FC = () => {
   useEffect(() => {
     const page = getSeoForPath(pathname);
     const resolved = page || {
-      title: 'Page Not Found | Shri Radha Vallabh',
+      title: 'Page Not Found | SRV Yaatra',
       description: 'The requested page could not be found.',
       image: '/assets/optimized/laxminath-hero.webp',
       imageAlt: 'Shri Radha Vallabh Heritage & Journeys',
@@ -58,6 +59,7 @@ const PageTitleManager: React.FC = () => {
     upsertMeta('meta[name="description"]', { name: 'description', content: resolved.description });
     upsertMeta('meta[name="robots"]', { name: 'robots', content: page ? 'index, follow, max-image-preview:large' : 'noindex, follow' });
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
+    upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: 'SRV Yaatra' });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: resolved.title });
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: resolved.description });
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
@@ -133,6 +135,7 @@ export const AppContent: React.FC = () => {
           <Route path="/jaisalmer/riyasat" element={<JaisalmerRiyasatPage />} />
           <Route path="/jaisalmer/riyasat/chaitanya-raj-singh" element={<ChaitanyaRajSinghPage />} />
           <Route path="/jaisalmer/places/:slug" element={<PlaceDetailPage />} />
+          <Route path="/jaisalmer-taxi" element={<JaisalmerTaxiPage />} />
 
           <Route path="/packages" element={<PackagesPage />} />
           <Route path="/packages/jaisalmer-3-nights-4-days" element={<JaisalmerPackageDetailPage />} />
@@ -144,6 +147,16 @@ export const AppContent: React.FC = () => {
           <Route path="/stories" element={<StoriesPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/plan-journey" element={<PlanJourneyPage />} />
+
+          {/* Search-friendly aliases retained as permanent server redirects in production. */}
+          <Route path="/jaisalmer-tours" element={<Navigate to="/jaisalmer" replace />} />
+          <Route path="/jaisalmer-tour-packages" element={<Navigate to="/packages" replace />} />
+          <Route path="/jaisalmer-sightseeing" element={<Navigate to="/jaisalmer/explore" replace />} />
+          <Route path="/desert-safari" element={<Navigate to="/safari" replace />} />
+          <Route path="/jaisalmer-camping" element={<Navigate to="/safari" replace />} />
+          <Route path="/sam-sand-dunes" element={<Navigate to="/jaisalmer/places/sam-dunes" replace />} />
+          <Route path="/contact" element={<Navigate to="/plan-journey" replace />} />
+          <Route path="/blog" element={<Navigate to="/stories" replace />} />
           
           {/* 404 Wildcard Route */}
           <Route path="*" element={<NotFoundPage />} />

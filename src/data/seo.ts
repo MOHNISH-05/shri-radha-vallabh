@@ -1,8 +1,9 @@
 import { JAISALMER_PLACES } from './jaisalmerPlaces.ts';
 import { MAPS_CONFIG, SITE_CONFIG } from './siteConfig.ts';
+import { DESERT_SAFARI_GUIDE_FAQS, JAISALMER_TAXI_FAQS, JAISALMER_TRAVEL_FAQS, type SeoFaq } from './seoContent.ts';
 
-export const SEO_ORIGIN = 'https://shri-radha-vallabh.vercel.app';
-export const BRAND_NAME = 'Shri Radha Vallabh Heritage & Journeys';
+export const SEO_ORIGIN = 'https://srvyaatra.com';
+export const BRAND_NAME = 'SRV Yaatra';
 
 export interface SeoBreadcrumb {
   name: string;
@@ -16,8 +17,9 @@ export interface RouteSeo {
   image: string;
   imageAlt: string;
   pageType: 'WebPage' | 'CollectionPage' | 'AboutPage' | 'ContactPage' | 'ImageGallery';
-  entityType?: 'TouristDestination' | 'TouristAttraction' | 'Person' | 'Thing';
+  entityType?: 'TouristDestination' | 'TouristAttraction' | 'Person' | 'Thing' | 'Service' | 'TouristTrip';
   entityName?: string;
+  faqs?: SeoFaq[];
   localPlaceMention?: boolean;
   aboutStoryPeople?: boolean;
   breadcrumbs: SeoBreadcrumb[];
@@ -26,13 +28,11 @@ export interface RouteSeo {
 const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   '/': {
     path: '/',
-    title: 'Shri Radha Vallabh | Jaisalmer Heritage & Spiritual Journeys',
-    description: 'Explore Jaisalmer heritage, sacred places and thoughtfully curated journeys across India with personal planning by Shri Radha Vallabh Heritage & Journeys.',
+    title: 'Jaisalmer Tours & Tour Packages | SRV Yaatra',
+    description: 'Plan Jaisalmer tours, tour packages, sightseeing, desert experiences and transportation with SRV Yaatra, a local travel team in Jaisalmer.',
     image: '/assets/optimized/laxminath-hero.webp',
     imageAlt: 'Shri Laxminath Ji with the golden heritage landscape of Jaisalmer',
     pageType: 'WebPage',
-    entityType: 'Thing',
-    entityName: BRAND_NAME,
     breadcrumbs: [{ name: 'Home', path: '/' }],
   },
   '/journeys': {
@@ -46,13 +46,14 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/jaisalmer': {
     path: '/jaisalmer',
-    title: 'Jaisalmer Travel Guide & Heritage Journey | Shri Radha Vallabh',
-    description: 'Plan a Jaisalmer heritage journey through Sonar Qila, sacred temples, carved havelis, royal history and the landscapes of the Thar Desert.',
+    title: 'Jaisalmer Tours, Travel Guide & Custom Trips | SRV Yaatra',
+    description: 'Plan a Jaisalmer tour through Sonar Qila, havelis, sacred places and the Thar Desert, with practical itineraries, local travel guidance and custom trip planning.',
     image: '/assets/optimized/laxminath-hero.webp',
     imageAlt: 'Shri Laxminath Ji and Jaisalmer golden sandstone heritage',
     pageType: 'WebPage',
     entityType: 'TouristDestination',
     entityName: 'Jaisalmer',
+    faqs: JAISALMER_TRAVEL_FAQS,
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer', path: '/jaisalmer' }],
   },
   '/jaisalmer/explore': {
@@ -68,13 +69,14 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/jaisalmer/safari-adventure': {
     path: '/jaisalmer/safari-adventure',
-    title: 'Jaisalmer Desert Safari, Camel Safari & Camp Experiences',
-    description: 'Explore Jaisalmer camel safari, jeep safari, dune bashing, desert camp, stargazing and Rajasthani cultural evening experiences in the Thar.',
+    title: 'Jaisalmer Desert Safari Guide | Camel, Jeep & Camp Options',
+    description: 'Compare camel safari, jeep safari, dune bashing, desert camp, stargazing and cultural evening options before planning a Jaisalmer desert experience.',
     image: '/images/jaisalmer/safari/hero/jaisalmer-safari-hero.webp',
     imageAlt: 'Camel safari at sunset on the sand dunes near Jaisalmer',
     pageType: 'CollectionPage',
     entityType: 'TouristDestination',
     entityName: 'Jaisalmer Desert Safari & Adventure',
+    faqs: DESERT_SAFARI_GUIDE_FAQS,
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer', path: '/jaisalmer' }, { name: 'Safari & Adventure', path: '/jaisalmer/safari-adventure' }],
   },
   '/jaisalmer/history': {
@@ -112,8 +114,8 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/packages': {
     path: '/packages',
-    title: 'Jaisalmer & Spiritual Tour Packages | Shri Radha Vallabh',
-    description: 'Browse thoughtfully paced Jaisalmer heritage packages and spiritual journeys, with private planning support and direct WhatsApp coordination.',
+    title: 'Jaisalmer Tour Packages for Couples & Families | SRV Yaatra',
+    description: 'Compare Jaisalmer tour packages for couples, families and groups, with heritage sightseeing, desert stays, transport options and customized planning.',
     image: '/images/jaisalmer/web_DJI_0065.JPG',
     imageAlt: 'Aerial view of Jaisalmer Fort and the Golden City',
     pageType: 'CollectionPage',
@@ -121,17 +123,19 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/packages/jaisalmer-3-nights-4-days': {
     path: '/packages/jaisalmer-3-nights-4-days',
-    title: 'Jaisalmer 3 Nights 4 Days Tour Package | Couple, Family & Group',
-    description: 'Experience Jaisalmer in 3 Nights and 4 Days with confirmed itineraries across Gorbandh, Jharokha, Morchan, Leheriya and Maharawal tiers for couples, families and groups.',
+    title: 'Jaisalmer 3 Nights 4 Days Tour Package | SRV Yaatra',
+    description: 'Explore a customizable Jaisalmer 3 nights 4 days tour package with fort and haveli sightseeing, desert stay options and tiers for couples, families and groups.',
     image: '/assets/optimized/jaisalmer-fort-1920.webp',
     imageAlt: 'Jaisalmer Fort and the Golden City of Rajasthan',
     pageType: 'WebPage',
+    entityType: 'TouristTrip',
+    entityName: 'Jaisalmer 3 Nights 4 Days Tour Package',
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Packages', path: '/packages' }, { name: 'Jaisalmer 3N/4D', path: '/packages/jaisalmer-3-nights-4-days' }],
   },
   '/safari': {
     path: '/safari',
-    title: 'Jaisalmer Desert Safari Experiences | Thar Soul & Dune Adventures',
-    description: 'Explore curated Jaisalmer desert safaris including Thar Soul sunset safari, traditional camel trails, 4x4 dune drives, desert camps and starlit cultural evenings.',
+    title: 'Jaisalmer Desert Safari Packages & Camp Options | SRV Yaatra',
+    description: 'Plan a Jaisalmer desert safari with camel trails, jeep outings, sunset, camp and cultural evening options. Request current availability and a custom quote.',
     image: '/images/jaisalmer/safari/hero/jaisalmer-safari-hero.webp',
     imageAlt: 'Desert camel safari silhouettes on the golden sand dunes of Jaisalmer',
     pageType: 'CollectionPage',
@@ -144,12 +148,14 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
     image: '/images/jaisalmer/safari/camel-safari/camel-safari-jaisalmer.webp',
     imageAlt: 'Thar Soul sunset camel safari across the golden dunes of Jaisalmer',
     pageType: 'WebPage',
+    entityType: 'TouristTrip',
+    entityName: 'Thar Soul Sunset Safari',
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Safari', path: '/safari' }, { name: 'Thar Soul', path: '/safari/thar-soul' }],
   },
   '/about': {
     path: '/about',
-    title: 'About Ashish Vyas & Shri Radha Vallabh Tours | Jaisalmer',
-    description: 'Meet founder Ashish Vyas and discover the Jaisalmer family roots, 2013 Kedarnath turning point, 50+ Char Dham yatras and next generation of Shri Radha Vallabh.',
+    title: 'About SRV Yaatra & Ashish Vyas | Jaisalmer Travel Team',
+    description: 'Meet founder Ashish Vyas and discover the Jaisalmer family roots, pilgrimage experience and next generation behind SRV Yaatra and Shriradha Vallabh tours.',
     image: '/images/about/ashish-vyas-1024.webp',
     imageAlt: 'Ashish Vyas, founder and owner of Shriradha Vallabh Tours, at Kedarnath Temple',
     pageType: 'AboutPage',
@@ -159,7 +165,7 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/stories': {
     path: '/stories',
-    title: 'Heritage Travel Stories & Reflections | Shri Radha Vallabh',
+    title: 'Heritage Travel Stories & Jaisalmer Guides | SRV Yaatra',
     description: 'Read cultural, spiritual and heritage travel reflections from journeys through sacred places, royal landscapes and living traditions across India.',
     image: '/assets/temple-twilight.jpg',
     imageAlt: 'Temple architecture illuminated at twilight',
@@ -168,7 +174,7 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/gallery': {
     path: '/gallery',
-    title: 'Jaisalmer Heritage Photo Gallery | Shri Radha Vallabh',
+    title: 'Jaisalmer Heritage & Desert Photo Gallery | SRV Yaatra',
     description: 'Explore original photography of Jaisalmer forts, havelis, royal heritage, sacred places and desert landscapes from Shri Radha Vallabh.',
     image: '/assets/optimized/jaisalmer-dune-caravan.webp',
     imageAlt: 'Camel caravan crossing the Thar Desert near Jaisalmer',
@@ -177,13 +183,26 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
   },
   '/plan-journey': {
     path: '/plan-journey',
-    title: 'Plan a Custom Jaisalmer Heritage Journey | Shri Radha Vallabh',
-    description: 'Share your dates, interests and travel preferences to plan a private Jaisalmer heritage journey with direct WhatsApp coordination.',
+    title: 'Plan a Custom Jaisalmer Trip | Contact SRV Yaatra',
+    description: 'Share your dates, group size and interests to plan a customized Jaisalmer trip with sightseeing, desert, stay and transportation options.',
     image: '/assets/optimized/jaisalmer-night-fort-1280.webp',
     imageAlt: 'Jaisalmer Fort and the Golden City illuminated after sunset',
     pageType: 'ContactPage',
     localPlaceMention: true,
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Plan Journey', path: '/plan-journey' }],
+  },
+  '/jaisalmer-taxi': {
+    path: '/jaisalmer-taxi',
+    title: 'Jaisalmer Taxi Service, Airport Pickup & Sightseeing Cab',
+    description: 'Arrange Jaisalmer airport or railway pickup, local sightseeing transport, Sam or Khuri desert transfers and customized road journeys with SRV Yaatra.',
+    image: '/assets/optimized/jaisalmer-taxi-hero-1280.webp',
+    imageAlt: 'Aerial view of Jaisalmer Fort and the Golden City',
+    pageType: 'WebPage',
+    entityType: 'Service',
+    entityName: 'Jaisalmer Taxi and Transportation Service',
+    faqs: JAISALMER_TAXI_FAQS,
+    localPlaceMention: true,
+    breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer Taxi & Transportation', path: '/jaisalmer-taxi' }],
   },
 };
 
@@ -255,15 +274,34 @@ export const buildStructuredData = (seo: RouteSeo) => {
   const imageId = `${url}#primaryimage`;
   const breadcrumbId = `${url}#breadcrumb`;
   const entityId = `${url}#entity`;
-  const localPlaceId = `${SEO_ORIGIN}/#shriradha-vallabh-tours-location`;
+  const organizationId = `${SEO_ORIGIN}/#organization`;
   const mentions: Array<{ '@id': string }> = [];
 
   const organization = {
-    '@type': 'Organization',
-    '@id': `${SEO_ORIGIN}/#organization`,
-    name: BRAND_NAME,
-    alternateName: 'Shri Radha Vallabh',
+    '@type': 'TravelAgency',
+    '@id': organizationId,
+    name: MAPS_CONFIG.listingName,
+    alternateName: [BRAND_NAME, 'Shri Radha Vallabh Tours'],
     url: `${SEO_ORIGIN}/`,
+    email: SITE_CONFIG.email,
+    telephone: SITE_CONFIG.phoneNumber,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Vyasa Para, On Fort',
+      addressLocality: 'Jaisalmer',
+      addressRegion: 'Rajasthan',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: MAPS_CONFIG.latitude,
+      longitude: MAPS_CONFIG.longitude,
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Jaisalmer' },
+      { '@type': 'State', name: 'Rajasthan' },
+    ],
+    hasMap: MAPS_CONFIG.mapsUrl,
     logo: {
       '@type': 'ImageObject',
       url: `${SEO_ORIGIN}/assets/optimized/srv-logo-192.webp`,
@@ -274,7 +312,7 @@ export const buildStructuredData = (seo: RouteSeo) => {
       contactType: 'travel planning',
       availableLanguage: ['English', 'Hindi'],
     },
-    sameAs: ['https://instagram.com/shri_radhavallabh2008'],
+    sameAs: [SITE_CONFIG.instagramUrl, MAPS_CONFIG.mapsUrl],
   };
 
   const website = {
@@ -282,7 +320,7 @@ export const buildStructuredData = (seo: RouteSeo) => {
     '@id': `${SEO_ORIGIN}/#website`,
     url: `${SEO_ORIGIN}/`,
     name: BRAND_NAME,
-    publisher: { '@id': `${SEO_ORIGIN}/#organization` },
+    publisher: { '@id': organizationId },
     inLanguage: 'en-IN',
   };
 
@@ -319,26 +357,10 @@ export const buildStructuredData = (seo: RouteSeo) => {
 
   const graph: Array<Record<string, unknown>> = [organization, website, image, breadcrumb];
 
-  if (seo.localPlaceMention) {
-    const localPlace = {
-      '@type': 'Place',
-      '@id': localPlaceId,
-      name: MAPS_CONFIG.listingName,
-      hasMap: MAPS_CONFIG.mapsUrl,
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: MAPS_CONFIG.latitude,
-        longitude: MAPS_CONFIG.longitude,
-      },
-      containedInPlace: {
-        '@type': 'City',
-        name: 'Jaisalmer',
-        containedInPlace: { '@type': 'State', name: 'Rajasthan' },
-      },
-    };
+  if (seo.path === '/') webpage.about = { '@id': organizationId };
 
-    mentions.push({ '@id': localPlaceId });
-    graph.push(localPlace);
+  if (seo.localPlaceMention) {
+    mentions.push({ '@id': organizationId });
   }
 
   if (seo.aboutStoryPeople) {
@@ -400,8 +422,38 @@ export const buildStructuredData = (seo: RouteSeo) => {
       entity.description = 'Maharawal Chaitanya Raj Singh and the contemporary cultural stewardship of the Royal House of Jaisalmer.';
     }
 
+    if (seo.entityType === 'Service') {
+      entity.provider = { '@id': organizationId };
+      entity.areaServed = { '@type': 'City', name: 'Jaisalmer' };
+      entity.serviceType = 'Taxi, transfer and sightseeing transportation coordination';
+    }
+
+    if (seo.entityType === 'TouristTrip') {
+      entity.provider = { '@id': organizationId };
+      entity.touristType = ['Couples', 'Families', 'Private groups'];
+    }
+
     webpage.mainEntity = { '@id': entityId };
     graph.push(entity);
+  }
+
+  if (seo.faqs?.length) {
+    const faqId = `${url}#faq`;
+    webpage.hasPart = { '@id': faqId };
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': faqId,
+      url: `${url}#faqs`,
+      isPartOf: { '@id': webpageId },
+      mainEntity: seo.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    });
   }
 
   graph.push(webpage);
