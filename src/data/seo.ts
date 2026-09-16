@@ -304,7 +304,10 @@ export const buildStructuredData = (seo: RouteSeo) => {
     hasMap: MAPS_CONFIG.mapsUrl,
     logo: {
       '@type': 'ImageObject',
-      url: `${SEO_ORIGIN}/assets/optimized/srv-logo-192.webp`,
+      url: `${SEO_ORIGIN}/assets/brand/srv-logo-512.png`,
+      contentUrl: `${SEO_ORIGIN}/assets/brand/srv-logo-512.png`,
+      width: 512,
+      height: 512,
     },
     contactPoint: {
       '@type': 'ContactPoint',
