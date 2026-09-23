@@ -14,7 +14,9 @@ import {
 import {
   JAISALMER_3N4D_ITINERARY,
   PACKAGE_TIERS_LIST,
+  PRICE_DISCLAIMER,
   TRAVEL_TYPES_LIST,
+  formatPackagePrice,
   getPackageTier,
   getTravelType,
 } from '../data/jaisalmerPackages';
@@ -77,7 +79,8 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
   const whatsappUrl = getPackageWhatsAppLink(
     selectedType.label,
     selectedTier.name,
-    'Jaisalmer 3 Nights / 4 Days'
+    'Jaisalmer 3 Nights / 4 Days',
+    formatPackagePrice(selectedTier.startingPricePerPerson)
   );
 
   return (
@@ -130,8 +133,9 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
                 Tariff
               </span>
               <span className="font-serif text-sm sm:text-base font-bold gold-text">
-                Price on Request
+                {formatPackagePrice(selectedTier.startingPricePerPerson)}
               </span>
+              <span className="block max-w-xs text-[8px] leading-tight text-[#F5EDE0]/55">{PRICE_DISCLAIMER}</span>
             </div>
             <a
               href={whatsappUrl}
@@ -190,7 +194,7 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
                 </div>
                 <div className="mt-2 pt-2 border-t border-[#C9A24A]/15 flex items-center justify-between text-[10px]">
                   <span className="text-[#F5EDE0]/70">Tariff</span>
-                  <span className="font-bold text-[#C9A24A]">On Request</span>
+                  <span className="font-bold text-[#C9A24A]">{formatPackagePrice(tier.startingPricePerPerson)}</span>
                 </div>
               </button>
             );
@@ -251,6 +255,11 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
                   </div>
                 ))}
               </div>
+            </div>
+
+            <div className="rounded-2xl border border-[#C9A24A]/25 bg-[#080B0F]/70 p-4">
+              <p className="font-serif text-lg font-bold text-[#C9A24A]">{formatPackagePrice(selectedTier.startingPricePerPerson)}</p>
+              <p className="mt-1 text-[10px] leading-relaxed text-[#F5EDE0]/60">{PRICE_DISCLAIMER}</p>
             </div>
 
             <div className="pt-4 border-t border-[#C9A24A]/20 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -534,7 +543,7 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-[#F5EDE0]/75 font-light">
             <div className="space-y-1">
               <strong className="text-[#F5EDE0] block font-semibold">Customized Tariff</strong>
-              <p>Prices depend on exact travel dates, seasonal demand, room selection, and party size. Price on request via WhatsApp.</p>
+              <p>{PRICE_DISCLAIMER} Ask for the exact current quote before booking.</p>
             </div>
             <div className="space-y-1">
               <strong className="text-[#F5EDE0] block font-semibold">Attentive Coordination</strong>

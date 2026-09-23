@@ -64,11 +64,13 @@ export const getJourneyWhatsAppLink = (journeyTitle: string) => {
 export const getPackageWhatsAppLink = (
   travelType: string = 'Couple',
   packageName: string = 'Gorbandh',
-  journeyName: string = 'Jaisalmer 3 Nights / 4 Days'
+  journeyName: string = 'Jaisalmer 3 Nights / 4 Days',
+  startingPrice?: string,
+  sourcePage: string = '/packages/jaisalmer-3-nights-4-days'
 ) => {
   const formattedType = travelType.charAt(0).toUpperCase() + travelType.slice(1);
   const formattedPackage = packageName.charAt(0).toUpperCase() + packageName.slice(1);
-  const msg = `Hello ${SITE_CONFIG.brandName},\nI am interested in the ${journeyName} package.\n\nTravel type: ${formattedType}\nPackage: ${formattedPackage}\n\nPlease share the current price and availability.`;
+  const msg = `Namaste ${SITE_CONFIG.brandName},\n\nI would like to enquire about a Jaisalmer package.\n\nPackage: ${formattedPackage}\nTravel type: ${formattedType}\nDuration: ${journeyName}${startingPrice ? `\nStarting price viewed: ${startingPrice}` : ''}\nSource page: ${sourcePage}\n\nPlease share the exact current quote and availability.`;
   return getWhatsAppLink(msg);
 };
 

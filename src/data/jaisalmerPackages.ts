@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────────────────────────
    SRV TOURS & TRAVELS — JAISALMER PACKAGE SYSTEM DATA MODEL
    Source of Truth for Couple, Family, Group Packages & Safari
-   Strict Commercial Accuracy: Price on Request (No Fabricated Prices)
+   Verified commercial pricing and package inclusions
    ───────────────────────────────────────────────────────────── */
 
 export type TravelTypeKey = 'couple' | 'family' | 'group' | 'solo';
@@ -19,7 +19,7 @@ export interface PackageTier {
   description: string;
   image: string;
   imageAlt: string;
-  price: number | null; // null represents "Price on Request"
+  startingPricePerPerson: number;
   inclusionsSummary: string[];
 }
 
@@ -118,7 +118,7 @@ export const PACKAGE_TIERS: Record<PackageTierKey, PackageTier> = {
     description: 'A curated heritage circuit designed to capture the core essence of Jaisalmer Fort, Havelis, and a peaceful desert camp night.',
     image: '/images/jaisalmer/web_DJI_0065.JPG',
     imageAlt: 'Gadisar Lake and heritage chhatris in Jaisalmer',
-    price: null,
+    startingPricePerPerson: 11100,
     inclusionsSummary: [
       'Jaisalmer Railway Station / Airport transfers',
       'Sonar Qila, Haveli & Gadisar heritage circuit',
@@ -135,7 +135,7 @@ export const PACKAGE_TIERS: Record<PackageTierKey, PackageTier> = {
     description: 'Thoughtfully paced sightseeing across Jaisalmer’s carved sandstone landmarks, paired with traditional Thar desert hospitality.',
     image: '/assets/patwon-haveli.png',
     imageAlt: 'Intricately carved sandstone jharokhas of Patwon Ki Haveli',
-    price: null,
+    startingPricePerPerson: 15400,
     inclusionsSummary: [
       'Station / Airport coordination and sanitized transport',
       'Guided walkthrough of Jaisalmer Fort & Royal Havelis',
@@ -152,7 +152,7 @@ export const PACKAGE_TIERS: Record<PackageTierKey, PackageTier> = {
     description: 'An elevated journey blending heritage exploration with curated desert moments, folk traditions, and personalized coordination.',
     image: '/images/jaisalmer/web_DJI_0002.jpg',
     imageAlt: 'Aerial panorama of the living Jaisalmer Fort',
-    price: null,
+    startingPricePerPerson: 18700,
     inclusionsSummary: [
       'Dedicated arrival and departure assistance',
       'Comprehensive Golden City sightseeing & cultural visits',
@@ -169,7 +169,7 @@ export const PACKAGE_TIERS: Record<PackageTierKey, PackageTier> = {
     description: 'Immersive heritage travel featuring premium stays, desert glamping under starry skies, and private journey escorting.',
     image: '/images/jaisalmer/web_DJI_0727.jpg',
     imageAlt: 'Jaisalmer Fort illuminated at night against the desert sky',
-    price: null,
+    startingPricePerPerson: 24300,
     inclusionsSummary: [
       'Priority travel coordination and comfortable private transport',
       'Fort palace, temple sanctums & secret haveli viewpoints',
@@ -186,7 +186,7 @@ export const PACKAGE_TIERS: Record<PackageTierKey, PackageTier> = {
     description: 'The crowning Jaisalmer experience inspired by royal Bhati traditions—personalized hospitality, bespoke pacing, and dignified service.',
     image: '/assets/optimized/jaisalmer-fort-palace-1920.webp',
     imageAlt: 'Jaisalmer Fort Palace facade, royal seat of the Bhati rulers',
-    price: null,
+    startingPricePerPerson: 28600,
     inclusionsSummary: [
       'Executive coordination with personalized itinerary pacing',
       'Curated fort, haveli and sacred temple darshans',
@@ -331,17 +331,15 @@ export const THAR_SOUL_SAFARI: SafariExperienceItem = {
 
 /* ─── 5. Helper Functions ─────────────────────────────────────────── */
 
-/**
- * Format a package price commercially.
- * Strictly returns "Price on Request" if price is null, undefined, or 0.
- * Never displays fake numbers, ₹0, NaN, or undefined.
- */
+/** Format a verified per-person starting price consistently. */
 export function formatPackagePrice(price: number | null | undefined): string {
   if (!price || price <= 0 || isNaN(price)) {
     return 'Price on Request';
   }
-  return `₹${price.toLocaleString('en-IN')}`;
+  return `From ₹${price.toLocaleString('en-IN')}/person`;
 }
+
+export const PRICE_DISCLAIMER = 'Final price may vary by travel dates, hotel/camp availability, room selection and traveller count.';
 
 /**
  * Get tier details safely with Maharawal fallback.

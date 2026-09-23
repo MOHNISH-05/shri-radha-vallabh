@@ -20,7 +20,9 @@ import {
 import { PageHero } from '../components/PageHero';
 import {
   PACKAGE_TIERS_LIST,
+  PRICE_DISCLAIMER,
   TRAVEL_TYPES_LIST,
+  formatPackagePrice,
   getTravelType,
 } from '../data/jaisalmerPackages';
 import type { TravelTypeKey } from '../data/jaisalmerPackages';
@@ -175,7 +177,9 @@ Please share a personalized itinerary and best quote.`;
               const whatsappUrl = getPackageWhatsAppLink(
                 selectedTypeInfo.label,
                 tier.name,
-                'Jaisalmer 3 Nights / 4 Days'
+                'Jaisalmer 3 Nights / 4 Days',
+                formatPackagePrice(tier.startingPricePerPerson),
+                '/packages'
               );
 
               return (
@@ -249,13 +253,14 @@ Please share a personalized itinerary and best quote.`;
                         <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
                         <div className="text-right">
                           <span className="font-serif text-sm sm:text-base font-bold gold-text">
-                            Price on Request
+                            {formatPackagePrice(tier.startingPricePerPerson)}
                           </span>
                           <span className="text-[9px] text-[#C9A24A]/70 block">
-                            Customized per dates &amp; party
+                            Verified starting tariff
                           </span>
                         </div>
                       </div>
+                      <p className="text-[9px] leading-relaxed text-[#F5EDE0]/55">{PRICE_DISCLAIMER}</p>
 
                       <div className="flex items-center gap-2">
                         <Link
@@ -670,6 +675,7 @@ Please share a personalized itinerary and best quote.`;
           </div>
 
           <div className="overflow-x-auto">
+            <p className="mb-2 text-[9px] font-bold uppercase tracking-widest text-[#C9A24A] sm:hidden">Swipe to compare →</p>
             <table className="w-full text-left border-collapse min-w-[640px]">
               <thead>
                 <tr className="border-b border-[#C9A24A]/30">
@@ -702,7 +708,7 @@ Please share a personalized itinerary and best quote.`;
                       Confirmed Jaisalmer Itinerary
                     </td>
                     <td className="py-4 px-4 font-bold text-[#C9A24A]">
-                      Price on Request
+                      {formatPackagePrice(t.startingPricePerPerson)}
                     </td>
                     <td className="py-4 px-4 text-right">
                       <Link
@@ -750,6 +756,7 @@ Please share a personalized itinerary and best quote.`;
               </tbody>
             </table>
           </div>
+          <p className="text-[10px] leading-relaxed text-[#F5EDE0]/55">{PRICE_DISCLAIMER}</p>
         </div>
 
         {/* 07. Closing CTA Banner */}

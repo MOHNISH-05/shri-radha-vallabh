@@ -29,7 +29,9 @@ import { ACTIVE_JOURNEY } from '../data/journeys';
 import type { Package } from '../data/journeys';
 import {
   PACKAGE_TIERS_LIST,
+  PRICE_DISCLAIMER,
   TRAVEL_TYPES_LIST,
+  formatPackagePrice,
   getTravelType,
 } from '../data/jaisalmerPackages';
 import type { TravelTypeKey } from '../data/jaisalmerPackages';
@@ -385,7 +387,7 @@ export const JaisalmerPage: React.FC = () => {
             {(() => {
               const tier = PACKAGE_TIERS_LIST[0]; // Gorbandh
               const audLabel = getTravelType(packageAudience).label;
-              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days');
+              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days', formatPackagePrice(tier.startingPricePerPerson), '/jaisalmer');
 
               return (
                 <motion.div
@@ -443,10 +445,11 @@ export const JaisalmerPage: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
                         <div className="text-right">
-                          <span className="font-serif text-sm sm:text-base font-bold gold-text">Price on Request</span>
-                          <span className="text-[9px] text-[#C9A24A]/70 block">Customized per dates &amp; party</span>
+                          <span className="font-serif text-sm sm:text-base font-bold gold-text">{formatPackagePrice(tier.startingPricePerPerson)}</span>
+                          <span className="text-[9px] text-[#C9A24A]/70 block">Verified starting tariff</span>
                         </div>
                       </div>
+                      <p className="text-[9px] leading-relaxed text-[#F5EDE0]/55">{PRICE_DISCLAIMER}</p>
                       <div className="flex items-center gap-2">
                         <Link
                           to={`/packages/jaisalmer-3-nights-4-days?type=${packageAudience}&tier=${tier.id}`}
@@ -475,7 +478,7 @@ export const JaisalmerPage: React.FC = () => {
             {(() => {
               const tier = PACKAGE_TIERS_LIST[2]; // Morchan
               const audLabel = getTravelType(packageAudience).label;
-              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days');
+              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days', formatPackagePrice(tier.startingPricePerPerson), '/jaisalmer');
 
               return (
                 <motion.div
@@ -533,10 +536,11 @@ export const JaisalmerPage: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
                         <div className="text-right">
-                          <span className="font-serif text-sm sm:text-base font-bold gold-text">Price on Request</span>
-                          <span className="text-[9px] text-[#C9A24A]/70 block">Customized per dates &amp; party</span>
+                          <span className="font-serif text-sm sm:text-base font-bold gold-text">{formatPackagePrice(tier.startingPricePerPerson)}</span>
+                          <span className="text-[9px] text-[#C9A24A]/70 block">Verified starting tariff</span>
                         </div>
                       </div>
+                      <p className="text-[9px] leading-relaxed text-[#F5EDE0]/55">{PRICE_DISCLAIMER}</p>
                       <div className="flex items-center gap-2">
                         <Link
                           to={`/packages/jaisalmer-3-nights-4-days?type=${packageAudience}&tier=${tier.id}`}
@@ -565,7 +569,7 @@ export const JaisalmerPage: React.FC = () => {
             {(() => {
               const tier = PACKAGE_TIERS_LIST[4]; // Maharawal
               const audLabel = getTravelType(packageAudience).label;
-              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days');
+              const pkgWaUrl = getPackageWhatsAppLink(audLabel, tier.name, 'Jaisalmer 3 Nights / 4 Days', formatPackagePrice(tier.startingPricePerPerson), '/jaisalmer');
 
               return (
                 <motion.div
@@ -624,10 +628,11 @@ export const JaisalmerPage: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
                         <div className="text-right">
-                          <span className="font-serif text-sm sm:text-base font-bold gold-text">Price on Request</span>
-                          <span className="text-[9px] text-[#C9A24A]/70 block">Customized per dates &amp; party</span>
+                          <span className="font-serif text-sm sm:text-base font-bold gold-text">{formatPackagePrice(tier.startingPricePerPerson)}</span>
+                          <span className="text-[9px] text-[#C9A24A]/70 block">Verified starting tariff</span>
                         </div>
                       </div>
+                      <p className="text-[9px] leading-relaxed text-[#F5EDE0]/55">{PRICE_DISCLAIMER}</p>
                       <div className="flex items-center gap-2">
                         <Link
                           to={`/packages/jaisalmer-3-nights-4-days?type=${packageAudience}&tier=${tier.id}`}

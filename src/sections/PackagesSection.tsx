@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, CheckCircle2, ChevronRight, MessageCircle, Crown, Sparkles } from 'lucide-react';
-import { PACKAGE_TIERS_LIST } from '../data/jaisalmerPackages';
+import { PACKAGE_TIERS_LIST, PRICE_DISCLAIMER, formatPackagePrice } from '../data/jaisalmerPackages';
 import { getPackageWhatsAppLink, getWhatsAppLink } from '../data/siteConfig';
 
 export const PackagesSection: React.FC = () => {
@@ -44,7 +44,7 @@ export const PackagesSection: React.FC = () => {
         {/* Package Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {featuredTiers.map((tier, index) => {
-            const whatsappUrl = getPackageWhatsAppLink('Traveler', tier.name, 'Jaisalmer 3 Nights / 4 Days');
+            const whatsappUrl = getPackageWhatsAppLink('Traveler', tier.name, 'Jaisalmer 3 Nights / 4 Days', formatPackagePrice(tier.startingPricePerPerson), '/');
 
             return (
               <motion.div
@@ -110,10 +110,11 @@ export const PackagesSection: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] text-[#F5EDE0]/70">Tariff</span>
                       <div className="text-right">
-                        <span className="font-serif text-sm sm:text-base font-bold gold-text">Price on Request</span>
-                        <span className="text-[8px] sm:text-[9px] text-[#C9A24A]/70 block">Customized per dates &amp; group</span>
+                        <span className="font-serif text-sm sm:text-base font-bold gold-text">{formatPackagePrice(tier.startingPricePerPerson)}</span>
+                        <span className="text-[8px] sm:text-[9px] text-[#C9A24A]/70 block">Verified starting tariff</span>
                       </div>
                     </div>
+                    <p className="text-[9px] leading-relaxed text-[#F5EDE0]/55">{PRICE_DISCLAIMER}</p>
 
                     <div className="flex items-center gap-2">
                       <Link
