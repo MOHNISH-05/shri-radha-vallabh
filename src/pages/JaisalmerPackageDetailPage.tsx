@@ -96,6 +96,12 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
         bgPosition="center 35%"
       />
 
+      <div className="border-y border-[#C9A24A]/20 bg-[#080B0F] px-4 py-3">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-widest text-[#D8B982]">
+          <span>✓ Local Jaisalmer Team</span><span>✓ Transparent Starting Prices</span><span>✓ Direct WhatsApp Coordination</span>
+        </div>
+      </div>
+
       {/* 02. Interactive Package Customizer Strip */}
       <section className="sticky top-16 z-30 bg-[#080B0F]/95 backdrop-blur-xl border-y border-[#C9A24A]/25 py-4 shadow-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -274,7 +280,7 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
                 <span>Enquire Current Tariff for {selectedTier.name}</span>
               </a>
               <Link
-                to={`/plan-journey?destination=Jaisalmer`}
+                to={`/plan-journey?destination=Jaisalmer&tier=${selectedTier.id}&price=${selectedTier.startingPricePerPerson}`}
                 className="py-3 px-6 rounded-full bg-[#080B0F] border border-[#C9A24A]/40 text-[#F5EDE0] hover:bg-[#C9A24A] hover:text-[#050709] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1 transition-all min-h-[44px]"
               >
                 <span>Customize Dates</span>

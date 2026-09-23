@@ -5,10 +5,13 @@ import { MessageCircle, Sparkles, Send, AlertCircle, ShieldCheck, Clock } from '
 import { PageHero } from '../components/PageHero';
 import { JaisalmerLocation } from '../components/JaisalmerLocation';
 import { SITE_CONFIG } from '../data/siteConfig';
+import { formatPackagePrice, getPackageTier } from '../data/jaisalmerPackages';
 
 export const PlanJourneyPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const destQuery = searchParams.get('destination')?.toLowerCase() || '';
+  const tierQuery = searchParams.get('tier')?.toLowerCase() || '';
+  const packageTier = tierQuery ? getPackageTier(tierQuery) : null;
 
   const getInitialDestination = (query: string) => {
     if (query.includes('jaisalmer')) return 'Jaisalmer (The Golden City)';
@@ -29,6 +32,9 @@ export const PlanJourneyPage: React.FC = () => {
     seniorsTravelling: 'No',
     journeyType: 'Heritage & Desert Luxury',
     stayPreference: 'Heritage Boutique Haveli / Luxury Tent',
+    pickupPoint: '',
+    packageViewed: packageTier ? `${packageTier.name} (${packageTier.tier})` : '',
+    startingPriceViewed: packageTier ? formatPackagePrice(packageTier.startingPricePerPerson) : '',
     name: '',
     phone: '',
     specialNotes: '',
@@ -60,7 +66,8 @@ export const PlanJourneyPage: React.FC = () => {
       return;
     }
 
-    const msg = `Namaste Shri Radha Vallabh 🙏\n\nI would like to plan a bespoke journey with the following details:\n\n📍 *Destination*: ${formData.destination}\n📅 *Travel Date*: ${formData.travelDate || 'Flexible'}\n⏱️ *Duration*: ${formData.duration}\n👥 *Travellers*: ${formData.adults}, ${formData.children} (Seniors: ${formData.seniorsTravelling})\n🛕 *Journey Type*: ${formData.journeyType}\n🏨 *Stay Preference*: ${formData.stayPreference}\n👤 *Lead Guest*: ${trimmedName}\n📞 *WhatsApp*: ${formData.phone}${formData.specialNotes ? `\n📝 *Notes*: ${formData.specialNotes}` : ''}\n\nPlease share customized itinerary options, stay recommendations & tariff details.\nThank you.`;
+    const sourcePage = document.referrer ? new URL(document.referrer).pathname : window.location.pathname;
+    const msg = `Namaste SRV Yaatra,\n\nI would like to plan a Jaisalmer trip.\n\nTravel date: ${formData.travelDate || 'Flexible'}\nAdults: ${formData.adults}\nChildren: ${formData.children}\nNights / duration: ${formData.duration}\nHotel preference: ${formData.stayPreference}${formData.pickupPoint ? `\nPickup point: ${formData.pickupPoint}` : ''}${formData.packageViewed ? `\nPackage: ${formData.packageViewed}` : ''}${formData.startingPriceViewed ? `\nStarting price viewed: ${formData.startingPriceViewed}` : ''}\nDestination: ${formData.destination}\nJourney style: ${formData.journeyType}\nSenior travellers: ${formData.seniorsTravelling}\nLead guest: ${trimmedName}\nWhatsApp: ${formData.phone}${formData.specialNotes ? `\nSpecial request: ${formData.specialNotes}` : ''}\n\nSource page: ${sourcePage}\n\nPlease share the exact quote and availability.`;
 
     const cleanNumber = SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '');
     const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(msg)}`;
@@ -155,7 +162,7 @@ export const PlanJourneyPage: React.FC = () => {
               <span>Travel Dates &amp; Family Group</span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               <div className="space-y-1.5">
                 <label htmlFor="journey-date" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">
                   Tentative Travel Date
@@ -201,6 +208,13 @@ export const PlanJourneyPage: React.FC = () => {
                   <option value="Yes (Special Senior Care Required)">Yes (Need senior-friendly pacing &amp; assistance)</option>
                 </select>
               </div>
+
+              <div className="space-y-1.5">
+                <label htmlFor="journey-children" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">Children</label>
+                <select id="journey-children" value={formData.children} onChange={(e) => setFormData({ ...formData, children: e.target.value })} className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer">
+                  <option value="0 Children">0 Children</option><option value="1 Child">1 Child</option><option value="2 Children">2 Children</option><option value="3+ Children">3+ Children</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -244,6 +258,13 @@ export const PlanJourneyPage: React.FC = () => {
                   <option value="Peaceful Pilgrim Guest Stay">Peaceful Pilgrim Guest Stay</option>
                 </select>
               </div>
+
+              <div className="space-y-1.5 sm:col-span-2">
+                <label htmlFor="journey-pickup" className="text-[11px] font-semibold uppercase tracking-wider text-[#D8B982] block">Pickup City / Point (Optional)</label>
+                <input id="journey-pickup" type="text" placeholder="e.g. Jaisalmer Railway Station, or from Jodhpur" value={formData.pickupPoint} onChange={(e) => setFormData({ ...formData, pickupPoint: e.target.value })} className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-4 py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation" />
+              </div>
+
+              {formData.packageViewed && <div className="sm:col-span-2 rounded-2xl border border-[#C9A24A]/25 bg-[#080B0F] p-4 text-xs text-[#F5EDE0]/75"><strong className="block text-[#D8B982]">Package viewed: {formData.packageViewed}</strong>{formData.startingPriceViewed && <span>{formData.startingPriceViewed}</span>}</div>}
             </div>
           </div>
 

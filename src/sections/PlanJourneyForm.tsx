@@ -8,6 +8,8 @@ export const PlanJourneyForm: React.FC = () => {
     destination: 'Jaisalmer (Active Campaign)',
     travelDate: '',
     travellers: '2 Travellers',
+    children: '0 Children',
+    pickupPoint: '',
     journeyType: 'Heritage & Desert Luxury',
     name: '',
     phone: '',
@@ -33,7 +35,7 @@ export const PlanJourneyForm: React.FC = () => {
       return;
     }
 
-    const msg = `Namaste Shri Radha Vallabh 🙏\n\nI would like to plan a journey with the following details:\n\n📍 *Destination*: ${formData.destination}\n📅 *Travel Date*: ${formData.travelDate || 'Flexible'}\n👥 *Travellers*: ${formData.travellers}\n🛕 *Journey Type*: ${formData.journeyType}\n👤 *Name*: ${trimmedName}\n📞 *Phone*: ${formData.phone}\n\nPlease share customized itinerary options & package details.`;
+    const msg = `Namaste SRV Yaatra,\n\nI would like to plan a journey.\n\nDestination: ${formData.destination}\nTravel date: ${formData.travelDate || 'Flexible'}\nAdults / travellers: ${formData.travellers}\nChildren: ${formData.children}\nJourney type: ${formData.journeyType}${formData.pickupPoint ? `\nPickup point: ${formData.pickupPoint}` : ''}\nName: ${trimmedName}\nWhatsApp: ${formData.phone}\nSource page: ${window.location.pathname}\n\nPlease share the exact quote and availability.`;
     
     const cleanNumber = SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '');
     const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(msg)}`;
@@ -163,6 +165,18 @@ export const PlanJourneyForm: React.FC = () => {
                 <option value="Spiritual Pilgrimage">Spiritual Pilgrimage</option>
                 <option value="Tailor-Made Royal Experience">Tailor-Made Royal Experience</option>
               </select>
+            </div>
+
+            <div className="space-y-1.5 sm:space-y-2">
+              <label htmlFor="home-journey-children" className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">Children</label>
+              <select id="home-journey-children" value={formData.children} onChange={(e) => setFormData({ ...formData, children: e.target.value })} className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation cursor-pointer">
+                <option value="0 Children">0 Children</option><option value="1 Child">1 Child</option><option value="2 Children">2 Children</option><option value="3+ Children">3+ Children</option>
+              </select>
+            </div>
+
+            <div className="space-y-1.5 sm:space-y-2">
+              <label htmlFor="home-journey-pickup" className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#C9A24A] block">Pickup Point (Optional)</label>
+              <input id="home-journey-pickup" type="text" placeholder="Jaisalmer Station, Airport or Jodhpur" value={formData.pickupPoint} onChange={(e) => setFormData({ ...formData, pickupPoint: e.target.value })} className="w-full bg-[#080B0F] border border-[#C9A24A]/40 rounded-xl px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm text-[#F5EDE0] focus:border-[#C9A24A] focus:outline-none min-h-[48px] touch-manipulation" />
             </div>
 
             {/* Name */}

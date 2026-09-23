@@ -222,10 +222,10 @@ export const JaisalmerHistoryPage: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <Link
-              to="/plan-journey?destination=Jaisalmer"
+              to="/packages"
               className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#C9A24A] text-[#080B0F] font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-lg active:scale-95 text-center min-h-[44px] flex items-center justify-center"
             >
-              PLAN HISTORICAL JAISALMER ITINERARY →
+              VIEW JAISALMER PACKAGES →
             </Link>
             <a
               href={waUrl}

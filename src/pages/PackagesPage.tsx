@@ -93,6 +93,12 @@ Please share a personalized itinerary and best quote.`;
         bgPosition="center 30%"
       />
 
+      <div className="border-y border-[#C9A24A]/20 bg-[#080B0F] px-4 py-3">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-widest text-[#D8B982]">
+          <span>✓ Local Jaisalmer Team</span><span>✓ Transparent Starting Prices</span><span>✓ Direct WhatsApp Coordination</span>
+        </div>
+      </div>
+
       {/* 02. Audience Selector & Jaisalmer 3N/4D Tier Cards */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Audience Selector Card */}
