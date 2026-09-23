@@ -175,6 +175,7 @@ export const JaisalmerPackageDetailPage: React.FC = () => {
                 onClick={() => handleTierChange(tier.id)}
                 role="tab"
                 aria-selected={isSelected}
+                aria-label={`Select ${tier.name} (${tier.tier}) package tier`}
                 className={`p-4 rounded-2xl border text-left transition-all duration-300 relative flex flex-col justify-between cursor-pointer min-h-[120px] touch-manipulation ${
                   isSelected
                     ? 'bg-[#C9A24A]/15 border-[#C9A24A] shadow-[0_0_20px_rgba(201,162,74,0.2)]'
