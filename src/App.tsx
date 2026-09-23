@@ -13,6 +13,7 @@ const JourneysPage = lazy(() => import('./pages/JourneysPage').then((module) => 
 const JaisalmerPage = lazy(() => import('./pages/JaisalmerPage').then((module) => ({ default: module.JaisalmerPage })));
 const JaisalmerExplorePage = lazy(() => import('./pages/JaisalmerExplorePage').then((module) => ({ default: module.JaisalmerExplorePage })));
 const JaisalmerItineraryPage = lazy(() => import('./pages/JaisalmerItineraryPage').then((module) => ({ default: module.JaisalmerItineraryPage })));
+const JaisalmerFoodPage = lazy(() => import('./pages/JaisalmerFoodPage').then((module) => ({ default: module.JaisalmerFoodPage })));
 const JaisalmerSafariPage = lazy(() => import('./pages/JaisalmerSafariPage').then((module) => ({ default: module.JaisalmerSafariPage })));
 const JaisalmerHistoryPage = lazy(() => import('./pages/JaisalmerHistoryPage').then((module) => ({ default: module.JaisalmerHistoryPage })));
 const JaisalmerRiyasatPage = lazy(() => import('./pages/JaisalmerRiyasatPage').then((module) => ({ default: module.JaisalmerRiyasatPage })));
@@ -132,6 +133,7 @@ export const AppContent: React.FC = () => {
           <Route path="/jaisalmer" element={<JaisalmerPage />} />
           <Route path="/jaisalmer/explore" element={<JaisalmerExplorePage />} />
           <Route path="/jaisalmer/itinerary" element={<JaisalmerItineraryPage />} />
+          <Route path="/jaisalmer/food" element={<JaisalmerFoodPage />} />
           <Route path="/jaisalmer/safari-adventure" element={<JaisalmerSafariPage />} />
           <Route path="/jaisalmer/history" element={<JaisalmerHistoryPage />} />
           <Route path="/jaisalmer/riyasat" element={<JaisalmerRiyasatPage />} />

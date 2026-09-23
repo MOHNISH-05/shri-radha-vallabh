@@ -67,6 +67,17 @@ const CORE_ROUTE_SEO: Record<string, RouteSeo> = {
     entityName: 'Jaisalmer',
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer', path: '/jaisalmer' }, { name: 'Explore', path: '/jaisalmer/explore' }],
   },
+  '/jaisalmer/food': {
+    path: '/jaisalmer/food',
+    title: 'Jaisalmer Food Guide | Famous Local Dishes & What to Eat',
+    description: 'Discover what to eat in Jaisalmer, from Ghotua, kachori and dal pakwan to Makhaniya Lassi, jalebi and traditional Rajasthani desert dishes.',
+    image: '/assets/optimized/jaisalmer-night-fort-1280.webp',
+    imageAlt: 'Jaisalmer Golden City illuminated in the evening',
+    pageType: 'WebPage',
+    entityType: 'Thing',
+    entityName: 'Jaisalmer Food Guide',
+    breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Jaisalmer', path: '/jaisalmer' }, { name: 'Food & Flavours', path: '/jaisalmer/food' }],
+  },
   '/jaisalmer/safari-adventure': {
     path: '/jaisalmer/safari-adventure',
     title: 'Jaisalmer Desert Safari Guide | Camel, Jeep & Camp Options',

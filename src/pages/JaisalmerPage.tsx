@@ -85,6 +85,7 @@ export const JaisalmerPage: React.FC = () => {
     { id: 'safari-adventure', label: 'Safari & Adventure' },
     { id: 'history-story', label: 'The Story' },
     { id: 'living-traditions', label: 'Sacred & Living Culture' },
+    { id: 'food-and-flavours', label: 'Food' },
     { id: 'stay-and-travel', label: 'Stay & Travel' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'faqs', label: 'FAQs' },
@@ -200,6 +201,23 @@ export const JaisalmerPage: React.FC = () => {
             <span>⭐ UNESCO World Heritage Living Fort</span>
             <span>❄️ Best Season: Oct – Mar</span>
           </div>
+        </div>
+      </section>
+
+      <section id="food-and-flavours" className="border-y border-[#C9A24A]/20 bg-[#0B0E13] py-16 sm:py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8">
+          <div className="space-y-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#C9A24A]">Food &amp; Flavours</span>
+            <h2 className="font-serif text-3xl font-bold text-[#F5EDE0] sm:text-4xl">Food &amp; Flavours of the Golden City</h2>
+            <p className="font-devanagari text-lg text-[#D8B982]" lang="hi">जैसलमेर का स्वाद — कचोरी, लस्सी और मरुस्थलीय ज़ायका</p>
+            <p className="max-w-3xl text-sm font-light leading-7 text-[#F5EDE0]/72">Discover Ghotua, kachori, dal pakwan, Makhaniya Lassi and hot jalebi through a practical guide to Jaisalmer's local food culture.</p>
+            <div className="flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-wider text-[#D8B982]">
+              {['Ghotua', 'Kachori', 'Dal Pakwan', 'Makhaniya Lassi', 'Jalebi'].map((item) => <span key={item} className="rounded-full border border-[#C9A24A]/30 bg-[#080B0F] px-3 py-2">{item}</span>)}
+            </div>
+          </div>
+          <Link to="/jaisalmer/food" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#C9A24A] px-7 py-4 text-[10px] font-bold uppercase tracking-widest text-[#050709] transition hover:brightness-110">
+            Explore Jaisalmer Food <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
