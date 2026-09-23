@@ -61,8 +61,8 @@ test('footer developer credit remains readable and contained at every required w
   }
 });
 
-for (const width of [360, 375, 390, 412, 768, 1440, 1920]) {
-  for (const route of ['/jaisalmer', '/jaisalmer/explore', '/jaisalmer/itinerary', '/jaisalmer/safari-adventure', '/safari', '/jaisalmer-taxi', '/stories', '/gallery', '/plan-journey']) {
+for (const width of [360, 375, 390, 412, 768, 1024, 1440, 1920]) {
+  for (const route of ['/jaisalmer', '/jaisalmer/explore', '/jaisalmer/itinerary', '/jaisalmer/food', '/jaisalmer/safari-adventure', '/packages', '/packages/jaisalmer-3-nights-4-days', '/safari', '/jaisalmer-taxi', '/stories', '/gallery', '/plan-journey']) {
     test(`${route} has no horizontal overflow at ${width}px`, async ({ page }) => {
       await page.setViewportSize({ width, height: width < 768 ? 844 : 950 });
       await page.goto(route);

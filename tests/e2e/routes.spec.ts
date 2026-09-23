@@ -7,6 +7,7 @@ const expectedTitles: Record<(typeof CRITICAL_ROUTES)[number], RegExp> = {
   '/jaisalmer': /Jaisalmer Travel Guide & Custom Tours/,
   '/jaisalmer/explore': /Places to Visit in Jaisalmer/,
   '/jaisalmer/itinerary': /Jaisalmer Itinerary for 2, 3 & 4 Days/,
+  '/jaisalmer/food': /Jaisalmer Food Guide/,
   '/jaisalmer/safari-adventure': /Jaisalmer Desert Safari Guide/,
   '/jaisalmer/history': /History of Jaisalmer/,
   '/jaisalmer/riyasat': /Jaisalmer Riyasat/,
